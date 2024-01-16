@@ -1,0 +1,99 @@
+.card_page {
+    margin-top: 47px;
+}
+
+.card_icon + .card_icon {
+    margin-left: 30px;
+}
+
+.breadcrumbs {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.card_images_img {
+    width: 325px;
+    height: 427px;
+    border-radius: 20px;
+}
+
+.card_title {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.card_price {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.card_seller-title {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.card_reviews {
+    margin-top: 10px;
+}
+
+.card_reviews-stars {
+    margin-right: 20px;
+}
+
+.card_seller_info {
+    margin-bottom: 10px;
+}
+
+.card_seller-address {
+    width: 310px;
+    font-size: 14px;
+    color: rgba(131, 134, 144, 1);
+}
+
+.card_btns {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.black_btn {
+    background-color: rgba(22, 22, 22, 1);
+    width: 156px;
+    height: 54px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 13px;
+}
+
+.white_btn {
+    width: 156px;
+    height: 54px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_description-title {
+    margin-bottom: 15px;
+}
+
+.card_description-text {
+    color: rgba(131, 134, 144, 1);
+}
+
+.card_backbtn {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.card_statistic-text {
+    color: rgba(181, 183, 189, 1);
+}
+
+.card_statistic-text + .card_statistic-text {
+    margin-top: 5px;
+    margin-bottom: 120px;
+}
