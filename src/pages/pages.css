@@ -1,3 +1,6 @@
+
+/* Card Page */
+
 .card_page {
     margin-top: 47px;
 }
@@ -96,4 +99,14 @@
 .card_statistic-text + .card_statistic-text {
     margin-top: 5px;
     margin-bottom: 120px;
+}
+
+/* Board Page */
+
+.board_page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+    font-family: 'Open Sans', sans-serif;
 }

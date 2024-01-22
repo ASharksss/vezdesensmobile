@@ -10,33 +10,36 @@ import './footer.css'
 
 const Footer = () => {
   return (
-    <div className='footer'>
-      <div className="footer_section">
-        <img src={home_icon} alt=""/>
+    <div className='container'>
+      <div className='footer'>
+        <div className="footer_section">
+          <img src={home_icon} alt=""/>
+        </div>
+        <div className="footer_section">
+          <img src={favorite_icon} alt=""/>
+        </div>
+
+        <div className="footer_section relative">
+          <button className='footer_section-btn'>
+            <img className='footer_section-icon' src={plus_icon} alt=""/>
+          </button>
+
+        </div>
+
+        <div className="footer_section">
+          <img src={message_icon} alt=""/>
+        </div>
+        <div className="footer_section">
+
+          <img src={profile_icon} alt=""/>
+
+
+
+        </div>
+
       </div>
-      <div className="footer_section">
-        <img src={favorite_icon} alt=""/>
-      </div>
-
-      <div className="footer_section relative">
-        <button className='footer_section-btn'>
-          <img className='footer_section-icon' src={plus_icon} alt=""/>
-        </button>
-
-      </div>
-
-      <div className="footer_section">
-        <img src={message_icon} alt=""/>
-      </div>
-      <div className="footer_section">
-
-        <img src={profile_icon} alt=""/>
-
-
-
-      </div>
-
     </div>
+
   );
 };
 

@@ -1,0 +1,35 @@
+.card {
+    width: 156px;
+}
+
+.card_img-image {
+    width: 156px;
+    height: 210px;
+    margin-bottom: 8px;
+}
+
+.card_info-title {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.card_info-address, .card_info-time {
+    font-size: 10px;
+    font-family: OpenSansRegular;
+    font-weight: lighter;
+}
+
+.card_info-address{
+    color: #838690;
+    margin-bottom: 4px;
+}
+
+.card_info-time{
+    color: #B5B7BD;
+    margin-bottom: 8px;
+}
+
+.card_info-price {
+    font-size: 18px;
+    font-family: OpenSansBold;
+}

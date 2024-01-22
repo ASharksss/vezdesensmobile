@@ -1,8 +1,26 @@
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: local('OpenSans-Regular'),
+    url('../src/fonts/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OpenSansBold';
+    src: local('OpenSans-Bold'),
+    url('../src/fonts/OpenSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OpenSansSemiBold';
+    src: local('OpenSans-SemiBold'),
+    url('../src/fonts/OpenSans-SemiBold.ttf') format('truetype');
+}
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    font-family: Calibri;
+    font-family: OpenSansRegular;
 }
 
 /* Убираем внутренние отступы */
@@ -87,7 +105,8 @@ button {
 }
 
 .container {
-    width: 375px;
+    max-width: 375px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -105,10 +124,22 @@ button {
     justify-content: space-between;
 }
 
+.grid {
+    display: grid;
+    grid-column-gap: 13px;
+    grid-row-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .block {
     display: block;
 }
 
 .relative {
     position: relative;
+}
+
+.noLink {
+    text-decoration: none;
+    color: black;
 }
