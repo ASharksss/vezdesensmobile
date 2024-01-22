@@ -14,10 +14,7 @@ function App() {
 						<Route path='/' element={<BoardPage/>}/>
 						<Route path='/cardPage' element={<CardPage/>}/>
 					</Route>
-
-
 				</Routes>
-
 				<Footer/>
 			</BrowserRouter>
 

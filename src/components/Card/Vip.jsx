@@ -1,12 +1,13 @@
 import React from 'react';
-import premium_img from '../../asserts/cards/premium_img.png'
-import PhoneBtn from "../../ui/phoneBtn";
+import premium_img from "../../asserts/cards/premium_img.png";
 import MessageBtn from "../../ui/messageBtn";
+import PhoneBtn from "../../ui/phoneBtn";
+import vip_image from '../../asserts/board/vip_image.png'
 
-const Premium = () => {
+const Vip = () => {
 	return (
-		<div className='premium_card'>
-			<img src={premium_img} alt="" className='premium_card-img'/>
+		<div className='vip_card'>
+			<img src={vip_image} alt="" className='vip_card-img'/>
 			<div className='flex space-between items-center'>
 				<div className="premium_card-info">
 					<h1 className='premium_card-title'>Массажёр для глаз</h1>
@@ -19,9 +20,8 @@ const Premium = () => {
 					<PhoneBtn/>
 				</div>
 			</div>
-
 		</div>
 	);
 };
 
-export default Premium;
+export default Vip;

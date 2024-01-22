@@ -101,6 +101,7 @@ input {
 }
 
 button {
+    background-color: transparent;
     border: none;
 }
 
@@ -116,12 +117,24 @@ button {
 
 }
 
+.icon {
+    margin: 0 auto;
+}
+
 .flex {
     display: flex;
 }
 
 .space-between {
     justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
 }
 
 .grid {

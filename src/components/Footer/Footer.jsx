@@ -1,10 +1,11 @@
 import React from 'react';
-import home_icon from '../../asserts/icons/footer/home.svg'
-import favorite_icon from '../../asserts/icons/footer/favorite.svg'
-import message_icon from '../../asserts/icons/footer/chat.svg'
-import profile_icon from '../../asserts/icons/footer/profile.svg'
-import plus_icon from '../../asserts/icons/footer/plus.svg'
+import home_icon from '../../asserts/footer/home.svg'
+import favorite_icon from '../../asserts/footer/favorite.svg'
+import message_icon from '../../asserts/footer/chat.svg'
+import profile_icon from '../../asserts/footer/profile.svg'
+import plus_icon from '../../asserts/footer/plus.svg'
 import './footer.css'
+import {NavLink} from "react-router-dom";
 
 
 
@@ -12,9 +13,12 @@ const Footer = () => {
   return (
     <div className='container'>
       <div className='footer'>
-        <div className="footer_section">
-          <img src={home_icon} alt=""/>
-        </div>
+        <NavLink to='/'>
+          <div className="footer_section">
+            <img src={home_icon} alt=""/>
+          </div>
+        </NavLink>
+
         <div className="footer_section">
           <img src={favorite_icon} alt=""/>
         </div>

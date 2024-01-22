@@ -1,6 +1,6 @@
 import React from 'react';
 import './btns.css'
-import back_icon from '../asserts/icons/cardPage/back_arrow.svg'
+import back_icon from '../asserts/cardPage/back_arrow.svg'
 
 const Backbtn = () => {
   return (

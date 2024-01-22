@@ -5,11 +5,11 @@ import './pages.css'
 import er from '../asserts/er.jpg'
 import on from '../asserts/on.jpg'
 import original from '../asserts/original.jpg'
-import back_icon from '../asserts/icons/cardPage/back_arrow.svg'
-import share_icon from '../asserts/icons/cardPage/share.svg'
-import favorite_icon from '../asserts/icons/cardPage/favorite.svg'
-import phone_icon from '../asserts/icons/cardPage/phone_white.svg'
-import message_icon from '../asserts/icons/cardPage/message_black.svg'
+import back_icon from '../asserts/cardPage/back_arrow.svg'
+import share_icon from '../asserts/cardPage/share.svg'
+import favorite_icon from '../asserts/cardPage/favorite.svg'
+import phone_icon from '../asserts/cardPage/phone_white.svg'
+import message_icon from '../asserts/cardPage/message_black.svg'
 
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import Backbtn from "../ui/Backbtn";

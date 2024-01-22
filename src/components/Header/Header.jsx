@@ -1,6 +1,6 @@
 import React from 'react';
 import './header.css'
-import location_icon from '../../asserts/icons/cardPage/location.svg'
+import location_icon from '../../asserts/cardPage/location.svg'
 import burger_icon from '../../asserts/icons/menu_burger.svg'
 import search_icon from '../../asserts/icons/search.svg'
 

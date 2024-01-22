@@ -33,3 +33,59 @@
     font-size: 18px;
     font-family: OpenSansBold;
 }
+
+.long_img {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 325px;
+    height: 53px;
+}
+
+/* Premium */
+
+.premium_card {
+    width: 325px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+}
+
+.premium_card-img {
+    width: 325px;
+    height: 189px;
+}
+
+.premium_card-title {
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.premium_card-address {
+    font-size: 10px;
+    color: #838690;
+    margin-bottom: 4px;
+}
+
+.premium_card-time {
+    font-size: 10px;
+    color: #B5B7BD;
+    margin-bottom: 8px;
+}
+
+.premium_card-price {
+    font-size: 18px;
+}
+
+/* Vip */
+
+.vip_card {
+    margin-top: 40px;
+}
+
+.vip_card-img {
+    width: 325px;
+    height: 199px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
