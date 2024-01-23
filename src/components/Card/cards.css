@@ -1,5 +1,12 @@
+.card_favorite_icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+
 .card {
     width: 156px;
+    position: relative;
 }
 
 .card_img-image {
@@ -19,12 +26,12 @@
     font-weight: lighter;
 }
 
-.card_info-address{
+.card_info-address {
     color: #838690;
     margin-bottom: 4px;
 }
 
-.card_info-time{
+.card_info-time {
     color: #B5B7BD;
     margin-bottom: 8px;
 }
@@ -47,6 +54,7 @@
     width: 325px;
     margin-bottom: 25px;
     border-radius: 10px;
+    position: relative;
 }
 
 .premium_card-img {
@@ -80,6 +88,7 @@
 
 .vip_card {
     margin-top: 40px;
+    position: relative;
 }
 
 .vip_card-img {
@@ -89,3 +98,43 @@
     margin-bottom: 25px;
 }
 
+/* Standart plus */
+
+.plus_card {
+    width: 156px;
+    position: relative;
+}
+
+.plus_card_img-image {
+    width: 156px;
+    height: 210px;
+    margin-bottom: 8px;
+}
+
+.plus_card_info-title {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.plus_card_info-address, .plus_card_info-time {
+    font-size: 10px;
+    font-family: OpenSansRegular;
+    font-weight: lighter;
+}
+
+.plus_card_info-address {
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 4px;
+}
+
+.plus_card_info-time {
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 8px;
+}
+
+.plus_card_info-price {
+    font-size: 18px;
+    font-family: OpenSansBold;
+    color: rgba(255, 255, 255, 1);
+}

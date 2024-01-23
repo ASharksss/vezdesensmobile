@@ -11,7 +11,7 @@ import {NavLink} from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className='container'>
+
       <div className='footer'>
         <NavLink to='/'>
           <div className="footer_section">
@@ -42,7 +42,7 @@ const Footer = () => {
         </div>
 
       </div>
-    </div>
+
 
   );
 };

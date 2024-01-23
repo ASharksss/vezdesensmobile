@@ -13,6 +13,7 @@ import message_icon from '../asserts/cardPage/message_black.svg'
 
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import Backbtn from "../ui/Backbtn";
+import {NavLink} from "react-router-dom";
 
 const CardPage = () => {
   return (
@@ -49,7 +50,9 @@ const CardPage = () => {
         <h2 className='card_price'>109 990 ₽</h2>
 
         <div className="card_seller_info">
-          <h1 className='card_seller-title'>AppleMania</h1>
+          <NavLink to='/profilePage'>
+            <h1 className='card_seller-title'>AppleMania</h1>
+          </NavLink>
           <div className="flex card_reviews">
             <span className='card_reviews-stars'>Рейтинг</span>
             <span>31 отзыв</span>
