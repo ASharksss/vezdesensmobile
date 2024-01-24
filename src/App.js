@@ -6,6 +6,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Layout from "./Layout";
 import ProfilePage from "./pages/ProfilePage";
 import MessagesPage from "./pages/MessagesPage";
+import DialogPage from "./pages/DialogPage";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           </Route>
           <Route path='/profilePage' element={<ProfilePage/>}/>
           <Route path='/messages' element={<MessagesPage/>}/>
-          <Route path='/dialog' element={<MessagesPage/>}/>
+          <Route path='/dialog' element={<DialogPage/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

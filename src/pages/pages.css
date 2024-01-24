@@ -188,3 +188,22 @@
 .messages_list {
     margin-top: 45px;
 }
+
+/* Dialog Page */
+
+.chatPage {
+    padding: 33px 25px;
+}
+
+.chat_info-title {
+    font-size: 16px;
+}
+
+.chat_info-subtitle {
+    font-size: 14px;
+}
+
+.chat_info {
+    margin-left: 31px;
+}
+
