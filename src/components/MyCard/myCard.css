@@ -9,7 +9,9 @@
 }
 
 .myCard {
+    position: relative;
     margin-bottom: 30px;
+    z-index: 0;
 }
 
 .myCard_img-image {
@@ -50,5 +52,6 @@
 .myCard_info-icon {
     margin-right: 7px;
 }
+
 
 

@@ -5,6 +5,7 @@ import BoardPage from "./pages/BoardPage";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Layout from "./Layout";
 import ProfilePage from "./pages/ProfilePage";
+import MessagesPage from "./pages/MessagesPage";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
             <Route path='/cardPage' element={<CardPage/>}/>
           </Route>
           <Route path='/profilePage' element={<ProfilePage/>}/>
+          <Route path='/messages' element={<MessagesPage/>}/>
+          <Route path='/dialog' element={<MessagesPage/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

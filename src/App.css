@@ -98,6 +98,9 @@ select {
 
 input {
     border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
 }
 
 button {
@@ -159,4 +162,8 @@ button {
 
 .mr-20{
     margin-right: 20px;
+}
+
+.pd-14 {
+    padding: 14px;
 }

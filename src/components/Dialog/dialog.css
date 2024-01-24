@@ -1,0 +1,70 @@
+
+.dialog {
+    width: 325px;
+}
+
+.dialog + .dialog {
+    margin-top: 30px;
+}
+
+.dialog_img {
+    width: 69px;
+    height: 92px;
+    border-radius: 7px;
+}
+
+.dialog_info {
+    margin-left: 15px;
+}
+
+.dialog_title {
+    font-size: 16px;
+    font-family: OpenSansBold;
+}
+
+.dialog_info_name-price {
+    font-size: 14px;
+}
+
+.dialog_messCount {
+    background-color: rgba(252, 55, 42, 1);
+    width: 21px;
+    height: 21px;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: -10px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog_notification {
+    width: 100%;
+    position: relative;
+}
+
+.dialog_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 17px;
+}
+
+.dialog_status {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.dialog_date {
+    font-size: 12px;
+    color: rgba(181, 183, 189, 1);
+}
+
+.green {
+    color: rgba(16, 201, 90, 1);
+}
+
+

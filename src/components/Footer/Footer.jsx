@@ -30,16 +30,18 @@ const Footer = () => {
 
         </div>
 
-        <div className="footer_section">
-          <img src={message_icon} alt=""/>
-        </div>
-        <div className="footer_section">
+        <NavLink to='/messages'>
+          <div className="footer_section">
+            <img src={message_icon} alt=""/>
+          </div>
+        </NavLink>
 
-          <img src={profile_icon} alt=""/>
+        <NavLink to='/profilePage'>
+          <div className="footer_section">
+            <img src={profile_icon} alt=""/>
+          </div>
+        </NavLink>
 
-
-
-        </div>
 
       </div>
 

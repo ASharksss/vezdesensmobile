@@ -149,7 +149,7 @@
 }
 
 .profile_search {
-    width: 325px;
+    width: 276px;
     height: 47px;
     background-color: rgba(236, 236, 236, 1);
     border-radius: 10px;
@@ -158,4 +158,33 @@
     padding: 13px 30px;
 }
 
+/* Messages */
 
+.messagePage {
+    padding: 45px 25px;
+}
+
+.messages_header-title {
+    font-size: 20px;
+    margin-right: 23px;
+}
+
+.messages_header-count {
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 21px;
+    height: 21px;
+    color: white;
+    background-color: rgba(252, 55, 42, 1);
+    border-radius: 50%;
+}
+
+.messages_header-icon + .messages_header-icon {
+    margin-left: 30px;
+}
+
+.messages_list {
+    margin-top: 45px;
+}
