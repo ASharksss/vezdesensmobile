@@ -9,6 +9,7 @@ import DialogPage from "./pages/DialogPage";
 import LayoutHeader from "./LayoutFooter";
 import LayoutAll from "./LayoutAll";
 import LayoutFooter from "./LayoutFooter";
+import SubCategoryPage from "./pages/SubCategoryPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
 
           <Route path='/cardPage' element={<CardPage/>}/>
           <Route path='/dialog' element={<DialogPage/>}/>
+          <Route path='/subCategory' element={<SubCategoryPage/>}/>
 
         </Routes>
 

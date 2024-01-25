@@ -21,6 +21,7 @@
 *::after {
     box-sizing: border-box;
     font-family: OpenSansRegular;
+    position: relative;
 }
 
 /* Убираем внутренние отступы */

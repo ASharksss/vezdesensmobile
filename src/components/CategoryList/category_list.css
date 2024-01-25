@@ -1,0 +1,17 @@
+
+
+.category_item {
+    width: 345px;
+    height: 62px;
+    padding: 30px;
+}
+
+.category_item:hover {
+    background-color: rgba(246, 246, 246, 1);
+    border-radius: 10px;
+}
+
+.category_item-title {
+    font-size: 16px;
+}
+
