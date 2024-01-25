@@ -3,13 +3,13 @@ import Footer from "./components/Footer/Footer";
 import {Outlet} from "react-router";
 import Header from "./components/Header/Header";
 
-const Layout = () => {
+const LayoutFooter = () => {
 	return (
 		<div>
-			<Header/>
 			<Outlet/>
+			<Footer/>
 		</div>
 	);
 };
 
-export default Layout;
+export default LayoutFooter;

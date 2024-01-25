@@ -24,25 +24,29 @@ const MyCard = () => {
   return (
 
     <>
-      <NavLink to='/cardPage' className='noLink'>
-        <div className='myCard'>
-          <div className=' flex'>
+
+      <div className='myCard'>
+        <div className=' flex'>
+          <NavLink to='/cardPage' className='noLink'>
             <div className="myCard_img">
               <img src={image} alt="" className='myCard_img-image'/>
             </div>
-            <div className="myCard_info">
-              <div className="myCard_info-dop flex space-between">
-                <span className='myCard_info-type'>Стандарт</span>
-                <img src={dots} alt="" onClick={() => setOpen(!open)}/>
-              </div>
-              {
-                open === true ?
-                  <MoreSubMenu items={items} setOpen={setOpen}/> : null
-              }
+          </NavLink>
+          <div className="myCard_info">
+            <div className="myCard_info-dop flex space-between">
+              <span className='myCard_info-type'>Стандарт</span>
+              <img src={dots} alt="" onClick={() => setOpen(!open)}/>
+            </div>
+            {
+              open === true ?
+                <MoreSubMenu items={items} setOpen={setOpen}/> : null
+            }
+            <NavLink to='/cardPage' className='noLink'>
               <div className="myCard_info-main">
                 <h1 className='myCard_info-title'>iPhone 14 pro max ...</h1>
                 <h1 className='myCard_info-price'>109 990 ₽</h1>
               </div>
+
               <div className="myCard_info-footer">
                 <span className=''>Осталось: </span><span className=''>23 дня </span>
                 <div className="myCard_info-icons flex">
@@ -56,10 +60,11 @@ const MyCard = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </NavLink>
           </div>
         </div>
-      </NavLink>
+      </div>
+
 
     </>
 

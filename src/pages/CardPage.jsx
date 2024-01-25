@@ -14,14 +14,17 @@ import message_icon from '../asserts/cardPage/message_black.svg'
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import Backbtn from "../ui/Backbtn";
 import {NavLink} from "react-router-dom";
+import {useNavigate} from "react-router";
 
 const CardPage = () => {
+  const navigate = useNavigate()
+
   return (
     <div className='card_page'>
       <div className='wrapper'>
         <div className="card_header">
           <div className="flex space-between">
-            <img src={back_icon} alt=""/>
+            <img src={back_icon} alt="" onClick={() => navigate(-1)}/>
             <div className="flex">
               <img className='card_icon' src={share_icon} alt=""/>
               <img className='card_icon' src={favorite_icon} alt=""/>
@@ -43,7 +46,7 @@ const CardPage = () => {
               <img className='card_images_img' src={original} alt=""/>
             </div>
           </Carousel>*/}
-          <img className='card_images_img' src={original} alt=""/>
+          <img className='card_images_img' src={original} alt="" />
 
         </div>
         <h1 className='card_title'>iPhone 14 pro max 256gb</h1>
