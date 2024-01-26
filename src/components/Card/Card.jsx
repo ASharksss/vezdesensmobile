@@ -54,8 +54,8 @@ const Card = ({classname}) => {
                       <h1 className='premium_card-price'>5000 ₽</h1>
                     </div>
                     <div className="flex items-center premium_card-btn">
-                      <MessageBtn/>
-                      <PhoneBtn/>
+                      <MessageBtn size={'w-54px'}/>
+                      <PhoneBtn size={'w-54px'}/>
                     </div>
                   </div>
                 </NavLink>

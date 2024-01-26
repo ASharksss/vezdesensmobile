@@ -3,9 +3,9 @@ import './category_list.css'
 import arrow from '../../asserts/car_arrow.svg'
 import {NavLink} from "react-router-dom";
 
-const CategoryList = () => {
+const CategoryItem = ({address}) => {
   return (
-    <NavLink to='/subCategory' className='noLink'>
+    <NavLink to={'/' + address} className='noLink'>
       <div className="category_item flex items-center space-between">
         <span className='category_item-title'>Транспорт</span>
         <img src={arrow} alt="" className='category_item-icon'/>
@@ -16,4 +16,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default CategoryItem;

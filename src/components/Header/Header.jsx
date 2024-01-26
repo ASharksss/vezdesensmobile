@@ -4,7 +4,7 @@ import location_icon from '../../asserts/cardPage/location.svg'
 import burger_icon from '../../asserts/icons/menu_burger.svg'
 import burger_grey_icon from '../../asserts/menu_grey.svg'
 import search_icon from '../../asserts/icons/search.svg'
-import CategoryList from "../CategoryList/CategoryList";
+import CategoryItem from "../CategoryItem/CategoryItem";
 
 
 const Header = () => {
@@ -43,15 +43,13 @@ const Header = () => {
       {
         openCategory ?
           <div className='category_list'>
-            <CategoryList/>
-            <CategoryList/>
-            <CategoryList/>
-            <CategoryList/>
-            <CategoryList/>
-            <CategoryList/>
-            <CategoryList/>
-            <CategoryList/>
-            <CategoryList/>
+            <CategoryItem address={'subCategory'}/>
+            <CategoryItem address={'subCategory'}/>
+            <CategoryItem address={'subCategory'}/>
+            <CategoryItem address={'subCategory'}/>
+            <CategoryItem address={'subCategory'}/>
+            <CategoryItem address={'subCategory'}/>
+
           </div> : null
       }
 

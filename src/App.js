@@ -10,6 +10,8 @@ import LayoutHeader from "./LayoutFooter";
 import LayoutAll from "./LayoutAll";
 import LayoutFooter from "./LayoutFooter";
 import SubCategoryPage from "./pages/SubCategoryPage";
+import CategoryPage from "./pages/CategoryPage";
+import ServicePage from "./pages/ServicePage";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route element={<LayoutFooter/>}>
             <Route path='/profilePage' element={<ProfilePage/>}/>
             <Route path='/messages' element={<MessagesPage/>}/>
+            <Route path='/categoryPage' element={<CategoryPage/>}/>
+            <Route path='/servicePage' element={<ServicePage/>}/>
           </Route>
 
           <Route path='/cardPage' element={<CardPage/>}/>
