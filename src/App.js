@@ -12,6 +12,7 @@ import LayoutFooter from "./LayoutFooter";
 import SubCategoryPage from "./pages/SubCategoryPage";
 import CategoryPage from "./pages/CategoryPage";
 import ServicePage from "./pages/ServicePage";
+import EditProfilePage from "./pages/EditProfilePage";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path='/cardPage' element={<CardPage/>}/>
           <Route path='/dialog' element={<DialogPage/>}/>
           <Route path='/subCategory' element={<SubCategoryPage/>}/>
+          <Route path='/editProfile' element={<EditProfilePage/>}/>
 
         </Routes>
 

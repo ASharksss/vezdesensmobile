@@ -316,8 +316,31 @@
     color: rgba(181, 183, 189, 1);
 }
 
-.serviceItem_btns {
+/* EditProfilePage */
+
+
+.editProfile_avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
 }
 
+.editProfile_avatar-img {
+    width: 83px;
+    height: 83px;
+    border-radius: 50%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.editProfile_avatar-span {
+    color: #838690;
+    font-weight: bold;
+}
+
+.editProfile_form {
+
+}
 
