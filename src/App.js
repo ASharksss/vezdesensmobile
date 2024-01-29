@@ -15,6 +15,8 @@ import ServicePage from "./pages/ServicePage";
 import EditProfilePage from "./pages/EditProfilePage";
 import SupportPage from "./pages/SupportPage";
 import Auth from "./pages/Auth";
+import NewPassword from "./pages/NewPassword";
+import Registration from "./pages/Registration";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
           </Route>
 
           <Route path='/auth' element={<Auth/>}/>
+          <Route path='/registration' element={<Registration/>}/>
+          <Route path='/newPassword' element={<NewPassword/>}/>
           <Route path='/cardPage' element={<CardPage/>}/>
           <Route path='/dialog' element={<DialogPage/>}/>
           <Route path='/support' element={<SupportPage/>}/>

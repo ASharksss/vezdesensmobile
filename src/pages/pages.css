@@ -387,4 +387,21 @@
     margin-top: 10px;
 }
 
+.new_password-title {
+    font-size: 32px;
+    margin-top: 160px;
+    margin-bottom: 10px;
+}
+
+.new_password-subtitle {
+    font-size: 14px;
+    color: rgba(131, 134, 144, 1);
+    margin-bottom: 10px;
+}
+
+.new_password_btn {
+    margin-top: 180px;
+}
+
+
 

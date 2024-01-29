@@ -1,6 +1,7 @@
 import React from 'react';
 import CloseBtn from "../../ui/closeBtn";
 import BlackBtn from "../../ui/BlackBtn";
+import {NavLink} from "react-router-dom";
 
 const AddCode = ({setActiveModal}) => {
   return (
@@ -16,7 +17,9 @@ const AddCode = ({setActiveModal}) => {
       <div className="flex">
         <span className='missPassword_sendAgain'>Отправить еще раз </span><span>1:34</span>
       </div>
-      <BlackBtn children={'Подтвердить'} type={'white_text'} size={'w-275px'}/>
+      <NavLink to='/newPassword'>
+        <BlackBtn children={'Подтвердить'} type={'white_text'} size={'w-275px'}/>
+      </NavLink>
     </div>
   );
 };
