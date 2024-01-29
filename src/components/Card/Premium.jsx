@@ -1,9 +1,11 @@
 import React from 'react';
 import premium_img from '../../asserts/cards/premium_img.png'
-import PhoneBtn from "../../ui/phoneBtn";
-import MessageBtn from "../../ui/messageBtn";
+import BlackBtn from "../../ui/BlackBtn";
+import WhiteBtn from "../../ui/WhiteBtn";
 import {NavLink} from "react-router-dom";
 import favorite from "../../asserts/board/favorite.svg";
+import phone_icon from "../../asserts/board/phone_icon.svg";
+import message_icon from "../../asserts/board/message_icon.svg";
 
 const Premium = () => {
   return (
@@ -19,8 +21,8 @@ const Premium = () => {
             <h1 className='premium_card-price'>5000 ₽</h1>
           </div>
           <div className="flex items-center premium_card-btn">
-            <MessageBtn size={'w-54px'}/>
-            <PhoneBtn size={'w-54px'}/>
+            <WhiteBtn size={'w-54px'} children={<img src={message_icon} alt="" className='icon'/>}/>
+            <BlackBtn size={'w-54px'} children={<img src={phone_icon} alt="" className='icon'/>}/>
           </div>
         </div>
       </NavLink>

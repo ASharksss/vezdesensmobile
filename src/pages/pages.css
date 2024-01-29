@@ -318,6 +318,10 @@
 
 /* EditProfilePage */
 
+.editPAge {
+    padding: 47px 25px;
+}
+
 
 .editProfile_avatar {
     display: flex;
@@ -340,7 +344,11 @@
     font-weight: bold;
 }
 
-.editProfile_form {
+.editProfile_btns {
+    margin-top: 90px;
+}
 
+.editProfile_btn + .editProfile_btn {
+    margin-top: 10px;
 }
 

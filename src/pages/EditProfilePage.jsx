@@ -2,6 +2,8 @@ import React from 'react';
 import Back from "../ui/Back";
 import avatar from '../asserts/on.jpg'
 import Input from "../ui/input";
+import BlackBtn from "../ui/BlackBtn";
+import WhiteBtn from "../ui/WhiteBtn";
 
 const EditProfilePage = () => {
 	return (
@@ -18,7 +20,8 @@ const EditProfilePage = () => {
 				<Input label={'Телефон'} placeholder={'Введите телефон'}/>
 			</div>
 			<div className="editProfile_btns">
-
+				<div className="editProfile_btn"><WhiteBtn size={'w-325px'} children={'Отмена'}/></div>
+				<div className="editProfile_btn"><BlackBtn size={'w-325px'} children={'Сохранить'} type={'white_text'}/></div>
 			</div>
 		</div>
 	);

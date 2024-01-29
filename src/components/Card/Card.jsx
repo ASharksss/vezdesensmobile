@@ -1,11 +1,13 @@
 import React from 'react';
 import './cards.css'
-import MessageBtn from "../../ui/messageBtn";
-import PhoneBtn from "../../ui/phoneBtn";
+import WhiteBtn from "../../ui/WhiteBtn";
+import BlackBtn from "../../ui/BlackBtn";
 import card_img from '../../asserts/card_img.png'
 import {NavLink} from "react-router-dom";
 import vip_image from "../../asserts/board/vip_image.png";
 import favorite from "../../asserts/board/favorite.svg"
+import phone_icon from "../../asserts/board/phone_icon.svg";
+import message_icon from "../../asserts/board/message_icon.svg";
 
 
 const Card = ({classname}) => {
@@ -54,8 +56,8 @@ const Card = ({classname}) => {
                       <h1 className='premium_card-price'>5000 ₽</h1>
                     </div>
                     <div className="flex items-center premium_card-btn">
-                      <MessageBtn size={'w-54px'}/>
-                      <PhoneBtn size={'w-54px'}/>
+                      <WhiteBtn size={'w-54px'} children={<img src={message_icon} alt="" className='icon'/>} />
+                      <BlackBtn size={'w-54px'} children={<img src={phone_icon} alt="" className='icon'/>}/>
                     </div>
                   </div>
                 </NavLink>
