@@ -352,3 +352,39 @@
     margin-top: 10px;
 }
 
+.auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth_h1 {
+    font-family: OpenSansBold;
+    font-size: 32px;
+    margin-top: 30%;
+    margin-bottom: 20px;
+}
+
+.auth_info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.auth_missPassword {
+    font-size: 14px;
+    color: rgba(181, 183, 189, 1);
+    margin-left: 49px;
+}
+
+
+.auth_btns {
+    margin-top: 122px;
+}
+
+.auth_btn {
+    margin-top: 10px;
+}
+
+

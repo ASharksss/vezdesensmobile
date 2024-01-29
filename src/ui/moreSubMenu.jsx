@@ -19,7 +19,9 @@ const MoreSubMenu = ({items, setOpen}) => {
       <div className='profile_card_submenu'>
         {
           items.map((item) => (
-              <div className='profile_card_submenu-item'><span className='pd-14'>{item.title}</span></div>
+              <div className='profile_card_submenu-item' onClick={item.onClick}>
+                <span className='pd-14'>{item.title}</span>
+              </div>
             ))
         }
 

@@ -6,9 +6,13 @@ import like from '../../asserts/profile/favorite.svg'
 import eye from '../../asserts/profile/eye.svg'
 import MoreSubMenu from "../../ui/moreSubMenu";
 import {NavLink} from "react-router-dom";
+import ModalTemplate from "../Modal/ModalTemplate";
+import OffCard from "../Modal/OffCard";
 
 const MyCard = () => {
   const [open, setOpen] = useState(false)
+
+  const [activeModal, setActiveModal] = useState(false)
 
   const items = [
     {
@@ -17,7 +21,7 @@ const MyCard = () => {
     },
     {
       title: 'Снять с публикации',
-      onClick: null
+      onClick: () => setActiveModal(true)
     }
   ]
 
@@ -59,13 +63,13 @@ const MyCard = () => {
                     <span>3</span>
                   </div>
                 </div>
+
               </div>
             </NavLink>
           </div>
         </div>
       </div>
-
-
+      <ModalTemplate children={<OffCard/>} activeModal={activeModal} setActiveModal={setActiveModal}/>
     </>
 
 

@@ -14,7 +14,6 @@
     background-color: rgba(236, 236, 236, 1);
 }
 
-
 .phone_btn {
     background-color: #161616;
     border-radius: 10px;
@@ -31,8 +30,18 @@
     height: 54px;
 }
 
+.w-93px {
+    width: 93px;
+    height: 54px;
+}
+
 .w-156px {
     width: 156px;
+    height: 54px;
+}
+
+.w-275px {
+    width: 275px;
     height: 54px;
 }
 
@@ -40,6 +49,8 @@
     width: 325px;
     height: 54px;
 }
+
+
 
 .white_text {
     color: white;

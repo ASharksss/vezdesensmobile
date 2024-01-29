@@ -13,6 +13,8 @@ import SubCategoryPage from "./pages/SubCategoryPage";
 import CategoryPage from "./pages/CategoryPage";
 import ServicePage from "./pages/ServicePage";
 import EditProfilePage from "./pages/EditProfilePage";
+import SupportPage from "./pages/SupportPage";
+import Auth from "./pages/Auth";
 
 function App() {
   return (
@@ -31,8 +33,10 @@ function App() {
             <Route path='/servicePage' element={<ServicePage/>}/>
           </Route>
 
+          <Route path='/auth' element={<Auth/>}/>
           <Route path='/cardPage' element={<CardPage/>}/>
           <Route path='/dialog' element={<DialogPage/>}/>
+          <Route path='/support' element={<SupportPage/>}/>
           <Route path='/subCategory' element={<SubCategoryPage/>}/>
           <Route path='/editProfile' element={<EditProfilePage/>}/>
 
