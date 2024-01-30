@@ -3,8 +3,8 @@ import avatar from '../asserts/profile/empty_avatar6969.svg'
 import dots from '../asserts/profile/dots.svg'
 import search_icon from '../asserts/icons/search.svg'
 import filter_icon from '../asserts/icons/filter.svg'
-import ReviewStars from "../ui/ReviewStars";
 import MyCard from "../components/MyCard/MyCard";
+import StarComponent from "../components/ReviewComponents/StarComponents";
 
 
 const ProfilePage = () => {
@@ -30,8 +30,9 @@ const ProfilePage = () => {
             </div>
 
           </div>
-          <div className="profile_reviews">
-            <ReviewStars/>
+          <div className="profile_reviews flex items-center">
+            <span>5,0</span>
+            <StarComponent average={5} width={19}/>
           </div>
           <div className="profile_cards">
             <h1 className='profile_cards-title'>Мои объявления</h1>

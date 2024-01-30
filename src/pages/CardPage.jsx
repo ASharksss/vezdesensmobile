@@ -15,6 +15,7 @@ import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import Backbtn from "../ui/Backbtn";
 import {NavLink} from "react-router-dom";
 import {useNavigate} from "react-router";
+import StarComponent from "../components/ReviewComponents/StarComponents";
 
 const CardPage = () => {
   const navigate = useNavigate()
@@ -46,19 +47,25 @@ const CardPage = () => {
               <img className='card_images_img' src={original} alt=""/>
             </div>
           </Carousel>*/}
-          <img className='card_images_img' src={original} alt="" />
+          <img className='card_images_img' src={original} alt=""/>
 
         </div>
         <h1 className='card_title'>iPhone 14 pro max 256gb</h1>
         <h2 className='card_price'>109 990 ₽</h2>
 
         <div className="card_seller_info">
-          <NavLink to='/profilePage'>
+          <NavLink to='/profilePage' className='noLink'>
             <h1 className='card_seller-title'>AppleMania</h1>
           </NavLink>
           <div className="flex card_reviews">
-            <span className='card_reviews-stars'>Рейтинг</span>
-            <span>31 отзыв</span>
+            <span className='card_reviews-stars flex'>
+              <span className='cardPage_average'>4,0</span>
+              <StarComponent average={5} width={23}/>
+            </span>
+            <NavLink to='/review' className='noLink'>
+              <span className='card_page-count'>31 отзыв</span>
+
+            </NavLink>
           </div>
         </div>
         <span className='card_seller-address'>

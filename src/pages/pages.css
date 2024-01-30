@@ -43,6 +43,17 @@
     margin-right: 20px;
 }
 
+.cardPage_average {
+    font-size: 18px;
+    font-family: OpenSansBold;
+    margin-right: 10px;
+}
+
+.card_page-count {
+    font-size: 16px;
+    font-family: OpenSansSemiBold;
+}
+
 .card_seller_info {
     margin-bottom: 10px;
 }
@@ -121,7 +132,7 @@
 .profile {
     padding-right: 25px;
     padding-left: 25px;
-   padding-top: 20px;
+    padding-top: 20px;
     padding-bottom: 80px;
 }
 
@@ -156,6 +167,18 @@
     margin-top: 25px;
     margin-bottom: 30px;
     padding: 13px 30px;
+}
+
+.profile_reviews {
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+
+.profile_reviews span {
+    font-size: 18px;
+    margin-right: 10px;
+    font-family: OpenSansBold;
 }
 
 /* Messages */
@@ -291,7 +314,7 @@
     height: 79px;
     border-radius: 7px;
     margin-right: 15px;
-    object-fit:cover
+    object-fit: cover
 }
 
 .serviceItem_header_info-title {
@@ -411,6 +434,47 @@
 .reg_btn + .reg_btn {
     margin-top: 10px;
 }
+
+/* Review Page */
+
+.reviewPage {
+    padding: 47px 25px;
+}
+
+.reviewPage-title {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 37px;
+}
+
+.average {
+    font-size: 38px;
+    margin-right: 20px;
+    font-family: OpenSansBold;
+}
+
+.review_count {
+    display: block;
+    font-family: OpenSansSemiBold;
+    font-size: 14px;
+    color: rgba(181, 183, 189, 1);
+    margin-top: 30px;
+}
+
+.review_list {
+    margin-top: 30px;
+}
+
+.addReview {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 104px;
+    background-color: white;
+}
+
 
 
 

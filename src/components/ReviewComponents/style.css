@@ -1,0 +1,33 @@
+
+.reviewPerson + .reviewPerson {
+    margin-top: 40px;
+}
+
+.reviewPerson-avatar {
+    width: 45px;
+    height: 45px;
+}
+
+.review_info {
+    margin-left: 15px;
+}
+
+.reviewPerson-title {
+    font-size: 16px;
+}
+
+.reviewPerson-time {
+    font-size: 14px;
+    color: rgba(181, 183, 189, 1);
+}
+
+.reviewPerson-description {
+    font-size: 14px;
+    color: rgba(131, 134, 144, 1);
+    line-height: 19.49px;
+}
+
+.reviewPerson-stars {
+    margin-top: 8px;
+    margin-bottom: 20px;
+}

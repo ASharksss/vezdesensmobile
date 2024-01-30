@@ -1,35 +1,34 @@
 import fullStarSVG from "../../asserts/icons/fullStar.svg";
 import halfStarSVG from "../../asserts/icons/halfStar.svg";
 import emptyStarSVG from "../../asserts/icons/emptyStar.svg";
-import Auth from "../../pages/Auth";
 
-const StarComponent = ({average, type, handleClick}) => {
+const StarComponent = ({average, type, handleClick, width=26}) => {
   const fullStars = Math.floor(average);
   const halfStars = average - fullStars >= 0.5;
   const emptyStars = 5 - fullStars - (halfStars ? 1 : 0);
   if (type === 'write') {
     return (
-      <div style={{cursor: 'pointer'}}>
+      <div style={{cursor: 'pointer'}} className='flex'>
         {[...Array(fullStars)].map((_, index) => (
           <img key={`full-${index}`} src={fullStarSVG} id={`full-${index}`}
-               onClick={() => handleClick(index, 'full')} alt="Full Star" width='26'/>
+               onClick={() => handleClick(index, 'full')} alt="Full Star" width={width} height={width}/>
         ))}
-        {halfStars && <img src={halfStarSVG} alt="Half Star" width='26'/>}
+        {halfStars && <img src={halfStarSVG} alt="Half Star" width={width} height={width}/>}
         {[...Array(emptyStars)].map((_, index) => (
           <img key={`empty-${index}`} src={emptyStarSVG} id={`empty-${index}`}
-               onClick={() => handleClick(index, 'empty')} alt="Empty Star" width='26'/>
+               onClick={() => handleClick(index, 'empty')} alt="Empty Star" width={width} height={width}/>
         ))}
       </div>
     );
   }
   return (
-    <div>
+    <div className='flex'>
       {[...Array(fullStars)].map((_, index) => (
-        <img key={`full-${index}`} src={fullStarSVG} alt="Full Star" width='26'/>
+        <img key={`full-${index}`} src={fullStarSVG} alt="Full Star" width={width} height={width}/>
       ))}
-      {halfStars && <img src={halfStarSVG} alt="Half Star" width='26'/>}
+      {halfStars && <img src={halfStarSVG} alt="Half Star" width={width} height={width}/> }
       {[...Array(emptyStars)].map((_, index) => (
-        <img key={`empty-${index}`} src={emptyStarSVG} alt="Empty Star" width='26'/>
+        <img key={`empty-${index}`} src={emptyStarSVG} alt="Empty Star" width={width} height={width}/>
       ))}
     </div>
   );

@@ -17,6 +17,7 @@ import SupportPage from "./pages/SupportPage";
 import Auth from "./pages/Auth";
 import NewPassword from "./pages/NewPassword";
 import Registration from "./pages/Registration";
+import ReviewPage from "./pages/ReviewPage";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path='/support' element={<SupportPage/>}/>
           <Route path='/subCategory' element={<SubCategoryPage/>}/>
           <Route path='/editProfile' element={<EditProfilePage/>}/>
+          <Route path='/review' element={<ReviewPage/>}/>
 
         </Routes>
 
