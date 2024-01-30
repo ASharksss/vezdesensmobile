@@ -6,6 +6,8 @@ import BlackBtn from "../ui/BlackBtn";
 import ModalTemplate from "../components/Modal/ModalTemplate";
 import MissPassword from "../components/Modal/MissPassword";
 import AddCode from "../components/Modal/AddCode";
+import {NavLink} from "react-router-dom";
+import Danger from "../ui/danger";
 
 const Auth = () => {
 
@@ -15,32 +17,40 @@ const Auth = () => {
 
   return (
     <div className='auth'>
-      <h1 className='auth_h1'>Вход</h1>
-      <Input label={'Почта или Логин'} placeholder={'Введите почту или логин'}/>
-      <Input label={'Пароль'} placeholder={'Введите пароль'}/>
-      <div className="auth_info ">
-        <Checkbox label={'Запоминть меня'} id={'checkbox'}/>
-        <span className='auth_missPassword' onClick={() => {
-          setActiveModal(true)
-          setCodeModal(false)
-          setPasswordModal(true)
-        }}>Забыли пароль?</span>
-      </div>
-      <div className="auth_btns">
-        <div className="auth_btn">
-          <WhiteBtn children={'Зарегистрироваться'} size={'w-325px'}/>
+
+        <h1 className='auth_h1'>Вход</h1>
+        <Input label={'Почта или Логин'} placeholder={'Введите почту или логин'}/>
+        <Input label={'Пароль'} placeholder={'Введите пароль'}/>
+       {/* <Danger text='Неверный логин или пароль!'/>*/}
+        <div className="auth_info ">
+          <Checkbox label={'Запоминть меня'} id={'checkbox'}/>
+          <span className='auth_missPassword' onClick={() => {
+            setActiveModal(true)
+            setCodeModal(false)
+            setPasswordModal(true)
+          }}>Забыли пароль?</span>
         </div>
-        <div className="auth_btn">
-          <BlackBtn children={'Войти'} type={'white_text'} size={'w-325px'}/>
+        <div className="auth_btns">
+          <div className="auth_btn">
+            <NavLink to='/registration'>
+              <WhiteBtn children={'Зарегистрироваться'} size={'w-325px'}/>
+
+            </NavLink>
+          </div>
+          <div className="auth_btn">
+            <BlackBtn children={'Войти'} type={'white_text'} size={'w-325px'}/>
+          </div>
         </div>
-      </div>
-      <ModalTemplate activeModal={activeModal} setActiveModal={setActiveModal} children={
-        <>
-          {passwordModal &&
-            <MissPassword setPasswordModal={setPasswordModal} setActiveModal={setActiveModal} setCodeModal={setCodeModal}/>}
-          {codeModal && <AddCode setActiveModal={setActiveModal}/>}
-        </>
-      }/>
+        <ModalTemplate activeModal={activeModal} setActiveModal={setActiveModal} children={
+          <>
+            {passwordModal &&
+              <MissPassword setPasswordModal={setPasswordModal} setActiveModal={setActiveModal}
+                            setCodeModal={setCodeModal}/>}
+            {codeModal && <AddCode setActiveModal={setActiveModal}/>}
+          </>
+        }/>
+
+
     </div>
   );
 };

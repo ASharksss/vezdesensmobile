@@ -360,6 +360,7 @@
 }
 
 .auth_h1 {
+    text-align: center;
     font-family: OpenSansBold;
     font-size: 32px;
     margin-top: 30%;
@@ -401,6 +402,14 @@
 
 .new_password_btn {
     margin-top: 180px;
+}
+
+.reg_title, .reg_btns {
+    margin-top: 70px;
+}
+
+.reg_btn + .reg_btn {
+    margin-top: 10px;
 }
 
 
