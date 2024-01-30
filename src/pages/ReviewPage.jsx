@@ -4,6 +4,7 @@ import StarReviewBar from "../components/ReviewComponents/StarReviewBar";
 import Back from "../ui/Back";
 import ReviewPerson from "../components/ReviewComponents/ReviewPerson";
 import BlackBtn from "../ui/BlackBtn";
+import {NavLink} from "react-router-dom";
 
 const ReviewPage = () => {
   const [average, setAverage] = useState(4)
@@ -31,7 +32,7 @@ const ReviewPage = () => {
         <StarComponents average={average} width={30}/>
       </div>
       <div>
-        <StarReviewBar average={5} data={[]}/>
+        <StarReviewBar average={5} data={[]} />
         <StarReviewBar average={4} data={[]}/>
         <StarReviewBar average={3} data={[]}/>
         <StarReviewBar average={2} data={[]}/>
@@ -52,7 +53,10 @@ const ReviewPage = () => {
       </div>
 
       <div className="addReview">
-        <BlackBtn size={'w-325px'} children={'Написать отзыв'} type={'white_text'}/>
+        <NavLink to='/addReview' className='noLink'>
+          <BlackBtn size={'w-325px'} children={'Написать отзыв'} type={'white_text'}/>
+
+        </NavLink>
       </div>
     </div>
   );

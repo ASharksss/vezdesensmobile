@@ -18,6 +18,7 @@ import Auth from "./pages/Auth";
 import NewPassword from "./pages/NewPassword";
 import Registration from "./pages/Registration";
 import ReviewPage from "./pages/ReviewPage";
+import AddReviewPage from "./pages/AddReviewPage";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path='/subCategory' element={<SubCategoryPage/>}/>
           <Route path='/editProfile' element={<EditProfilePage/>}/>
           <Route path='/review' element={<ReviewPage/>}/>
+          <Route path='/addReview' element={<AddReviewPage/>}/>
 
         </Routes>
 
