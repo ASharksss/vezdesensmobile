@@ -1,19 +1,29 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './header.css'
 import location_icon from '../../asserts/cardPage/location.svg'
 import burger_icon from '../../asserts/icons/menu_burger.svg'
-import burger_grey_icon from '../../asserts/menu_grey.svg'
 import search_icon from '../../asserts/icons/search.svg'
 import CategoryItem from "../CategoryItem/CategoryItem";
 
 
 const Header = () => {
+  const wrapperRef = useRef(null)
 
   const [openCategory, setOpenCategory] = useState(false)
 
+  const handleClickOutside = (event) => {
+    if (wrapperRef.current && !wrapperRef.current.contains(event.target))
+      setOpenCategory(false)
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
   return (
 
-    <div className={'header header_shadow'}>
+    <div className={'header header_shadow'} ref={wrapperRef}>
       <div className="wrapper">
         <div className="header_location">
           <div className=" header_location-wrapper flex">

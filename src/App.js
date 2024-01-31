@@ -1,4 +1,5 @@
 import './App.css';
+import axios from "axios";
 import CardPage from "./pages/CardPage";
 import Footer from "./components/Footer/Footer";
 import BoardPage from "./pages/BoardPage";
@@ -19,6 +20,8 @@ import NewPassword from "./pages/NewPassword";
 import Registration from "./pages/Registration";
 import ReviewPage from "./pages/ReviewPage";
 import AddReviewPage from "./pages/AddReviewPage";
+
+axios.defaults.baseURL = "https://backend.vezdesens.ru/"
 
 function App() {
   return (
