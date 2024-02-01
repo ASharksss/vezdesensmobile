@@ -70,7 +70,7 @@ function App() {
             <Route path='/registration' element={<Registration/>}/>
           </>}
           <Route path='/newPassword' element={<NewPassword/>}/>
-          <Route path='/cardPage' element={<CardPage/>}/>
+          <Route path='/cardPage/:id' element={<CardPage/>}/>
           <Route path='/dialog' element={<DialogPage/>}/>
           <Route path='/support' element={<SupportPage/>}/>
           <Route path='/subCategory' element={<SubCategoryPage/>}/>

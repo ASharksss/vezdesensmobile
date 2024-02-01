@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({data}) => {
   return (
     <div>
-      Breadcrumbs
+      {data?.subCategory.category.name} / {data?.subCategory.name} / {data?.name.indexOf('/') > 0 ? data?.name.split('/')[1] : data?.name}
     </div>
   );
 };

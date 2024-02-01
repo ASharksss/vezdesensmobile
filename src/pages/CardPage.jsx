@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Carousel} from "react-responsive-carousel";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './pages.css'
@@ -13,30 +13,67 @@ import message_icon from '../asserts/cardPage/message_black.svg'
 
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import Backbtn from "../ui/Backbtn";
-import {NavLink} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
 import StarComponent from "../components/ReviewComponents/StarComponents";
+import axios from "axios";
+import {pluralRusVariant, relativeDate, STATIC_HOST} from "../utils";
+import CarouselComponent from "../components/Carousel/CarouselComponent";
 
 const CardPage = () => {
-  const navigate = useNavigate()
+	const navigate = useNavigate()
+	const {id} = useParams()
 
-  return (
-    <div className='card_page'>
-      <div className='wrapper'>
-        <div className="card_header">
-          <div className="flex space-between">
-            <img src={back_icon} alt="" onClick={() => navigate(-1)}/>
-            <div className="flex">
-              <img className='card_icon' src={share_icon} alt=""/>
-              <img className='card_icon' src={favorite_icon} alt=""/>
-            </div>
-          </div>
-        </div>
-        <div className="breadcrumbs">
-          <Breadcrumbs/>
-        </div>
-        <div className="card_images">
-          {/* <Carousel renderThumbs={()=>{}} emulateTouch={true} animationHandler={"fade"} infiniteLoop={true}>
+	const [isLoading, setIsLoading] = useState(true)
+	const [data, setData] = useState({})
+	const [average, setAverage] = useState(0)
+
+	const getData = async () => {
+		await axios.get(`api/ad/getOneAd/${id}`)
+			.then(res => {
+				document.title = 'Картиочка № ' + res.data.ad.id + ' · ' + res.data.ad.title + ' · ' + relativeDate(new Date(res.data.ad.createdAt))
+				setData(res.data?.ad)
+				setIsLoading(false)
+			})
+	}
+
+	useEffect(() => {
+		setIsLoading(true)
+		getData()
+	}, [])
+
+	useEffect(() => {
+		// Вычисление средней оценки рейтинга
+		const dataRatings = data?.user?.ratings || []
+		if (dataRatings.length > 0) {
+			let ratings = dataRatings.map(item => item.grade)
+			const sum = ratings.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+			setAverage(sum !== 0 ? (sum / ratings.length).toFixed(2) : 0)
+		}
+	}, [data, isLoading])
+
+	if (isLoading) {
+		return <div>
+			Loading...
+		</div>
+	} else {
+		return (
+			<div className='card_page'>
+				<div className='wrapper'>
+					<div className="card_header">
+						<div className="flex space-between">
+							<img src={back_icon} alt="" onClick={() => navigate(-1)}/>
+							<div className="flex">
+								<img className='card_icon' src={share_icon} alt=""/>
+								<img className='card_icon' src={favorite_icon} alt=""/>
+							</div>
+						</div>
+					</div>
+					<div className="breadcrumbs">
+						<Breadcrumbs data={data.object}/>
+					</div>
+					<div className="card_images">
+						{/* <Carousel renderThumbs={()=>{}} emulateTouch={true} animationHandler={"fade"} infiniteLoop={true}>
             <div>
               <img className='card_images_img' src={er} alt=""/>
             </div>
@@ -47,66 +84,56 @@ const CardPage = () => {
               <img className='card_images_img' src={original} alt=""/>
             </div>
           </Carousel>*/}
-          <img className='card_images_img' src={original} alt=""/>
+		{/*				<CarouselComponent />*/}
+						<img className='card_images_img' src={`${STATIC_HOST}/${data?.imageAds[0]?.name}`} alt=""/>
 
-        </div>
-        <h1 className='card_title'>iPhone 14 pro max 256gb</h1>
-        <h2 className='card_price'>109 990 ₽</h2>
+					</div>
+					<h1 className='card_title'>{data.title}</h1>
+					<h2 className='card_price'>{data.price}</h2>
 
-        <div className="card_seller_info">
-          <NavLink to='/profilePage' className='noLink'>
-            <h1 className='card_seller-title'>AppleMania</h1>
-          </NavLink>
-          <div className="flex card_reviews">
+					<div className="card_seller_info">
+						<NavLink to='/profilePage' className='noLink'>
+							<h1 className='card_seller-title'>{data.user?.name}</h1>
+						</NavLink>
+						<div className="flex card_reviews">
             <span className='card_reviews-stars flex'>
-              <span className='cardPage_average'>4,0</span>
-              <StarComponent average={5} width={23}/>
+              <span className='cardPage_average'>{average}</span>
+              <StarComponent average={average} width={23}/>
             </span>
-            <NavLink to='/review' className='noLink'>
-              <span className='card_page-count'>31 отзыв</span>
-
-            </NavLink>
-          </div>
-        </div>
-        <span className='card_seller-address'>
-              Республика Татарстан, Казань, Петербургская ул., 9
+							<NavLink to='/review' className='noLink' state={{userId: data.user.id}}>
+								<span className='card_page-count'>{data.user?.ratings.length} отзыв</span>
+							</NavLink>
+						</div>
+					</div>
+					<span className='card_seller-address'>
+              {data.address}
         </span>
 
-        <div className="card_btns">
-          <button className='black_btn'><img src={phone_icon} alt=""/></button>
-          <button className='white_btn'><img src={message_icon} alt=""/></button>
-        </div>
+					<div className="card_btns">
+						<button className='black_btn'><img src={phone_icon} alt=""/></button>
+						<button className='white_btn'><img src={message_icon} alt=""/></button>
+					</div>
 
-        <div className="card_description">
-          <h1 className="card_description-title">Описание</h1>
-          <p className='card_description-text'>
-            iPhone 14 pro max + Фирменный подарок!
-            ГАРАНТИЯ !
-            КРЕДИТ БЕЗ ПЕРВОНАЧАЛЬНОГО ВЗНОСА !
-            Абсолютно новый ( НЕ ВОССТАНОВЛЕННЫЙ ) в заводской упаковке iPhone 14 Pro Max Deep Purple !
-            🌐🌐🌐🌐🌐
-            📱MQ993J/A
-            1 физическая сим-карта и 2 е-сим
-            🌐🌐🌐🌐🌐
-            ▪️ОПЛАТА:💵Наличный расчёт
-            📲Перевод с карты на карту СБП💳 Безналичный расчёт ( Через терминал + 1.5% к стоимости )⏳А также можно
-            приобрести в кредит через банки . ( Условия: паспорт РФ, прописка )
-            🧑🏻‍💻Работаем с ЮР лицами и ИП ❗️БЕЗ НДС❗️
-          </p>
-        </div>
-        <div className="card_backbtn">
-          <Backbtn/>
-        </div>
+					<div className="card_description">
+						<h1 className="card_description-title">Описание</h1>
+						<pre className='card_description-text'>
+							{data.description}
+						</pre>
+					</div>
+					<div className="card_backbtn">
+						<Backbtn/>
+					</div>
 
-        <div className="card_statistic">
-          <p className='card_statistic-text'><span>№ 2571607180</span> · <span>сегодня в 13:04</span></p>
-          <p className='card_statistic-text'>1666 просмотров (+2 сегодня)</p>
-        </div>
+					<div className="card_statistic">
+						<p className='card_statistic-text'><span>№ {data.id}</span> · <span>{relativeDate(new Date(data.createdAt))}</span></p>
+						<p className='card_statistic-text'>{data.views} {`${["просмотр", "просмотра", "просмотров"][pluralRusVariant(parseInt(data.views))]}`} ({data.viewsToday} сегодня)</p>
+					</div>
 
-      </div>
-    </div>
+				</div>
+			</div>
 
-  );
+		);
+	}
 };
 
 export default CardPage;

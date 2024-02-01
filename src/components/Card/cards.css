@@ -1,4 +1,5 @@
 .card_favorite_icon {
+    z-index: 3;
     position: absolute;
     top: 14px;
     right: 14px;
@@ -13,6 +14,7 @@
     width: 156px;
     height: 210px;
     margin-bottom: 8px;
+    border-radius: 15px;
 }
 
 .card_info-title {
@@ -87,8 +89,12 @@
 /* Vip */
 
 .vip_card {
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 355px;
     margin-top: 40px;
     position: relative;
+    margin-bottom: 15px;
 }
 
 .vip_card-img {
@@ -109,6 +115,7 @@
     width: 156px;
     height: 210px;
     margin-bottom: 8px;
+    border-radius: 15px;
 }
 
 .plus_card_info-title {

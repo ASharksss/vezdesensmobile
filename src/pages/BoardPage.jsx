@@ -55,9 +55,10 @@ const BoardPage = () => {
   }, [loading, hasMore, offset, standardCount, standardPlusCount, vipCount])
   return (
     <div >
-      <Premium/>
-
-      <Long/>
+      <div className="board_page">
+        <Premium/>
+        <Long/>
+      </div>
       <BorderComponent allData={allData} lastElementRef={lastElementRef}/>
 
     </div>

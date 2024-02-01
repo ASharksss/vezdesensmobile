@@ -96,6 +96,7 @@
 
 .card_description-text {
     color: rgba(131, 134, 144, 1);
+    white-space: pre-line;
 }
 
 .card_backbtn {
@@ -118,8 +119,11 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 100px;
     font-family: 'Open Sans', sans-serif;
+}
+
+.board_page:last-child{
+    margin-bottom: 100px;
 }
 
 .plus_card_block {

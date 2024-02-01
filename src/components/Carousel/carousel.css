@@ -1,0 +1,50 @@
+.carousel-container {
+    position: relative;
+    width: 325px; /* Размер карусели */
+    margin: 50px auto;
+    overflow: hidden;
+}
+.carousel-container .dots {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carousel-container .prev {
+    position: absolute;
+    font-size: 32px;
+    padding: 20px;
+    left: -10px;
+    top: calc(50% - 26px);
+}
+.carousel-container .next {
+    position: absolute;
+    font-size: 32px;
+    padding: 20px;
+    right: -10px;
+    top: calc(50% - 26px);
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 1300px;
+}
+
+.panel {
+    width: 325px;
+    height: 400px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border: 1px solid #ccc; /* Cor da borda dos painéis */
+    border-radius: 10px; /* Adicionando bordas arredondadas */
+    overflow: hidden; /* Garantindo que a imagem não ultrapasse as bordas arredondadas */
+    background-color: #f8f8f8; /* Cor de fundo dos painéis */
+}
+
+.content {
+    padding: 20px;
+}

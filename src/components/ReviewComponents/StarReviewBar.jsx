@@ -44,7 +44,7 @@ const StarReviewBar = ({average, data}) => {
       <StarComponent average={average} width={18}/>
       <span
         style={average === 1 ? statusBarOne : average === 2 ? statusBarTwo : average === 3 ? statusBarThree : average === 4 ? statusBarFour : statusBarFive}>5</span>
-      <span style={{color: '#B5B7BD'}}>{data.filter(item => item.grade === 5).length}</span>
+      <span style={{color: '#B5B7BD'}}>{data.filter(item => item.grade === average).length}</span>
     </div>
   );
 };

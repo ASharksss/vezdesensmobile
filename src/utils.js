@@ -1,4 +1,6 @@
 export const STATIC_HOST = 'https://backend.vezdesens.ru/static/'
+export const AVATAR_HOST = 'https://backend.vezdesens.ru/static/avatar'
+
 export const getCookie = (name) => {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);

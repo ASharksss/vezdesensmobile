@@ -26,25 +26,12 @@ const BorderComponent = ({allData, lastElementRef}) => {
             <Card
               classname={'xs'}
               data={item}
-              ad_image={`${STATIC_HOST}/${item.previewImageAds[0]?.name}`}
-              title={item.title}
-              address={item.address}
-              price={item.price}
-              favorite={item.favorites}
-              date={item.date}
-              id={item.id}
             />
           )}
           {(item.typeAdId === 2 || item.typeAdId === 3) && (
             <Card
               classname={item.typeAdId === 2 ? 's' : item.typeAdId === 3 ? 'l' : 's'}
-              ad_image={`${STATIC_HOST}/${item.previewImageAds[0]?.name}`}
-              title={item.title}
-              address={item.address}
-              price={item.price}
-              favorite={item.favorites}
-              date={item.date}
-              id={item.id}
+              data={item}
             />
           )}
         </div>
