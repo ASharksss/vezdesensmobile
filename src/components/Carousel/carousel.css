@@ -10,25 +10,19 @@
     justify-content: center;
     align-items: center;
 }
-.carousel-container .prev {
-    position: absolute;
-    font-size: 32px;
-    padding: 20px;
-    left: -10px;
-    top: calc(50% - 26px);
-}
-.carousel-container .next {
-    position: absolute;
-    font-size: 32px;
-    padding: 20px;
-    right: -10px;
-    top: calc(50% - 26px);
-}
 
 .carousel {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 1300px;
+}
+
+.carousel img {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .panel {

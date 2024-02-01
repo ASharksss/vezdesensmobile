@@ -7,8 +7,9 @@ import dotSVG from '../../asserts/cards/dot.svg';
 const CarouselComponent = ({dataImages=[]}) => {
 	const carouselRef = useRef(null)
 	let [currentPanel, setCurrentPanel] = useState(0)
+	let [positionY, setPositionY] = useState(null)
+	let [positionX, setPositionX] = useState(null)
 
-	// let currentPanel = 2
 	const panelWidth = 325;
 	const totalPanels = dataImages.length || 1;
 
@@ -16,22 +17,49 @@ const CarouselComponent = ({dataImages=[]}) => {
 		setCurrentPanel(index)
 		updateCarousel();
 	}
-	const data = [...Array(totalPanels)].map((item, index) => ({name: `test-${index}`}))
 
 	function updateCarousel() {
 		if (carouselRef !== null) {
 			const carousel = carouselRef.current;
-			const panelContainer = document.querySelector('.carousel-container');
 			const translateValue = -panelWidth * currentPanel;
 			carousel.style.transform = `translateX(${translateValue}px)`;
-			panelContainer.style.width = `${panelWidth}px`;
 		}
+	}
+
+	const handleTouchStart = (event) => {
+		const firstTouch = event.touches[0]
+		setPositionY(firstTouch.clientY)
+		setPositionX(firstTouch.clientX)
+	}
+	const handleTouchMove = (event) => {
+		if (!positionY) return false;
+		let nextPositionY = event.touches[0].clientY
+		let nextPositionX = event.touches[0].clientX
+		let xDiff = nextPositionX - positionX
+		let yDiff = nextPositionY - positionY
+		if (Math.abs(xDiff) > Math.abs(yDiff)) {
+			if (xDiff < 0) {
+				if ((currentPanel + 1) !== totalPanels) {
+					setCurrentPanel(currentPanel + 1)
+				} else {
+					setCurrentPanel(0)
+				}
+			}
+			else {
+				if (currentPanel !== 0) {
+					setCurrentPanel(currentPanel - 1)
+				} else {
+					setCurrentPanel(totalPanels - 1)
+				}
+			}
+		}
+		setPositionX(null)
+		setPositionY(null)
 	}
 
 	useEffect(() => {
 		if (carouselRef !== null) {
-			const carousel = carouselRef.current;
-			carousel.style.width = `${325 * totalPanels}px)`;
+			carouselRef.current.style.width = `${325 * totalPanels}px`;
 		}
 	}, [totalPanels,carouselRef])
 
@@ -41,7 +69,8 @@ const CarouselComponent = ({dataImages=[]}) => {
 
 	return (
 		<div className="carousel-container">
-			<div className="carousel" id="carousel" ref={carouselRef}>
+			<div className="carousel" id="carousel" ref={carouselRef}
+			onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
 				{dataImages.map((item, index) => (
 					<div className="panel" key={`carousel-${index}`}>
 						<img src={`${STATIC_HOST}/${item.name}`} alt={item.name}/>
@@ -50,10 +79,10 @@ const CarouselComponent = ({dataImages=[]}) => {
 			</div>
 			<div className='dots'>
 				{[...Array(totalPanels)].map((item, index) => (
-					<>
-						{index === currentPanel ? <img style={{padding: 10}} src={dotActiveSVG} alt="Активный"/> : null}
-						{index !== currentPanel ? <img style={{padding: 10}} src={dotSVG} alt="Картинка" onClick={() => changePanel(index)}/> : null}
-					</>
+					<React.Fragment key={`carouselDot-${index}`}>
+						{index === currentPanel ? <img style={{padding: 5}} src={dotActiveSVG} alt="Активный"/> : null}
+						{index !== currentPanel ? <img style={{padding: 5}} src={dotSVG} alt="Картинка" onClick={() => changePanel(index)}/> : null}
+					</React.Fragment>
 				))}
 			</div>
 		</div>

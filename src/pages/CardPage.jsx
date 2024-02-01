@@ -1,10 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Carousel} from "react-responsive-carousel";
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './pages.css'
-import er from '../asserts/er.jpg'
-import on from '../asserts/on.jpg'
-import original from '../asserts/original.jpg'
 import back_icon from '../asserts/cardPage/back_arrow.svg'
 import share_icon from '../asserts/cardPage/share.svg'
 import favorite_icon from '../asserts/cardPage/favorite.svg'
@@ -17,7 +12,7 @@ import {NavLink, useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
 import StarComponent from "../components/ReviewComponents/StarComponents";
 import axios from "axios";
-import {pluralRusVariant, relativeDate, STATIC_HOST} from "../utils";
+import {pluralRusVariant, relativeDate} from "../utils";
 import CarouselComponent from "../components/Carousel/CarouselComponent";
 
 const CardPage = () => {
