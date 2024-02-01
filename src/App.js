@@ -1,13 +1,12 @@
 import './App.css';
 import axios from "axios";
-import CardPage from "./pages/CardPage";
-import Footer from "./components/Footer/Footer";
-import BoardPage from "./pages/BoardPage";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import CardPage from "./pages/CardPage";
+import BoardPage from "./pages/BoardPage";
 import ProfilePage from "./pages/ProfilePage";
 import MessagesPage from "./pages/MessagesPage";
 import DialogPage from "./pages/DialogPage";
-import LayoutHeader from "./LayoutFooter";
 import LayoutAll from "./LayoutAll";
 import LayoutFooter from "./LayoutFooter";
 import SubCategoryPage from "./pages/SubCategoryPage";
@@ -20,10 +19,35 @@ import NewPassword from "./pages/NewPassword";
 import Registration from "./pages/Registration";
 import ReviewPage from "./pages/ReviewPage";
 import AddReviewPage from "./pages/AddReviewPage";
+import {useEffect, useState} from "react";
+import {getCookie} from "./utils";
+import {fetchAuth} from "./redux/slices/AuthSlice";
 
 axios.defaults.baseURL = "https://backend.vezdesens.ru/"
 
 function App() {
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(true)
+  const {isAuth, user} = useSelector(state => state.user)
+
+  const loadingIsAuth = user.status === 'loading'
+
+  useEffect(() => {
+    function checkAuth() {
+      const checkSession = getCookie('session')
+      if (checkSession !== undefined) {
+        dispatch(fetchAuth(checkSession))
+      }
+    }
+    return checkAuth()
+  }, [])
+
+  useEffect(() => {
+    if (!loadingIsAuth) {
+      setLoading(false)
+    }
+  }, [loading])
+
   return (
     <div className="container">
       <BrowserRouter>
@@ -40,8 +64,11 @@ function App() {
             <Route path='/servicePage' element={<ServicePage/>}/>
           </Route>
 
-          <Route path='/auth' element={<Auth/>}/>
-          <Route path='/registration' element={<Registration/>}/>
+          {!isAuth &&
+          <>
+            <Route path='/auth' element={<Auth/>}/>
+            <Route path='/registration' element={<Registration/>}/>
+          </>}
           <Route path='/newPassword' element={<NewPassword/>}/>
           <Route path='/cardPage' element={<CardPage/>}/>
           <Route path='/dialog' element={<DialogPage/>}/>
