@@ -31,7 +31,7 @@ const CardPage = () => {
 	const getData = async () => {
 		await axios.get(`api/ad/getOneAd/${id}`)
 			.then(res => {
-				document.title = 'Картиочка № ' + res.data.ad.id + ' · ' + res.data.ad.title + ' · ' + relativeDate(new Date(res.data.ad.createdAt))
+				document.title = 'Карточка № ' + res.data.ad.id + ' · ' + res.data.ad.title + ' · ' + relativeDate(new Date(res.data.ad.createdAt))
 				setData(res.data?.ad)
 				setIsLoading(false)
 			})
@@ -62,7 +62,7 @@ const CardPage = () => {
 				<div className='wrapper'>
 					<div className="card_header">
 						<div className="flex space-between">
-							<img src={back_icon} alt="" onClick={() => navigate(-1)}/>
+							<img src={back_icon} alt="" onClick={() => navigate(-1 || '/')}/>
 							<div className="flex">
 								<img className='card_icon' src={share_icon} alt=""/>
 								<img className='card_icon' src={favorite_icon} alt=""/>
@@ -84,15 +84,15 @@ const CardPage = () => {
               <img className='card_images_img' src={original} alt=""/>
             </div>
           </Carousel>*/}
-		{/*				<CarouselComponent />*/}
-						<img className='card_images_img' src={`${STATIC_HOST}/${data?.imageAds[0]?.name}`} alt=""/>
+						<CarouselComponent dataImages={data.imageAds}/>
+						{/*<img className='card_images_img' src={`${STATIC_HOST}/${data?.imageAds[0]?.name}`} alt=""/>*/}
 
 					</div>
 					<h1 className='card_title'>{data.title}</h1>
 					<h2 className='card_price'>{data.price}</h2>
 
 					<div className="card_seller_info">
-						<NavLink to='/profilePage' className='noLink'>
+						<NavLink to={`/profilePage/${data.user.id}`} className='noLink'>
 							<h1 className='card_seller-title'>{data.user?.name}</h1>
 						</NavLink>
 						<div className="flex card_reviews">

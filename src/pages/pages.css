@@ -17,6 +17,7 @@
     width: 325px;
     height: 427px;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 .card_title {

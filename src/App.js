@@ -58,7 +58,7 @@ function App() {
           </Route>
 
           <Route element={<LayoutFooter/>}>
-            <Route path='/profilePage' element={<ProfilePage/>}/>
+            <Route path='/profilePage/:id' element={<ProfilePage/>}/>
             <Route path='/messages' element={<MessagesPage/>}/>
             <Route path='/categoryPage' element={<CategoryPage/>}/>
             <Route path='/servicePage' element={<ServicePage/>}/>

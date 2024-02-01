@@ -1,16 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './carousel.css'
+import {STATIC_HOST} from "../../utils";
 import dotActiveSVG from '../../asserts/cards/dotActive.svg';
 import dotSVG from '../../asserts/cards/dot.svg';
-import {type} from "@testing-library/user-event/dist/type";
 
-const CarouselComponent = () => {
+const CarouselComponent = ({dataImages=[]}) => {
 	const carouselRef = useRef(null)
 	let [currentPanel, setCurrentPanel] = useState(0)
 
 	// let currentPanel = 2
 	const panelWidth = 325;
-	const totalPanels = 4;
+	const totalPanels = dataImages.length || 1;
 
 	function changePanel(index) {
 		setCurrentPanel(index)
@@ -29,15 +29,22 @@ const CarouselComponent = () => {
 	}
 
 	useEffect(() => {
+		if (carouselRef !== null) {
+			const carousel = carouselRef.current;
+			carousel.style.width = `${325 * totalPanels}px)`;
+		}
+	}, [totalPanels,carouselRef])
+
+	useEffect(() => {
 		updateCarousel();
 	}, [currentPanel])
 
 	return (
 		<div className="carousel-container">
 			<div className="carousel" id="carousel" ref={carouselRef}>
-				{data.map((item, index) => (
+				{dataImages.map((item, index) => (
 					<div className="panel" key={`carousel-${index}`}>
-						<h1>{item.name}</h1>
+						<img src={`${STATIC_HOST}/${item.name}`} alt={item.name}/>
 					</div>
 				))}
 			</div>
