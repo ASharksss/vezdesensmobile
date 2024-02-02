@@ -13,6 +13,34 @@
     margin-bottom: 20px;
 }
 
+.card_images {
+    position: relative;
+}
+
+.similar_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 1);
+    width: 105px;
+    height: 38px;
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    opacity: 7;
+    border-radius: 10px;
+}
+
+.similar_btn button {
+    color: rgba(131, 134, 144, 1);
+    font-size: 14px;
+
+}
+
+.similar_btn-arrow {
+    margin-left: 8px;
+}
+
 .card_images_img {
     width: 325px;
     height: 427px;
@@ -513,6 +541,14 @@
     border: none;
     margin-bottom: 46px;
 }
+
+.favoritePage {
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 45px;
+    padding-bottom: 125px;
+}
+
 
 
 

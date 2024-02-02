@@ -22,6 +22,8 @@ import AddReviewPage from "./pages/AddReviewPage";
 import {useEffect, useState} from "react";
 import {getCookie, isOnline} from "./utils";
 import {fetchAuth} from "./redux/slices/AuthSlice";
+import SimilarPage from "./pages/SimilarPage";
+import FavoritePage from "./pages/FavoritePage";
 
 axios.defaults.baseURL = "https://backend.vezdesens.ru/"
 
@@ -68,6 +70,7 @@ function App() {
 
           <Route element={<LayoutAll/>}>
             <Route path='/' element={<BoardPage/>}/>
+            <Route path='/similarPage' element={<SimilarPage/>}/>
           </Route>
 
           <Route element={<LayoutFooter/>}>
@@ -75,6 +78,7 @@ function App() {
             <Route path='/messages' element={<MessagesPage/>}/>
             <Route path='/categoryPage' element={<CategoryPage/>}/>
             <Route path='/servicePage' element={<ServicePage/>}/>
+            <Route path='/favoritePage' element={<FavoritePage/>}/>
           </Route>
 
           {!isAuth &&
