@@ -20,15 +20,17 @@ import Registration from "./pages/Registration";
 import ReviewPage from "./pages/ReviewPage";
 import AddReviewPage from "./pages/AddReviewPage";
 import {useEffect, useState} from "react";
-import {getCookie} from "./utils";
+import {getCookie, isOnline} from "./utils";
 import {fetchAuth} from "./redux/slices/AuthSlice";
 
 axios.defaults.baseURL = "https://backend.vezdesens.ru/"
 
 function App() {
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(true)
   const {isAuth, user} = useSelector(state => state.user)
+
+  const [loading, setLoading] = useState(true)
+  const [online, setOnline] = useState(true)
 
   const loadingIsAuth = user.status === 'loading'
 
@@ -47,6 +49,17 @@ function App() {
       setLoading(false)
     }
   }, [loading])
+
+  useEffect(() => {
+    const onlineInterval = setInterval(async () => {
+      await isOnline().then(res => console.log(setOnline(res)))
+    }, 10000)
+    return () => clearInterval(onlineInterval)
+  }, [])
+
+  if (!online) {
+    return <div className='flex center items-center' style={{fontSize: 32, fontStyle: 'italic', height: '100vh'}}>Нет интернета</div>
+  }
 
   return (
     <div className="container">

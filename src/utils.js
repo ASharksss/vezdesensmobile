@@ -1,5 +1,16 @@
+import axios from "axios";
+
 export const STATIC_HOST = 'https://backend.vezdesens.ru/static/'
 export const AVATAR_HOST = 'https://backend.vezdesens.ru/static/avatar'
+
+export async function isOnline() {
+  try {
+    await axios.get("ping");
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 
 export const getCookie = (name) => {
   const value = `; ${document.cookie}`;
