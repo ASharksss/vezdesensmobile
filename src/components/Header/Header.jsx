@@ -33,7 +33,10 @@ const Header = () => {
         <div className="flex header_search">
           {
             openCategory ?
-              <button className='header_search_btn_white' onClick={() => setOpenCategory(!openCategory)}>
+              <button className='header_search_btn_white' onClick={() => {
+                setOpenCategory(!openCategory)
+
+              }}>
                 <img src={burger_icon} alt='меню'/>
               </button>
               :
