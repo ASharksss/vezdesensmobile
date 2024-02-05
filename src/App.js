@@ -24,6 +24,8 @@ import {getCookie, isOnline} from "./utils";
 import {fetchAuth} from "./redux/slices/AuthSlice";
 import SimilarPage from "./pages/SimilarPage";
 import FavoritePage from "./pages/FavoritePage";
+import FilterPage from "./pages/FilterPage";
+import SelectFilterPage from "./pages/SelectFilterPage";
 
 axios.defaults.baseURL = "https://backend.vezdesens.ru/"
 
@@ -43,6 +45,7 @@ function App() {
         dispatch(fetchAuth(checkSession))
       }
     }
+
     return checkAuth()
   }, [])
 
@@ -60,7 +63,8 @@ function App() {
   }, [])
 
   if (!online) {
-    return <div className='flex center items-center' style={{fontSize: 32, fontStyle: 'italic', height: '100vh'}}>Нет интернета</div>
+    return <div className='flex center items-center' style={{fontSize: 32, fontStyle: 'italic', height: '100vh'}}>Нет
+      интернета</div>
   }
 
   return (
@@ -82,10 +86,11 @@ function App() {
           </Route>
 
           {!isAuth &&
-          <>
-            <Route path='/auth' element={<Auth/>}/>
-            <Route path='/registration' element={<Registration/>}/>
-          </>}
+            <>
+              <Route path='/auth' element={<Auth/>}/>
+              <Route path='/registration' element={<Registration/>}/>
+            </>
+          }
           <Route path='/newPassword' element={<NewPassword/>}/>
           <Route path='/cardPage/:id' element={<CardPage/>}/>
           <Route path='/dialog' element={<DialogPage/>}/>
@@ -95,7 +100,8 @@ function App() {
           <Route path='/editProfile' element={<EditProfilePage/>}/>
           <Route path='/review' element={<ReviewPage/>}/>
           <Route path='/addReview' element={<AddReviewPage/>}/>
-
+          <Route path='/filterPage' element={<FilterPage/>}/>
+          <Route path='/selectFilterPage' element={<SelectFilterPage/>}/>
         </Routes>
 
       </BrowserRouter>

@@ -151,7 +151,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.board_page:last-child{
+.board_page:last-child {
     margin-bottom: 100px;
 }
 
@@ -547,6 +547,35 @@
     padding-left: 25px;
     padding-top: 45px;
     padding-bottom: 125px;
+}
+
+/* Filter Page */
+
+.filterPage {
+    padding-top: 47px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.filterPage-title {
+    margin-left: 31px;
+}
+
+.filterPage-title, .filterPage-category {
+    font-size: 20px;
+}
+
+.filterPage-category {
+    margin-bottom: 25px;
+    margin-top: 30px;
+}
+
+
+
+.selectFilterPage {
+    padding-top: 47px;
+    padding-right: 25px;
+    padding-left: 25px;
 }
 
 

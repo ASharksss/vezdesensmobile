@@ -1,0 +1,52 @@
+label {
+    display: block;
+}
+
+.filter_item + .filter_item {
+    margin-top: 20px;
+}
+
+.enterFilter-title {
+    font-size: 18px;
+    font-family: OpenSansSemiBold;
+    margin-bottom: 10px;
+}
+
+.selectInput {
+    color: rgba(181, 183, 189, 1);
+    width: 325px;
+    height: 47px;
+    background-color: rgba(236, 236, 236, 1);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.checkbox_item + .checkbox_item {
+    margin-top: 10px;
+}
+
+.checkbox_input {
+    width: 24px;
+    height: 24px;
+}
+
+.checkboxFilter_label {
+    font-size: 14px;
+    margin-left: 13px;
+}
+
+.enterFilter-input {
+    padding: 15px;
+    width: 156px;
+    height: 47px;
+    background-color: rgba(236, 236, 236, 1);
+    border-radius: 10px;
+}
+
+.enterFilter-input + .enterFilter-input {
+    margin-left: 10px;
+}
+
+.selectFilterPage-header {
+    margin-bottom: 30px;
+}
