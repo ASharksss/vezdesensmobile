@@ -54,7 +54,7 @@ function App() {
 
   useEffect(() => {
     const onlineInterval = setInterval(async () => {
-      await isOnline().then(res => console.log(setOnline(res)))
+      await isOnline().then(res => setOnline(res))
     }, 10000)
     return () => clearInterval(onlineInterval)
   }, [])
@@ -76,7 +76,7 @@ function App() {
           <Route element={<LayoutFooter/>}>
             <Route path='/profilePage/:id' element={<ProfilePage/>}/>
             <Route path='/messages' element={<MessagesPage/>}/>
-            <Route path='/categoryPage' element={<CategoryPage/>}/>
+            <Route path='/categoryPage/:id' element={<CategoryPage/>}/>
             <Route path='/servicePage' element={<ServicePage/>}/>
             <Route path='/favoritePage' element={<FavoritePage/>}/>
           </Route>
@@ -90,7 +90,8 @@ function App() {
           <Route path='/cardPage/:id' element={<CardPage/>}/>
           <Route path='/dialog' element={<DialogPage/>}/>
           <Route path='/support' element={<SupportPage/>}/>
-          <Route path='/subCategory' element={<SubCategoryPage/>}/>
+          <Route path='/subCategory/:id' element={<SubCategoryPage/>}/>
+          <Route path='/subCategory/:id/:obId' element={<SubCategoryPage/>}/>
           <Route path='/editProfile' element={<EditProfilePage/>}/>
           <Route path='/review' element={<ReviewPage/>}/>
           <Route path='/addReview' element={<AddReviewPage/>}/>

@@ -4,12 +4,15 @@ import location_icon from '../../asserts/cardPage/location.svg'
 import burger_icon from '../../asserts/icons/menu_burger.svg'
 import search_icon from '../../asserts/icons/search.svg'
 import CategoryItem from "../CategoryItem/CategoryItem";
+import axios from "axios";
 
 
 const Header = () => {
   const wrapperRef = useRef(null)
 
   const [openCategory, setOpenCategory] = useState(false)
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleClickOutside = (event) => {
     if (wrapperRef.current && !wrapperRef.current.contains(event.target))
@@ -21,8 +24,22 @@ const Header = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  return (
 
+  const getData = async () => {
+    await axios.get(`api/categories/getCategoriesList`)
+      .then(res => {
+        setData(res.data)
+        setIsLoading(false)
+      })
+  }
+
+  useEffect(() => {
+    setIsLoading(true)
+    getData()
+  }, [])
+
+
+  return (
     <div className={'header header_shadow'} ref={wrapperRef}>
       <div className="wrapper">
         <div className="header_location">
@@ -56,19 +73,14 @@ const Header = () => {
       {
         openCategory ?
           <div className='category_list'>
-            <CategoryItem address={'subCategory'}/>
-            <CategoryItem address={'subCategory'}/>
-            <CategoryItem address={'subCategory'}/>
-            <CategoryItem address={'subCategory'}/>
-            <CategoryItem address={'subCategory'}/>
-            <CategoryItem address={'subCategory'}/>
-
+            {
+              data.map((item) => (
+                <CategoryItem address={'subCategory'} item={item}/>
+              ))
+            }
           </div> : null
       }
-
     </div>
-
-
   );
 };
 
