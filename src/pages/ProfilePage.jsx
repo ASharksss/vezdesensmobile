@@ -56,7 +56,7 @@ const ProfilePage = () => {
 					<div className="profile_info flex space-between">
 						<div className='flex items-center'>
 							<div className="profile_info-avatar">
-								<img src={`${AVATAR_HOST}/${data.userAvatars[0]?.name}`} width={64} alt=""/>
+								<img src={`${AVATAR_HOST}/${data.userAvatars[0]?.name}`} width={64} alt="" className='profile_info-img'/>
 							</div>
 							<div className="profile_info-text">
 								<h1 className='profile_info-name'>{data.name}</h1>

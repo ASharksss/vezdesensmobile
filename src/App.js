@@ -26,7 +26,7 @@ import SimilarPage from "./pages/SimilarPage";
 import FavoritePage from "./pages/FavoritePage";
 import FilterPage from "./pages/FilterPage";
 import SelectFilterPage from "./pages/SelectFilterPage";
-import CreateAdPage from "./pages/CreateAdPage";
+import CreateCardPage from "./pages/CreateCardPage";
 
 axios.defaults.baseURL = "https://backend.vezdesens.ru/"
 
@@ -103,7 +103,7 @@ function App() {
           <Route path='/addReview' element={<AddReviewPage/>}/>
           <Route path='/filterPage' element={<FilterPage/>}/>
           <Route path='/selectFilterPage' element={<SelectFilterPage/>}/>
-          <Route path='/createAd' element={<CreateAdPage/>}/>
+          <Route path='/createAd' element={<CreateCardPage/>}/>
         </Routes>
 
       </BrowserRouter>

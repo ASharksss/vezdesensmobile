@@ -24,10 +24,11 @@ const Footer = () => {
         </div>
 
         <div className="footer_section relative">
-          <button className='footer_section-btn'>
-            <img className='footer_section-icon' src={plus_icon} alt=""/>
-          </button>
-
+          <NavLink to='/createAd'>
+            <button className='footer_section-btn'>
+              <img className='footer_section-icon' src={plus_icon} alt=""/>
+            </button>
+          </NavLink>
         </div>
 
         <NavLink to='/messages'>

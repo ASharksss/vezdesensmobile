@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckboxFilter from "../components/filterComponents/CheckboxFilter";
+import CheckboxFilter from "../ui/filterComponents/CheckboxFilter";
 import Back from "../ui/Back";
 
 const SelectFilterPage = () => {

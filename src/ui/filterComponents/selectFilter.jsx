@@ -2,12 +2,15 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import './style.css'
 
-const SelectFilter = () => {
+const SelectFilter = ({page}) => {
   return (
     <div className='filter_item'>
-      <label className='enterFilter-title'>Название</label>
+      {
+        page === 'createAdPage' ? null :  <label className='enterFilter-title'>Название</label>
+      }
+
       <NavLink to='/selectFilterPage' className='noLink'>
-        <div type="text" className='selectInput'>Выберите значение...</div>
+        <div className='selectInput'>Выберите значение...</div>
       </NavLink>
     </div>
   );

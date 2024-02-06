@@ -1,8 +1,8 @@
 import React from 'react';
 import Back from "../ui/Back";
-import EnterFilter from "../components/filterComponents/enterFilter";
-import SelectFilter from "../components/filterComponents/selectFilter";
-import CheckboxFilter from "../components/filterComponents/CheckboxFilter";
+import EnterFilter from "../ui/filterComponents/enterFilter";
+import SelectFilter from "../ui/filterComponents/selectFilter";
+import CheckboxFilter from "../ui/filterComponents/CheckboxFilter";
 
 const FilterPage = () => {
   return (

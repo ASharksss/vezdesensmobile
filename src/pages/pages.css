@@ -173,6 +173,10 @@
     margin-right: 15px;
 }
 
+.profile_info-img {
+    border-radius: 50%;
+}
+
 .profile_info-name {
     width: 136px;
     font-size: 18px;
@@ -571,13 +575,48 @@
 }
 
 
-
 .selectFilterPage {
     padding-top: 47px;
     padding-right: 25px;
     padding-left: 25px;
 }
 
+/* Create Card */
+
+
+.createCard-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top: 25px;
+    margin-left: 20px;
+}
+
+.createCard-subtitle {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.descriptionCard {
+    margin-top: 50px;
+}
+
+.descriptionCard-title {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.createCard_description {
+    width: 325px;
+    height: 185px;
+    background-color: rgba(236, 236, 236, 1);
+    border: none;
+    border-radius: 10px;
+    padding: 15px 20px;
+}
+
+.sizeCard {
+    margin-top: 50px;
+}
 
 
 
