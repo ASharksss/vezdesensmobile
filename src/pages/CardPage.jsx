@@ -16,6 +16,7 @@ import {pluralRusVariant, relativeDate} from "../utils";
 import CarouselComponent from "../components/Carousel/CarouselComponent";
 import PreloaderComponent from "../components/Preloader/PreloaderComponent";
 import SimilarBtn from "../ui/SimilarBtn";
+import FavoriteBtn from "../ui/favoriteBtn";
 
 const CardPage = () => {
   const navigate = useNavigate()
@@ -60,7 +61,10 @@ const CardPage = () => {
               <img src={back_icon} alt="" onClick={() => navigate(-1 || '/')}/>
               <div className="flex">
                 <img className='card_icon' src={share_icon} alt=""/>
-                <img className='card_icon' src={favorite_icon} alt=""/>
+                <div className='card_icon'>
+                  <FavoriteBtn id={data.id} isFavorite={data.favorites}/>
+                </div>
+                {/*<img className='card_icon' src={favorite_icon} alt=""/>*/}
               </div>
             </div>
           </div>
@@ -71,8 +75,8 @@ const CardPage = () => {
             <CarouselComponent dataImages={data.imageAds}/>
             <SimilarBtn/>
           </div>
-          <h1 className='card_title'>{data.title}</h1>
           <h2 className='card_price'>{data.price}</h2>
+          <h1 className='card_title'>{data.title}</h1>
 
           <div className="card_seller_info">
             <NavLink to={`/profilePage/${data.user.id}`} className='noLink'>

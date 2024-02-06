@@ -6,12 +6,13 @@ import {NavLink} from "react-router-dom";
 import favorite from "../../asserts/board/favorite.svg";
 import phone_icon from "../../asserts/board/phone_icon.svg";
 import message_icon from "../../asserts/board/message_icon.svg";
+import FavoriteBtn from "../../ui/favoriteBtn";
 
 const Premium = () => {
   return (
     <div className='premium_card'>
       <NavLink to='/cardPage' className='noLink'>
-        <span className='card_favorite_icon'><img src={favorite} alt=""/></span>
+        <span className='card_favorite'><FavoriteBtn/></span>
         <img src={premium_img} alt="" className='premium_card-img'/>
         <div className='flex space-between items-center'>
           <div className="premium_card-info">

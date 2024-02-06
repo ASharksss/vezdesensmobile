@@ -1,7 +1,7 @@
 .carousel-container {
     position: relative;
     width: 325px; /* Размер карусели */
-    margin: 50px auto;
+    margin: 15px auto;
     overflow: hidden;
 }
 .carousel-container .dots {

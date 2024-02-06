@@ -10,10 +10,12 @@ import {NavLink} from "react-router-dom";
 import Danger from "../ui/danger";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchLogin} from "../redux/slices/AuthSlice";
+import {useNavigate} from "react-router";
 
 const Auth = () => {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const {user} = useSelector(state => state.user)
 
   const [activeModal, setActiveModal] = useState(false)
@@ -27,7 +29,13 @@ const Auth = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const data = {login, password}
-    await dispatch(fetchLogin(data))
+    await dispatch(fetchLogin(data)).then((res) => {
+      if (res.error === undefined) {
+        const pathname = localStorage.getItem('last_path') || '/'
+        navigate(pathname)
+        window.location.reload()
+      }
+    })
   }
 
   return (

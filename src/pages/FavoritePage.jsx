@@ -1,18 +1,36 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import FavoriteItem from "../components/FavoriteItem/FavoriteItem";
 import settings from '../asserts/messages/setting.svg'
+import axios from "axios";
 
 const FavoritePage = () => {
+
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  const getData = () => {
+    axios.get(`api/user/getFavorite`)
+      .then(res => setData(res.data))
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <div className='favoritePage'>
       <div className="flex space-between ">
         <h1>Избранное</h1>
         <img src={settings} alt=""/>
       </div>
+
       <div className="favorite_list">
-        <FavoriteItem/>
-        <FavoriteItem/>
-        <FavoriteItem/>
+        {
+          data.map((item) => (
+              <FavoriteItem data={item}/>
+            )
+          )
+        }
       </div>
     </div>
   );

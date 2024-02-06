@@ -7,7 +7,7 @@ import CreateEnterFilter from "../ui/filterComponents/createEnterFilter";
 
 const CreateCardPage = () => {
   return (
-    <div>
+    <div className='createCard'>
       <div className="flex items-center">
         <Back/>
         <h1 className='createCard-title'>Подать объявление</h1>
@@ -18,12 +18,14 @@ const CreateCardPage = () => {
       <SelectFilter page='createAdPage'/>
 
       <div className="required technical_characteristic">
+        <h1 className='createCard-char_title'>Обязательные характеристики</h1>
         <CreateEnterFilter/>
         <SelectFilter/>
         <CheckboxFilter/>
       </div>
 
       <div className="additionally technical_characteristic">
+        <h1 className='createCard-char_title'>Дополнительные характеристики</h1>
         <CreateEnterFilter/>
         <SelectFilter/>
         <CheckboxFilter/>

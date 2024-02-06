@@ -15,6 +15,7 @@
     width: 111px;
     height: 149px;
     border-radius: 10px;
+    object-fit: cover;
 }
 
 .favorite_info {
@@ -49,3 +50,4 @@
     color: rgba(181, 183, 189, 1);
     font-size: 12px;
 }
+

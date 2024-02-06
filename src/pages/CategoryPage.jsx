@@ -8,6 +8,7 @@ import './pages.css'
 import {NavLink, useParams} from "react-router-dom";
 import axios from "axios";
 import PreloaderComponent from "../components/Preloader/PreloaderComponent";
+import Back from "../ui/Back";
 
 const CategoryPage = () => {
 
@@ -51,8 +52,11 @@ const CategoryPage = () => {
 
   return (
     <div className='categoryPage'>
-      <h1>{data[0]?.object?.name}</h1>
-      <Breadcrumbs/>
+      <div className="flex items-center ">
+        <Back/>
+        <h1 className='categoryPage-title'>{data[0]?.object?.name}</h1>
+      </div>
+      <Breadcrumbs data={data[0]?.object}/>
       <div className="categoryPage-header flex space-between items-center">
         <div className='categoryPage_search flex items-center'>
           <input type="text" placeholder='Поиск' className='categoryPage_search-input'/>
@@ -70,7 +74,6 @@ const CategoryPage = () => {
               <Card classname={'xs'} data={item}/>
             ))
           }
-
         </div>
         <Long/>
         <div className="grid">
