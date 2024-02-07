@@ -1,21 +1,21 @@
 import React from 'react';
 
-const CheckboxFilter = () => {
+const CheckboxFilter = ({items}) => {
+
   return (
     <div className='filter_item'>
-      <h1 className='enterFilter-title'>Название</h1>
-      <div className="flex items-center checkbox_item">
-        <input type="checkbox" value='Значение' className='checkbox_input'/>
-        <label className='checkboxFilter_label'>Значение</label>
-      </div>
-      <div className="flex items-center checkbox_item">
-        <input type="checkbox" value='Значение' className='checkbox_input'/>
-        <label className='checkboxFilter_label'>Значение</label>
-      </div>
-      <div className="flex items-center checkbox_item">
-        <input type="checkbox" value='Значение' className='checkbox_input'/>
-        <label className='checkboxFilter_label'>Значение</label>
-      </div>
+      <h1 className='enterFilter-title'></h1>
+      {
+        items !== undefined ?
+        items.map((item) => (
+          <div className="flex items-center checkbox_item" key={item.id}>
+            <input type="checkbox" value={item.id} id={item.id} className='checkbox_input'
+            />
+            <label htmlFor={item.id} className='checkboxFilter_label'>{item.name}</label>
+          </div>
+        )) : null
+      }
+
     </div>
   );
 };
