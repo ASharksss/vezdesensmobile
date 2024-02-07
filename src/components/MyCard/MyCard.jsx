@@ -9,21 +9,40 @@ import ModalTemplate from "../Modal/ModalTemplate";
 import OffCard from "../Modal/OffCard";
 import {pluralRusVariant, STATIC_HOST} from "../../utils";
 
-const MyCard = ({item}) => {
+const MyCard = ({item, choice}) => {
   const [open, setOpen] = useState(false)
 
   const [activeModal, setActiveModal] = useState(false)
+  let items = []
 
-  const items = [
-    {
-      title: 'Редактировать',
-      onClick: null
-    },
-    {
-      title: 'Снять с публикации',
-      onClick: () => setActiveModal(true)
-    }
-  ]
+  if (choice === 'active') {
+    items = [
+      {
+        title: 'Редактировать',
+        onClick: null
+      },
+      {
+        title: 'Снять с публикации',
+        onClick: () => setActiveModal(true)
+      }
+    ]
+  } else {
+    items = [
+      {
+        title: 'Активировать',
+        onClick: null
+      },
+      {
+        title: 'Удалить',
+        onClick: () => null
+      },
+      {
+        title: 'Редактировать',
+        onClick: () => null
+      }
+    ]
+  }
+
 
   return (
 
@@ -43,7 +62,7 @@ const MyCard = ({item}) => {
               <img src={dots} alt="" onClick={() => setOpen(!open)}/>
             </div>
             {
-              open === true ?
+              open ?
                 <MoreSubMenu items={items} setOpen={setOpen}/> : null
             }
             <NavLink to={`/cardPage/${item.id}`} className='noLink'>
@@ -53,7 +72,8 @@ const MyCard = ({item}) => {
               </div>
 
               <div className="myCard_info-footer">
-                <span className=''>Осталось: </span><span className=''>{new Date(new Date(item.dateEndActive) - new Date()).getDate()} {["день", "дня", "дней"][pluralRusVariant(new Date(new Date(item.dateEndActive) - new Date()).getDate())]}</span>
+                <span className=''>Осталось: </span><span
+                className=''>{new Date(new Date(item.dateEndActive) - new Date()).getDate()} {["день", "дня", "дней"][pluralRusVariant(new Date(new Date(item.dateEndActive) - new Date()).getDate())]}</span>
                 <div className="myCard_info-icons flex">
                   <div className="flex mr-20">
                     <img src={like} alt="" className='myCard_info-icon'/>

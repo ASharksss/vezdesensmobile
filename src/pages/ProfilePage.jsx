@@ -8,6 +8,7 @@ import StarComponent from "../components/ReviewComponents/StarComponents";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import {AVATAR_HOST} from "../utils";
+import MoreSubMenu from "../ui/moreSubMenu";
 
 
 const ProfilePage = () => {
@@ -17,6 +18,23 @@ const ProfilePage = () => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const [average, setAverage] = useState(0)
+  const [choice, setChoice] = useState('active')
+  const [openSubMenu, setOpenSubMenu] = useState(false)
+  let items = [
+    {
+      title: 'Редактировать',
+      onClick: null
+    },
+    {
+      title: 'Помощь',
+      onClick: () => null
+    },
+    {
+      title: 'Выйти',
+      onClick: () => null
+    }
+  ]
+
 
   const getData = async () => {
     await axios.get(`/api/user/getOneUser/${id}`)
@@ -32,9 +50,9 @@ const ProfilePage = () => {
     getData(data)
   }, [])
 
-
+  // Вычисление средней оценки рейтинга
   useEffect(() => {
-    // Вычисление средней оценки рейтинга
+
     const dataRatings = data?.ratings || []
     if (dataRatings.length > 0) {
       let ratings = dataRatings.map(item => item.grade)
@@ -64,9 +82,15 @@ const ProfilePage = () => {
                 <p className='profile_info-phone'>{data.phone}</p>
               </div>
             </div>
-            <div className="profile_info-icon">
+            <div className="profile_info-icon" onClick={() => setOpenSubMenu(true)}>
               <span><img src={dots} alt=""/></span>
+              {
+                openSubMenu ? <div className='profile_dots'>
+                  <MoreSubMenu items={items} setOpen={setOpenSubMenu}/> : null
+                </div> : null
+              }
             </div>
+
           </div>
           <div className="profile_reviews flex items-center">
             <span>{average}</span>
@@ -75,11 +99,14 @@ const ProfilePage = () => {
           <div className="profile_cards">
             <h1 className='profile_cards-title'>Мои объявления</h1>
             <div className="nav">
-              <label htmlFor={"active"} className='profile_card-active'>Активные</label>
-              <label htmlFor={"archive"} className='profile_card-archive'>Архив</label>
+              <label htmlFor={"active"} className='profile_card-active'
+                     onClick={() => setChoice('active')}>Активные</label>
+              <label htmlFor={"archive"} className='profile_card-archive'
+                     onClick={() => setChoice('archive')}
+              >Архив</label>
             </div>
-              <input type="radio" id="active" name='item' checked/>
-              <input type="radio" id="archive" name='item'/>
+            <input type="radio" id="active" name='item' checked/>
+            <input type="radio" id="archive" name='item'/>
 
             <div className="slider"></div>
             <div className='flex space-between items-center'>
@@ -92,9 +119,13 @@ const ProfilePage = () => {
               </div>
             </div>
             {
-              !loading && data.ads.map((item, index) => item.statusAdId === 2 && (
-                <MyCard item={item} key={`card-${index}`}/>
-              ))
+              choice === 'active' ?
+                !loading && data.ads.map((item, index) => item.statusAdId === 2 && (
+                  <MyCard item={item} key={`card-${index}`}/>
+                )) :
+                !loading && data.ads.map((item, index) => item.statusAdId === 3 && (
+                  <MyCard item={item} key={`card-${index}`}/>
+                ))
             }
           </div>
         </div>

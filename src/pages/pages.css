@@ -9,9 +9,17 @@
 }
 
 .breadcrumbs {
+    max-width: 100%;
+    height: 25px;
+    overflow: auto;
     margin-top: 15px;
     margin-bottom: 10px;
     color: rgba(181, 183, 189, 1);
+    white-space: nowrap;
+}
+
+.breadcrumbs::-webkit-scrollbar{
+    display: none;
 }
 
 .card_images {
@@ -168,6 +176,16 @@
     padding-left: 25px;
     padding-top: 20px;
     padding-bottom: 80px;
+}
+
+.profile_info-icon {
+    position: relative;
+}
+
+.profile_dots {
+    position: absolute;
+    top: 15px;
+    right: 150px;
 }
 
 .profile_info-avatar {

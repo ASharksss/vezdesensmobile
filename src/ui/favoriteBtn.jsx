@@ -31,7 +31,7 @@ const FavoriteBtn = ({id, isFavorite}) => {
       if (isFavorite.length > 0) {
         setRed(true)
       }
-      if(isFavorite === true) {
+      if (isFavorite === true) {
         setRed(true)
       }
     }

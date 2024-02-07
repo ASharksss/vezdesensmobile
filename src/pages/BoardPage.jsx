@@ -7,6 +7,7 @@ import Premium from "../components/Card/Premium";
 import {useLocation} from "react-router";
 import useLoadingCard from "../redux/hooks/useLoadingCard";
 import BorderComponent from "../components/Board/BoardComponent";
+import {getStaticAd, STATIC_HOST} from "../utils";
 
 const BoardPage = () => {
   const location = useLocation();
@@ -22,6 +23,7 @@ const BoardPage = () => {
   useEffect(() => {
     if (location.pathname === '/') {
       document.title = 'Главная'
+      getStaticAd(1, setStaticAd)
     }
   }, [location.pathname])
 
@@ -54,10 +56,14 @@ const BoardPage = () => {
     if (node) observer.current.observe(node)
   }, [loading, hasMore, offset, standardCount, standardPlusCount, vipCount])
   return (
-    <div >
+    <div>
       <div className="board_page">
         <Premium/>
-        <Long/>
+        {
+          staticAd[0]?.imageName !== undefined ?
+            <Long image={`${STATIC_HOST}/promotion/${staticAd[0]?.imageName}`} href={staticAd[1]?.href}/>
+            : null
+        }
       </div>
       <BorderComponent allData={allData} lastElementRef={lastElementRef}/>
 

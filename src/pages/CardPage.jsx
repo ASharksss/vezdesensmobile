@@ -68,9 +68,8 @@ const CardPage = () => {
               </div>
             </div>
           </div>
-          <div className="breadcrumbs">
+
             <Breadcrumbs data={data.object}/>
-          </div>
           <div className="card_images">
             <CarouselComponent dataImages={data.imageAds}/>
             <SimilarBtn/>
@@ -98,7 +97,10 @@ const CardPage = () => {
 
           <div className="card_btns">
             <button className='black_btn'><img src={phone_icon} alt=""/></button>
-            <button className='white_btn'><img src={message_icon} alt=""/></button>
+           <NavLink to='/dialog'>
+             <button className='white_btn'><img src={message_icon} alt=""/></button>
+           </NavLink>
+
           </div>
 
           <div className="card_description">

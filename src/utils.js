@@ -99,4 +99,11 @@ export const numberWithSpaces = (x) => {
   return parts.join(".");
 }
 
+export const getStaticAd = async (limit=2, setValue) => {
+  await axios.get(`api/other/promotion?limit=${limit}`)
+    .then(res => {
+      setValue(res.data)
+    })
+}
+
 
