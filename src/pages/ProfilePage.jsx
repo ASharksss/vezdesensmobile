@@ -118,6 +118,7 @@ const ProfilePage = () => {
                 <img src={filter_icon} alt=""/>
               </div>
             </div>
+
             {
               choice === 'active' ?
                 !loading && data.ads.map((item, index) => item.statusAdId === 2 && (
