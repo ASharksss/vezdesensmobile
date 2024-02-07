@@ -28,6 +28,8 @@
     z-index: 2;
     transform: scale(0.5);
     transition: .4s;
+    overflow: auto;
+    max-height: 690px;
 }
 
 .modal_content.activeModal {

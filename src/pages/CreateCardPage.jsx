@@ -8,22 +8,46 @@ import axios from "axios";
 
 const CreateCardPage = () => {
 
-  const [data, setData] = useState([])
+  const [dataCategories, setDataCategories] = useState([])
+  const [dataSubCategories, setDataSubCategories] = useState([])
+  const [dataObject, setDataObject] = useState([])
+
   const [loading, setLoading] = useState(true)
 
   const [category, setCategory] = useState(null)
   const [subCategory, setSubCategory] = useState(null)
   const [object, setObject] = useState(null)
 
-  const getData = async () => {
+  const getDataCategories = async () => {
     await axios.get(`api/categories/getCategories`)
-      .then(res => setData(res.data.categories))
+      .then(res => setDataCategories(res.data.categories))
+  }
+
+  const getDataSubCategories = async () => {
+    await axios.get(`api/categories/getSubCategories?categoryId=${category?.id}`)
+      .then(res => setDataSubCategories(res.data))
+  }
+
+  const getDataObject = async () => {
+    await axios.get(`api/categories/getObjects?subCategoryId=${subCategory?.id}`)
+      .then(res => setDataObject(res.data))
   }
 
   useEffect(() => {
-    getData()
+    getDataObject()
+    setLoading(false)
+  }, [subCategory])
+
+  useEffect(() => {
+    getDataSubCategories()
+    setLoading(false)
+  }, [category])
+
+  useEffect(() => {
+    getDataCategories()
     setLoading(false)
   }, [])
+
 
   console.log(category)
 
@@ -39,9 +63,9 @@ const CreateCardPage = () => {
         <h1 className='createCard-title'>Подать объявление</h1>
       </div>
       <h2 className='createCard-subtitle'>Категория</h2>
-      <SelectFilter page='createAdPage' items={data} name={"Категория"} setValue={setCategory}/>
-      <SelectFilter page='createAdPage' name={"Подкатегория"}/>
-      <SelectFilter page='createAdPage'/>
+      <SelectFilter data={dataCategories} setValue={setCategory} value={category?.name}/>
+      <SelectFilter data={dataSubCategories} setValue={setSubCategory} value={subCategory?.name}/>
+      <SelectFilter data={dataObject} setValue={setObject} value={object?.name}/>
 
       <div className="required technical_characteristic">
         <h1 className='createCard-char_title'>Обязательные характеристики</h1>

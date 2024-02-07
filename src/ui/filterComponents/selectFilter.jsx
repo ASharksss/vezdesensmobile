@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
 import './style.css'
+import SelectFilterPage from "../../pages/SelectFilterPage";
+import ModalTemplate from "../../components/Modal/ModalTemplate";
 
-const SelectFilter = ({page, items, name, setValue}) => {
+const SelectFilter = ({data, setValue, value}) => {
+
+  const [open, setOpen] = useState(false)
+
+
   return (
     <div className='filter_item'>
+      <label className='enterFilter-title'>Название</label>
+      <div className='selectInput' onClick={() => setOpen(true)}>
+        {value ? value : 'Выберите значение...'}
+      </div>
       {
-        page === 'createAdPage' ? null : <label className='enterFilter-title'>Название</label>
+        open ?
+          <ModalTemplate activeModal={open} setActiveModal={setOpen}
+                         children={<SelectFilterPage data={data} setValue={setValue} setOpen={setOpen}/> }/>
+          : null
       }
-
-      <NavLink to='/selectFilterPage' className='noLink'
-               state={{item: items, name: name}}>
-        <div className='selectInput'>Выберите значение...</div>
-      </NavLink>
     </div>
   );
 };
