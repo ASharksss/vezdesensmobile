@@ -121,10 +121,10 @@ const ProfilePage = () => {
             {
               choice === 'active' ?
                 !loading && data.ads.map((item, index) => item.statusAdId === 2 && (
-                  <MyCard item={item} key={`card-${index}`}/>
+                  <MyCard choice={choice} item={item} key={`card-${index}`}/>
                 )) :
-                !loading && data.ads.map((item, index) => item.statusAdId === 3 && (
-                  <MyCard item={item} key={`card-${index}`}/>
+                !loading && data.ads.map((item, index) => item.statusAdId === 4 && (
+                  <MyCard choice={choice} item={item} key={`card-${index}`}/>
                 ))
             }
           </div>

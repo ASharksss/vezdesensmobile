@@ -8,12 +8,18 @@ import {NavLink} from "react-router-dom";
 import ModalTemplate from "../Modal/ModalTemplate";
 import OffCard from "../Modal/OffCard";
 import {pluralRusVariant, STATIC_HOST} from "../../utils";
+import axios from "axios";
 
 const MyCard = ({item, choice}) => {
   const [open, setOpen] = useState(false)
 
   const [activeModal, setActiveModal] = useState(false)
   let items = []
+
+  const publishCard = async (id) => {
+    await axios.get(`api/ad/publish/${id}`)
+      .then(() => window.location.reload())
+  }
 
   if (choice === 'active') {
     items = [
@@ -26,11 +32,11 @@ const MyCard = ({item, choice}) => {
         onClick: () => setActiveModal(true)
       }
     ]
-  } else {
+  } else if (choice === 'archive') {
     items = [
       {
         title: 'Активировать',
-        onClick: null
+        onClick: () => publishCard(item.id)
       },
       {
         title: 'Удалить',
@@ -89,7 +95,7 @@ const MyCard = ({item, choice}) => {
           </div>
         </div>
       </div>
-      <ModalTemplate children={<OffCard/>} activeModal={activeModal} setActiveModal={setActiveModal}/>
+      <ModalTemplate children={<OffCard item={item}/>} activeModal={activeModal} setActiveModal={setActiveModal}/>
     </>
 
 
