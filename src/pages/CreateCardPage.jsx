@@ -5,18 +5,23 @@ import EnterFilter from "../ui/filterComponents/enterFilter";
 import CheckboxFilter from "../ui/filterComponents/CheckboxFilter";
 import CreateEnterFilter from "../ui/filterComponents/createEnterFilter";
 import axios from "axios";
+import ModalTemplate from "../components/Modal/ModalTemplate";
+import SelectFilterPage from "./SelectFilterPage";
 
 const CreateCardPage = () => {
 
   const [dataCategories, setDataCategories] = useState([])
   const [dataSubCategories, setDataSubCategories] = useState([])
   const [dataObject, setDataObject] = useState([])
-
+  const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [enter, setEnter] = useState('')
+  const [input, setInput] = useState('')
 
   const [category, setCategory] = useState(null)
   const [subCategory, setSubCategory] = useState(null)
   const [object, setObject] = useState(null)
+  const [characteristic, setCharacteristic] = useState(null)
 
   const getDataCategories = async () => {
     await axios.get(`api/categories/getCategories`)
@@ -33,23 +38,33 @@ const CreateCardPage = () => {
       .then(res => setDataObject(res.data))
   }
 
-  useEffect(() => {
-    getDataObject()
-    setLoading(false)
-  }, [subCategory])
-
-  useEffect(() => {
-    getDataSubCategories()
-    setLoading(false)
-  }, [category])
+  const getDataCharacteristic = async () => {
+    await axios.get(`api/characteristic/getCharacteristicObject?objectId=${object?.id}`)
+      .then(res => setCharacteristic(res.data))
+  }
 
   useEffect(() => {
     getDataCategories()
     setLoading(false)
   }, [])
 
+  useEffect(() => {
+    setLoading(false)
+    setOpen(false)
+    getDataSubCategories()
+  }, [category])
 
-  console.log(category)
+  useEffect(() => {
+    getDataObject()
+    setOpen(false)
+    setLoading(false)
+  }, [subCategory])
+
+  useEffect(() => {
+    getDataCharacteristic()
+    setOpen(false)
+    setLoading(false)
+  }, [object])
 
   if (loading) {
     return <div>
@@ -63,15 +78,41 @@ const CreateCardPage = () => {
         <h1 className='createCard-title'>Подать объявление</h1>
       </div>
       <h2 className='createCard-subtitle'>Категория</h2>
-      <SelectFilter data={dataCategories} setValue={setCategory} value={category?.name}/>
-      <SelectFilter data={dataSubCategories} setValue={setSubCategory} value={subCategory?.name}/>
-      <SelectFilter data={dataObject} setValue={setObject} value={object?.name}/>
+
+      {/*<div className='filter_item'>/!**/}
+      {/*  <label className='enterFilter-title'>Название</label>*!/*/}
+      {/*  <div className='selectInput' onClick={() => setOpen(true)}>*/}
+      {/*    {category ? category : 'Выберите значение...'}*/}
+      {/*  </div>*/}
+      {/*  {*/}
+      {/*    open ?*/}
+      {/*      <ModalTemplate activeModal={open} setActiveModal={setOpen}*/}
+      {/*                     children={<SelectFilterPage/> }/>*/}
+      {/*      : null*/}
+      {/*  }*/}
+      {/*</div>*/}
+
+      <SelectFilter data={dataCategories} setValue={setCategory} value={category?.name} type={'radio'}/>
+      <SelectFilter data={dataSubCategories} setValue={setSubCategory} value={subCategory?.name} type={'radio'}/>
+      <SelectFilter data={dataObject} setValue={setObject} value={object?.name} type={'radio'}/>
 
       <div className="required technical_characteristic">
         <h1 className='createCard-char_title'>Обязательные характеристики</h1>
-        <CreateEnterFilter/>
-        <SelectFilter/>
-        <CheckboxFilter/>
+        <CreateEnterFilter item={{name: 'Название'}} setValue={setEnter}/>
+
+        {
+          characteristic?.map((item) => item.characteristic.required && (
+            <>
+              {item.characteristic.typeCharacteristic.name === 'enter' &&
+                <CreateEnterFilter item={item.characteristic} setValue={setEnter}/>}
+              {item.characteristic.typeCharacteristic.name === 'checkbox' &&
+                <CheckboxFilter item={item.characteristic.characteristicValues} type={'checkbox'} setValue={setInput}/>}
+              {item.characteristic.typeCharacteristic.name === 'select' &&
+                <SelectFilter data={item.characteristic.characteristicValues} type={'radio'} setValue={setInput}/> }
+            </>
+          ))
+        }
+
       </div>
 
       <div className="additionally technical_characteristic">

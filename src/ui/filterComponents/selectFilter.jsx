@@ -4,7 +4,7 @@ import './style.css'
 import SelectFilterPage from "../../pages/SelectFilterPage";
 import ModalTemplate from "../../components/Modal/ModalTemplate";
 
-const SelectFilter = ({data, setValue, value}) => {
+const SelectFilter = ({data, setValue, value, type}) => {
 
   const [open, setOpen] = useState(false)
 
@@ -18,7 +18,7 @@ const SelectFilter = ({data, setValue, value}) => {
       {
         open ?
           <ModalTemplate activeModal={open} setActiveModal={setOpen}
-                         children={<SelectFilterPage data={data} setValue={setValue} setOpen={setOpen}/> }/>
+                         children={<SelectFilterPage data={data} type={type} setValue={setValue} setOpen={setOpen}/> }/>
           : null
       }
     </div>

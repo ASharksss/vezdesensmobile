@@ -1,20 +1,21 @@
 import React, {useState} from 'react';
 
-const CheckboxFilter = ({item, setValue, setOpen}) => {
-
-
+const CheckboxFilter = ({item, setValue, type = "checkbox"}) => {
   return (
     <div className='filter_item'>
-      {/*     <h1 className='enterFilter-title'>Навзваие</h1>*/}
+      <h1 className='enterFilter-title'>{item?.name}</h1>
       <div className="flex items-center checkbox_item">
-        <input type="radio" id={item?.id} name='category'
-               value={item?.id} className='checkbox_input'
-               onChange={() => {
-                 setValue(item)
-                 setOpen(false)
-               }}
-        />
-        <label htmlFor={item?.id} className='checkboxFilter_label'>{item?.name}</label>
+        {item?.map(value => (
+          <>
+            <input type={type} id={value?.id} name='category'
+                   value={value?.id} className='checkbox_input'
+                   onChange={() => {
+                     setValue(value)
+                   }}
+            />
+            <label htmlFor={value?.id} className='checkboxFilter_label'>{value?.name}</label>
+          </>
+        ))}
       </div>
     </div>
   );
