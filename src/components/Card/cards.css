@@ -74,6 +74,7 @@
     width: 325px;
     height: 189px;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 .premium_card-title {
@@ -156,4 +157,9 @@
     font-size: 18px;
     font-family: OpenSansBold;
     color: rgba(255, 255, 255, 1);
+}
+
+.similar_title {
+    font-size: 20px;
+    margin-bottom: 25px;
 }

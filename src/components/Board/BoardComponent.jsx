@@ -15,37 +15,6 @@ const BorderComponent = ({allData, lastElementRef}) => {
     }
   }, [allData])
 
-  const createTable = useMemo(() => {
-    const combined = [];
-    let timeCombined = [];
-
-    allData.forEach((item, index) => {
-      timeCombined.push(
-        <div key={`card-${index}`} ref={index === allData.length - 1 ? lastElementRef : null}>
-          {item.typeAdId === 1 && (
-            <Card
-              classname={'xs'}
-              data={item}
-            />
-          )}
-          {(item.typeAdId === 2 || item.typeAdId === 3) && (
-            <Card
-              classname={item.typeAdId === 2 ? 's' : item.typeAdId === 3 ? 'l' : 's'}
-              data={item}
-            />
-          )}
-        </div>
-      );
-
-      if ((index + 1) % 5 === 0 || index === allData.length - 1) {
-        combined.push([...timeCombined]);
-        timeCombined = [];
-      }
-    });
-
-    return combined;
-  }, [allData, lastElementRef]);
-
   return (
     <div className='board_page'>
       {data.map((datas, indexDatas) => (

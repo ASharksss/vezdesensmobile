@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import _ from 'lodash';
 import axios from "axios";
 
-export default function useLoadingCard(offset) {
+export default function useLoadingCard(offset, objectId=null) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [data, setData] = useState([])
@@ -20,7 +20,7 @@ export default function useLoadingCard(offset) {
     axios({
       method: 'GET',
       url: '/api/board/getAllMobile',
-      params: {offset},
+      params: {offset, objectId},
       cancelToken: new axios.CancelToken(c => cancel = c)
     }).then(res => {
       setData(prevState => {

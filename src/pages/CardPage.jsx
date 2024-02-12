@@ -54,6 +54,12 @@ const CardPage = () => {
     }
   }, [data, isLoading])
 
+  const handleShowSimilar = () => navigate({
+    pathname: '/similarPage',
+    search: `?object=${data?.object.id}`,
+  })
+
+
   if (isLoading) {
     return <PreloaderComponent/>
   } else {
@@ -64,11 +70,11 @@ const CardPage = () => {
             <div className="flex space-between">
               <img src={back_icon} alt="" onClick={() => navigate(-1 || '/')}/>
               <div className="flex">
+                  <div className='card_icon'>
+                <FavoriteBtn id={data.id} isFavorite={data.favorites} userData={data?.user}/>
+              </div>
                 <img className='card_icon' src={share_icon} alt=""/>
-                <div className='card_icon'>
-                  <FavoriteBtn id={data.id} isFavorite={data.favorites} userData={data?.user}/>
-                </div>
-                {/*<img className='card_icon' src={favorite_icon} alt=""/>*/}
+
               </div>
             </div>
           </div>
@@ -84,7 +90,7 @@ const CardPage = () => {
               <CarouselComponent dataImages={data.imageAds}/>
             </Fancybox>
 
-            <SimilarBtn/>
+            <SimilarBtn handleClick={handleShowSimilar}/>
           </div>
           <h2 className='card_price'>{data.price}</h2>
           <h1 className='card_title'>{data.title}</h1>

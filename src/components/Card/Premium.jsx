@@ -3,14 +3,12 @@ import premium_img from '../../asserts/cards/premium_img.png'
 import BlackBtn from "../../ui/BlackBtn";
 import WhiteBtn from "../../ui/WhiteBtn";
 import {NavLink} from "react-router-dom";
-import favorite from "../../asserts/board/favorite.svg";
 import phone_icon from "../../asserts/board/phone_icon.svg";
 import message_icon from "../../asserts/board/message_icon.svg";
 import FavoriteBtn from "../../ui/favoriteBtn";
 import {relativeDate, STATIC_HOST} from "../../utils";
 
 const Premium = ({data}) => {
-  console.log(data)
   return (
     <div className='premium_card'>
 

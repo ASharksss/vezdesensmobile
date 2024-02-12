@@ -75,14 +75,13 @@ const CategoryPage = () => {
             ))
           }
         </div>
-        <Long/>
-        <div className="grid">
+    {/*    <div className="grid">
           <Card/>
           <Card/>
           <Card/>
           <Card/>
         </div>
-        <Card classname={'l'}/>
+        <Card classname={'l'}/>*/}
       </div>
 
     </div>

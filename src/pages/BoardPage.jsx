@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import _ from 'lodash';
 import './pages.css'
-import Card from "../components/Card/Card";
 import Long from "../components/Card/Long";
 import Premium from "../components/Card/Premium";
 import {useLocation} from "react-router";
