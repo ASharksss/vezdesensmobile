@@ -6,10 +6,10 @@ import axios from "axios";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router";
 
-const FavoriteBtn = ({id, isFavorite}) => {
+const FavoriteBtn = ({id, isFavorite, userData}) => {
 
   const [red, setRed] = useState(false)
-  const {isAuth} = useSelector(state => state.user)
+  const {isAuth, user} = useSelector(state => state.user)
   const navigate = useNavigate()
   const handleClick = async () => {
     if (!isAuth) return navigate('/auth')
@@ -36,6 +36,8 @@ const FavoriteBtn = ({id, isFavorite}) => {
       }
     }
   }, [id])
+
+  if (user.items.id === userData?.id) return;
 
   return (
     <div className='card_favorite_icon' onClick={() => handleClick()}>

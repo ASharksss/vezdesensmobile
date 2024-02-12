@@ -7,19 +7,23 @@ import favorite from "../../asserts/board/favorite.svg";
 import phone_icon from "../../asserts/board/phone_icon.svg";
 import message_icon from "../../asserts/board/message_icon.svg";
 import FavoriteBtn from "../../ui/favoriteBtn";
+import {relativeDate, STATIC_HOST} from "../../utils";
 
-const Premium = () => {
+const Premium = ({data}) => {
+  console.log(data)
   return (
     <div className='premium_card'>
-      <NavLink to='/cardPage' className='noLink'>
-        <span className='card_favorite'><FavoriteBtn/></span>
-        <img src={premium_img} alt="" className='premium_card-img'/>
+
+      <span className='card_favorite'><FavoriteBtn id={data?.id} isFavorite={data?.favorites} userData={data?.user}/></span>
+
+      <NavLink to={`/cardPage/${data?.id}`} className='noLink'>
+        <img src={`${STATIC_HOST}/${data?.previewImageAds[0]?.name}`} alt="" className='premium_card-img'/>
         <div className='flex space-between items-center'>
           <div className="premium_card-info">
-            <h1 className='premium_card-title'>Массажёр для глаз</h1>
-            <h1 className='premium_card-address'>Казань, Проспект Победы</h1>
-            <h1 className='premium_card-time'>Сегодня 11:32</h1>
-            <h1 className='premium_card-price'>5000 ₽</h1>
+            <h1 className='premium_card-title'>{data?.title}</h1>
+            <h1 className='premium_card-address'>{data?.address}</h1>
+            <h1 className='premium_card-time'>{relativeDate(new Date(data?.createdAt))}</h1>
+            <h1 className='premium_card-price'>{data?.price}</h1>
           </div>
           <div className="flex items-center premium_card-btn">
             <WhiteBtn size={'w-54px'} children={<img src={message_icon} alt="" className='icon'/>}/>

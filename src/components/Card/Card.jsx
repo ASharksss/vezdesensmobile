@@ -21,7 +21,7 @@ const Card = ({classname, data}) => {
         classname === 'xs' ?
           <div className='card'>
             <div className='card_favorite'>
-              <FavoriteBtn id={data?.id} isFavorite={data?.favorites}/>
+              <FavoriteBtn id={data?.id} isFavorite={data?.favorites} userData={data?.user}/>
             </div>
 
 						<NavLink to={`/cardPage/${data?.id}`} className='noLink'>
@@ -40,7 +40,7 @@ const Card = ({classname, data}) => {
           classname === 's' ?
             <div className='plus_card'>
 
-                <span className='card_favorite'><FavoriteBtn id={data?.id} isFavorite={data?.favorites}/></span>
+                <span className='card_favorite'><FavoriteBtn id={data?.id} isFavorite={data?.favorites} userData={data?.user}/></span>
                 <NavLink to={`/cardPage/${data?.id}`} className='noLink'>
                   <div className="plus_card_img">
                   <img src={`${STATIC_HOST}/${data?.previewImageAds[0]?.name}`} alt=""
@@ -56,7 +56,7 @@ const Card = ({classname, data}) => {
             </div> : classname === 'l' ?
               <div className='vip_card'>
 
-                  <span className='card_favorite'><FavoriteBtn id={data?.id} isFavorite={data?.favorites}/></span>
+                  <span className='card_favorite'><FavoriteBtn id={data?.id} isFavorite={data?.favorites} userData={data?.user}/></span>
                   <NavLink to={`/cardPage/${data?.id}`} className='noLink'>
                     <img src={`${STATIC_HOST}/${data?.previewImageAds[0]?.name}`} alt=""
                        className='vip_card-img'/>

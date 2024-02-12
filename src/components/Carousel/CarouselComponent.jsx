@@ -73,7 +73,7 @@ const CarouselComponent = ({dataImages=[]}) => {
 			onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
 				{dataImages.map((item, index) => (
 					<div className="panel" key={`carousel-${index}`}>
-						<img src={`${STATIC_HOST}/${item.name}`} alt={item.name}/>
+						<img src={`${STATIC_HOST}/${item.name}`} alt={item.name} data-fancybox="gallery"/>
 					</div>
 				))}
 			</div>

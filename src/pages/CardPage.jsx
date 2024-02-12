@@ -17,8 +17,12 @@ import CarouselComponent from "../components/Carousel/CarouselComponent";
 import PreloaderComponent from "../components/Preloader/PreloaderComponent";
 import SimilarBtn from "../ui/SimilarBtn";
 import FavoriteBtn from "../ui/favoriteBtn";
+import {useSelector} from "react-redux";
+import Fancybox from "../components/fancybox";
 
 const CardPage = () => {
+  const {isAuth} = useSelector(state => state.user)
+
   const navigate = useNavigate()
   const {id} = useParams()
 
@@ -62,7 +66,7 @@ const CardPage = () => {
               <div className="flex">
                 <img className='card_icon' src={share_icon} alt=""/>
                 <div className='card_icon'>
-                  <FavoriteBtn id={data.id} isFavorite={data.favorites}/>
+                  <FavoriteBtn id={data.id} isFavorite={data.favorites} userData={data?.user}/>
                 </div>
                 {/*<img className='card_icon' src={favorite_icon} alt=""/>*/}
               </div>
@@ -71,7 +75,15 @@ const CardPage = () => {
 
             <Breadcrumbs data={data.object}/>
           <div className="card_images">
-            <CarouselComponent dataImages={data.imageAds}/>
+            <Fancybox
+              options={{
+                Carousel: {
+                  infinite: true,
+                },
+              }}>
+              <CarouselComponent dataImages={data.imageAds}/>
+            </Fancybox>
+
             <SimilarBtn/>
           </div>
           <h2 className='card_price'>{data.price}</h2>
@@ -86,9 +98,10 @@ const CardPage = () => {
 						  <span className='cardPage_average'>{average}</span>
 						  <StarComponent average={average} width={23}/>
 						</span>
+              {isAuth ?
               <NavLink to='/review' className='noLink' state={{userId: data.user.id}}>
                 <span className='card_page-count'>{data.user?.ratings.length} отзыв</span>
-              </NavLink>
+              </NavLink> : null}
             </div>
           </div>
           <span className='card_seller-address'>

@@ -1,8 +1,9 @@
 .card_favorite {
     z-index: 3;
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: -1px;
+    right: -10px;
+    padding: 20px;
 }
 
 .card {
@@ -72,6 +73,7 @@
 .premium_card-img {
     width: 325px;
     height: 189px;
+    border-radius: 20px;
 }
 
 .premium_card-title {
