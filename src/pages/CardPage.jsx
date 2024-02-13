@@ -70,16 +70,16 @@ const CardPage = () => {
             <div className="flex space-between">
               <img src={back_icon} alt="" onClick={() => navigate(-1 || '/')}/>
               <div className="flex">
-                  <div className='card_icon'>
-                <FavoriteBtn id={data.id} isFavorite={data.favorites} userData={data?.user}/>
-              </div>
+                <div className='card_icon'>
+                  <FavoriteBtn id={data.id} isFavorite={data.favorites} userData={data?.user}/>
+                </div>
                 <img className='card_icon' src={share_icon} alt=""/>
 
               </div>
             </div>
           </div>
 
-            <Breadcrumbs data={data.object}/>
+          <Breadcrumbs data={data.object}/>
           <div className="card_images">
             <Fancybox
               options={{
@@ -105,9 +105,9 @@ const CardPage = () => {
 						  <StarComponent average={average} width={23}/>
 						</span>
               {isAuth ?
-              <NavLink to='/review' className='noLink' state={{userId: data.user.id}}>
-                <span className='card_page-count'>{data.user?.ratings.length} отзыв</span>
-              </NavLink> : null}
+                <NavLink to='/review' className='noLink' state={{userId: data.user.id}}>
+                  <span className='card_page-count'>{data.user?.ratings.length} отзыв</span>
+                </NavLink> : null}
             </div>
           </div>
           <span className='card_seller-address'>
@@ -116,9 +116,9 @@ const CardPage = () => {
 
           <div className="card_btns">
             <button className='black_btn'><img src={phone_icon} alt=""/></button>
-           <NavLink to='/dialog'>
-             <button className='white_btn'><img src={message_icon} alt=""/></button>
-           </NavLink>
+            <NavLink to='/dialog'>
+              <button className='white_btn'><img src={message_icon} alt=""/></button>
+            </NavLink>
 
           </div>
 

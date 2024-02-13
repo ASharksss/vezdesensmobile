@@ -57,6 +57,10 @@
     object-fit: cover;
 }
 
+.card_page-img {
+    width: 100%;
+}
+
 .card_title {
     font-size: 24px;
     margin-top: 20px;
@@ -196,6 +200,7 @@
     width: 69px;
     height: 69px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .profile_info-name {

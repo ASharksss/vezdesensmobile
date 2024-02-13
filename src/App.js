@@ -104,6 +104,7 @@ function App() {
           <Route path='/filterPage' element={<FilterPage/>}/>
           <Route path='/selectFilterPage' element={<SelectFilterPage/>}/>
           <Route path='/createAd' element={<CreateCardPage/>}/>
+          <Route path='/efitProfile/:id' element={<CreateCardPage/>}/>
         </Routes>
 
       </BrowserRouter>
