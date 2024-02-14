@@ -20,7 +20,7 @@ import Registration from "./pages/Registration";
 import ReviewPage from "./pages/ReviewPage";
 import AddReviewPage from "./pages/AddReviewPage";
 import {useEffect, useState} from "react";
-import {getCookie, isOnline} from "./utils";
+import {getCookie, isOnline, useTabletDetection} from "./utils";
 import {fetchAuth} from "./redux/slices/AuthSlice";
 import SimilarPage from "./pages/SimilarPage";
 import FavoritePage from "./pages/FavoritePage";
@@ -39,6 +39,7 @@ function App() {
 
   const loadingIsAuth = user.status === 'loading'
 
+  const isTablet = useTabletDetection(); //првоерка размера
   useEffect(() => {
     function checkAuth() {
       const checkSession = getCookie('session')
@@ -76,6 +77,10 @@ function App() {
           <Route element={<LayoutAll/>}>
             <Route path='/' element={<BoardPage/>}/>
             <Route path='/similarPage' element={<SimilarPage/>}/>
+            {isTablet ? 
+                      <Route path='/cardPage/:id' element={<CardPage/>}/>
+              : console.log('err')
+          }
           </Route>
 
           <Route element={<LayoutFooter/>}>

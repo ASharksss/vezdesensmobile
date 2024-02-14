@@ -54,6 +54,7 @@ body {
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
+    font-family: 'OpenSansRegular';
 }
 
 /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
@@ -95,7 +96,6 @@ select {
         scroll-behavior: auto !important;
     }
 }
-
 
 input {
     border: none;
@@ -173,3 +173,26 @@ button {
 .pd-14 {
     padding: 14px;
 }
+
+.pd-l-30{
+    padding-left: 30px;
+}
+
+
+@media (min-width: 768px){
+    .container{
+      max-width: 768px;
+      overflow: hidden;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .wrapper {
+        width: auto;
+        padding: 0px 30px;
+        margin: 0 auto;
+    
+    }
+    .img_25 {
+        width:25px;
+    }
+  }

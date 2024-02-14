@@ -10,7 +10,7 @@ const FavoriteItem = ({data}) => {
     <div className='favorite_item'>
 
       <div className="flex">
-
+    
         <img src={`${STATIC_HOST}/${data.ad?.previewImageAds[0]?.name}`} alt="" className='favorite_image'/>
         <div className="favorite_info">
           <div className="flex items-center center">

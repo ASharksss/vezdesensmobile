@@ -8,7 +8,7 @@ import message_icon from "../../asserts/board/message_icon.svg";
 import FavoriteBtn from "../../ui/favoriteBtn";
 import {relativeDate, STATIC_HOST} from "../../utils";
 
-const Premium = ({data}) => {
+const PremiumTablet = ({data}) => {
   return (
     <div className='premium_card'>
 
@@ -19,11 +19,13 @@ const Premium = ({data}) => {
         <div className='flex space-between items-center'>
           <div className="premium_card-info">
             <h1 className='premium_card-title'>{data?.title}</h1>
+            <div className='flex'>
             <h1 className='premium_card-address'>{data?.address}</h1>
-            <h1 className='premium_card-time'>{relativeDate(new Date(data?.createdAt))}</h1>
-            <h1 className='premium_card-price'>{data?.price}<span style={{fontFamily: 'Arial'}}> ₽</span></h1>
+            <h1 className='premium_card-time pd-l-30'>{relativeDate(new Date(data?.createdAt))}</h1>
+            </div>
           </div>
           <div className="flex items-center premium_card-btn">
+            <h1 className='premium_card-price'>{data?.price}<span style={{fontFamily: 'Arial'}}> ₽</span></h1>
             <WhiteBtn size={'w-54px'} children={<img src={message_icon} alt="" className='icon'/>}/>
             <BlackBtn size={'w-54px'} children={<img src={phone_icon} alt="" className='icon'/>}/>
           </div>
@@ -35,4 +37,4 @@ const Premium = ({data}) => {
   );
 };
 
-export default Premium;
+export default PremiumTablet;

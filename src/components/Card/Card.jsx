@@ -33,7 +33,7 @@ const Card = ({classname, data}) => {
                 <h1 className='card_info-title'>{data?.title}</h1>
                 <h2 className='card_info-address'>{data?.address}</h2>
                 <h2 className='card_info-time'>{relativeDate(new Date(data?.createdAt))}</h2>
-                <h1 className='card_info-price'>{numberWithSpaces(parseInt(data?.price))}</h1>
+                <h1 className='card_info-price'>{numberWithSpaces(parseInt(data?.price))} <span style={{fontFamily: 'Arial'}}> ₽</span></h1>
               </div>
             </NavLink>
           </div> :
@@ -50,7 +50,7 @@ const Card = ({classname, data}) => {
                   <h1 className='plus_card_info-title'>{data?.title}</h1>
                   <h2 className='plus_card_info-address'>{data?.address}</h2>
                   <h2 className='plus_card_info-time'>{relativeDate(new Date(data?.createdAt))}</h2>
-                  <h1 className='plus_card_info-price'>{numberWithSpaces(parseInt(data?.price))}</h1>
+                  <h1 className='plus_card_info-price'>{numberWithSpaces(parseInt(data?.price))}<span style={{fontFamily: 'Arial'}}> ₽</span></h1>
                 </div>
               </NavLink>
             </div> : classname === 'l' ?
@@ -65,7 +65,7 @@ const Card = ({classname, data}) => {
                       <h1 className='premium_card-title'>{data?.title}</h1>
                       <h1 className='premium_card-address'>{data?.address}</h1>
                       <h1 className='premium_card-time'>{relativeDate(new Date(data?.createdAt))}</h1>
-                      <h1 className='premium_card-price'>{numberWithSpaces(parseInt(data?.price))}</h1>
+                      <h1 className='premium_card-price'>{numberWithSpaces(parseInt(data?.price))}<span style={{fontFamily: 'Arial'}}> ₽</span></h1>
                     </div>
                     <div className="flex items-center premium_card-btn">
                       <WhiteBtn size={'w-54px'}

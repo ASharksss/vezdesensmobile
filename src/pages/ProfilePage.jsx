@@ -7,7 +7,7 @@ import MyCard from "../components/MyCard/MyCard";
 import StarComponent from "../components/ReviewComponents/StarComponents";
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import {AVATAR_HOST} from "../utils";
+import {AVATAR_HOST, useTabletDetection} from "../utils";
 import MoreSubMenu from "../ui/moreSubMenu";
 
 
@@ -35,6 +35,7 @@ const ProfilePage = () => {
     }
   ]
 
+  const isTablet = useTabletDetection(); //првоерка размера
 
   const getData = async () => {
     await axios.get(`/api/user/getOneUser/${id}`)
@@ -110,13 +111,30 @@ const ProfilePage = () => {
 
             <div className="slider"></div>
             <div className='flex space-between items-center'>
-              <div className='profile_search flex space-between'>
-                <input type="text" placeholder='Поиск'/>
-                <img src={search_icon} alt=""/>
-              </div>
-              <div>
-                <img src={filter_icon} alt=""/>
-              </div>
+              {
+                isTablet ? (
+                  <>
+                  <div>
+                    <img src={filter_icon} alt=""/>
+                  </div>
+                  <div className='profile_search flex space-between'>
+                  <input type="text" placeholder='Поиск'/>
+                  <img src={search_icon} alt=""/>
+                   </div>
+                </>
+                ) : (
+                <>
+                  <div className='profile_search flex space-between'>
+                  <input type="text" placeholder='Поиск'/>
+                  <img src={search_icon} alt=""/>
+                </div>
+                <div>
+                  <img src={filter_icon} alt=""/>
+                </div>
+                </>
+                )
+              }
+              
             </div>
 
             {

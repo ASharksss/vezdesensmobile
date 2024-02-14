@@ -58,5 +58,45 @@
     margin-right: 7px;
 }
 
+@media (min-width: 768px){
 
+    .myCard_img {
+        width: 166px;
+        margin-right: 15px;
+    }
+    
+    .myCard_img-image {
+        width: 166px;
+        height: 223px;
+        border-radius: 20px;
+        object-fit: cover;
+    }
+    .myCard_info{
+        width: -webkit-fill-available;
+    }
+        .myCard_info-dop {
+            width: auto;
+        }
+        .myCard_info-title {
+            font-size: 24px;
+            font-family: 'OpenSansBold';
+            font-weight: 600;
+        }
+        
+        .myCard_info-price {
+            font-family: 'OpenSansBold';
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .myCard_info-main {
+            margin-top: 12px;
+        }
+    .f_column{
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+    }
+        
 
+    
+}

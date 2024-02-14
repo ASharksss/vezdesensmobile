@@ -1,13 +1,16 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState, Suspense} from 'react';
+import { Spinner } from 'flowbite-react';
 import _ from 'lodash';
 import './pages.css'
 import Long from "../components/Card/Long";
 import Premium from "../components/Card/Premium";
+import PremiumTablet from '../components/Card/PremiumTablet'
 import {useLocation} from "react-router";
 import useLoadingCard from "../redux/hooks/useLoadingCard";
 import BorderComponent from "../components/Board/BoardComponent";
-import {getStaticAd, STATIC_HOST} from "../utils";
+import {getStaticAd, STATIC_HOST} from "../utils"; //improt утилиты
 import axios from "axios";
+import {useTabletDetection} from "../utils.js"
 
 const BoardPage = () => {
   const location = useLocation();
@@ -20,6 +23,8 @@ const BoardPage = () => {
   const [premium, setPremium] = useState([])
 
   const {loading, data, hasMore} = useLoadingCard(offset)
+  
+  const isTablet = useTabletDetection(); //првоерка размера
 
   const getPremium = async () => {
     await axios.get('api/board/getPremium')
@@ -66,7 +71,12 @@ const BoardPage = () => {
   return (
     <div>
       <div className="board_page">
+        {/* Меняю размер в зависимости от разрешения экрана  */}
+       {isTablet ? (
+        <PremiumTablet data={premium[Math.floor(Math.random(premium.length))]}/>
+       ) : (
         <Premium data={premium[Math.floor(Math.random(premium.length))]}/>
+       )} 
         {
           staticAd[0]?.imageName !== undefined ?
             <Long image={`${STATIC_HOST}/promotion/${staticAd[0]?.imageName}`} href={staticAd[1]?.href}/>

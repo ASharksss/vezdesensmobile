@@ -12,13 +12,14 @@ import {NavLink, useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
 import StarComponent from "../components/ReviewComponents/StarComponents";
 import axios from "axios";
-import {pluralRusVariant, relativeDate} from "../utils";
+import {pluralRusVariant, relativeDate, getStaticAd, STATIC_HOST, useTabletDetection} from "../utils";
 import CarouselComponent from "../components/Carousel/CarouselComponent";
 import PreloaderComponent from "../components/Preloader/PreloaderComponent";
 import SimilarBtn from "../ui/SimilarBtn";
 import FavoriteBtn from "../ui/favoriteBtn";
 import {useSelector} from "react-redux";
 import Fancybox from "../components/fancybox";
+import Long from '../components/Card/Long'
 
 const CardPage = () => {
   const {isAuth} = useSelector(state => state.user)
@@ -29,7 +30,14 @@ const CardPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState({})
   const [average, setAverage] = useState(0)
+  const [staticAd, setStaticAd] = useState([])
 
+  const isTablet = useTabletDetection(); //првоерка размера
+  // Для банера 
+  useEffect(() => {
+    getStaticAd(1, setStaticAd)
+  }, [])
+  
   const getData = async () => {
     await axios.get(`api/ad/getOneAd/${id}`)
       .then(res => {
@@ -66,6 +74,13 @@ const CardPage = () => {
     return (
       <div className='card_page'>
         <div className='wrapper'>
+        
+        {
+        isTablet && staticAd[0]?.imageName !== undefined ?
+          <Long image={`${STATIC_HOST}/promotion/${staticAd[0]?.imageName}`} href={staticAd[1]?.href}/>
+          : null
+        }
+
           <div className="card_header">
             <div className="flex space-between">
               <img src={back_icon} alt="" onClick={() => navigate(-1 || '/')}/>
@@ -92,8 +107,8 @@ const CardPage = () => {
 
             <SimilarBtn handleClick={handleShowSimilar}/>
           </div>
-          <h2 className='card_price'>{data.price}</h2>
           <h1 className='card_title'>{data.title}</h1>
+          <h2 className='card_price' >{data.price} <span style={{fontFamily: 'Arial'}}>₽</span></h2>
 
           <div className="card_seller_info">
             <NavLink to={`/profilePage/${data.user.id}`} className='noLink'>

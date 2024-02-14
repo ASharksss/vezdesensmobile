@@ -70,6 +70,7 @@
 .card_price {
     font-size: 32px;
     font-weight: bold;
+    font-family: 'OpenSansBold';
 }
 
 .card_seller-title {
@@ -697,6 +698,91 @@
 .sizeCard {
     margin-top: 50px;
 }
+
+@media (min-width: 768px){
+    .board_page {
+        margin: 15px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .profile_search {
+        width: -webkit-fill-available;
+        margin: 0 10px 0 0;
+        height: 47px;
+        background-color: rgba(236, 236, 236, 1);
+        border-radius: 10px;
+        margin-top: 35px;
+        margin-bottom: 30px;
+        padding: 13px 30px;
+    }
+    .profile_info-name {
+        font-size: 20px;
+    }
+    .profile_info-phone {
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .profile_info-img {
+        width: 90px;
+        height: 90px;
+
+    }
+    
+    /* Card  */
+
+    .card_title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .card_price {
+        font-size: 38px;
+        font-weight: 700;
+        font-family: 'OpenSansBold';
+    }
+
+    .card_seller-title {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .card_page-count{
+        font-size: 18px;
+    }
+    .card_seller-address{
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .card_description-title{
+        font-family: 'OpenSansBold';
+        font-weight: 700;
+        font-size: 24px;
+    }
+    .card_description-text{
+        font-size: 14px;
+        font-weight: 400;
+    }
+    .card_statistic-text{
+        font-weight: 400;
+        font-size: 14px;
+    }
+    .card_backbtn {
+        font-family: 'OpenSansBold';
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .profile_cards-title {
+        font-family: 'OpenSansBold';
+        font-size: 24px;
+        font-weight: 700;
+    }    
+  }
 
 
 

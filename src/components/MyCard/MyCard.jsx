@@ -62,22 +62,25 @@ const MyCard = ({item, choice}) => {
                    className='myCard_img-image'/>
             </div>
           </NavLink>
-          <div className="myCard_info">
-            <div className="myCard_info-dop flex space-between">
-              <span className='myCard_info-type'>{item.typeAd.name}</span>
-              <img src={dots} alt="" onClick={() => setOpen(!open)}/>
-            </div>
-            {
-              open ?
-                <MoreSubMenu items={items} setOpen={setOpen}/> : null
-            }
-            <NavLink to={`/cardPage/${item.id}`} className='noLink'>
-              <div className="myCard_info-main">
-                <h1 className='myCard_info-title'>{item.title}</h1>
-                <h1 className='myCard_info-price'>{item.price}</h1>
+          <div className="myCard_info f_column">
+            <div className='for_betterFlex'>
+              <div className="myCard_info-dop flex space-between">
+                <span className='myCard_info-type'>{item.typeAd.name}</span>
+                <img src={dots} alt="" onClick={() => setOpen(!open)}/>
               </div>
-
-              <div className="myCard_info-footer">
+              {
+                open ?
+                  <MoreSubMenu items={items} setOpen={setOpen}/> : null
+              }
+              <NavLink to={`/cardPage/${item.id}`} className='noLink'>
+                <div className="myCard_info-main">
+                  <h1 className='myCard_info-title'>{item.title}</h1>
+                  <h1 className='myCard_info-price'>{item.price}</h1>
+                </div>
+              </NavLink>
+            </div>
+            <NavLink to={`/cardPage/${item.id}`} className='noLink'>
+            <div className="myCard_info-footer">
                 <span className=''>Осталось: </span><span
                 className=''>{new Date(new Date(item.dateEndActive) - new Date()).getDate()} {["день", "дня", "дней"][pluralRusVariant(new Date(new Date(item.dateEndActive) - new Date()).getDate())]}</span>
                 <div className="myCard_info-icons flex">
@@ -90,7 +93,7 @@ const MyCard = ({item, choice}) => {
                     <span>{item.views}</span>
                   </div>
                 </div>
-              </div>
+            </div>
             </NavLink>
           </div>
         </div>
