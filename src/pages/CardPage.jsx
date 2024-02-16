@@ -67,6 +67,24 @@ const CardPage = () => {
     search: `?object=${data?.object.id}`,
   })
 
+  const isGroup = function() {
+    return data.adCharacteristicSelects.length === 0 && data.adCharacteristicInputs.length === 0 ? 
+    false : true   
+  }
+  
+  const groupedCharacteristics = {};
+  if (data && data.adCharacteristicSelects) {
+    data.adCharacteristicSelects.forEach((item) => {
+      const { name } = item.characteristic;
+      if (!groupedCharacteristics.hasOwnProperty(name)) {
+        groupedCharacteristics[name] = [];
+      }
+      groupedCharacteristics[name].push(item.characteristicValue.name);
+      
+    });
+  }
+  
+
 
   if (isLoading) {
     return <PreloaderComponent/>
@@ -143,6 +161,40 @@ const CardPage = () => {
 							{data.description}
 						</pre>
           </div>
+          { isGroup() ? (
+
+          
+          <div className="card_сharacteristics">
+            <h1 className="card_сharacteristics-title">Характеристики</h1>
+              <div className='card_сharacteristics-child'>
+                {
+                  data.adCharacteristicInputs.map((item, index) => (
+                    <ul className='сharacteristics_child-flex'>
+                      <li className='_child-flex-title'>
+                        <b  key={index}>{item.characteristic.name}:&nbsp;</b>
+                        <span key={index}>{item.value}</span>
+                      </li>
+                    </ul>
+                  ))
+                }
+              </div>
+              <div className='card_сharacteristics-child'>
+              {Object.entries(groupedCharacteristics).map(([characteristic, values]) => (
+              <ul className='сharacteristics_child-flex' key={characteristic}>
+                <li className='_child-flex-title'>
+                  <b>{characteristic}:&nbsp;</b>
+                  {values.map((value, index) => (
+                    <span key={index}>{value}{values.length > 1? "; " : ""}</span>
+                  ))}
+                </li>
+              </ul>
+            ))}
+              </div>
+          </div>
+          ) : (
+            <>
+            </>
+            )}
           <div className="card_backbtn">
             <Backbtn/>
           </div>

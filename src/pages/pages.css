@@ -699,6 +699,18 @@
     margin-top: 50px;
 }
 
+/* Характеристики  */
+
+/* .сharacteristics_child-flex{
+    display: flex;
+} */
+/* ._child-flex-value{
+    display: flex;
+} */
+.card_сharacteristics-title{
+    margin-bottom: 15px;
+}
+
 @media (min-width: 768px){
     .board_page {
         margin: 15px;

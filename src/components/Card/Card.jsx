@@ -43,7 +43,7 @@ const Card = ({classname, data}) => {
                 <span className='card_favorite'><FavoriteBtn id={data?.id} isFavorite={data?.favorites} userData={data?.user}/></span>
                 <NavLink to={`/cardPage/${data?.id}`} className='noLink'>
                   <div className="plus_card_img">
-                  <img src={`${STATIC_HOST}/${data?.previewImageAds[0]?.name}`} alt=""
+                  <img src={`${STATIC_HOST}/${data?.commercialImageAds[0]?.name}`} alt=""
                        className='plus_card_img-image'/>
                 </div>
                 <div className="plus_card_info">
@@ -58,7 +58,7 @@ const Card = ({classname, data}) => {
 
                   <span className='card_favorite'><FavoriteBtn id={data?.id} isFavorite={data?.favorites} userData={data?.user}/></span>
                   <NavLink to={`/cardPage/${data?.id}`} className='noLink'>
-                    <img src={`${STATIC_HOST}/${data?.previewImageAds[0]?.name}`} alt=""
+                    <img src={`${STATIC_HOST}/${data?.commercialImageAds[0]?.name}`} alt=""
                        className='vip_card-img'/>
                   <div className='flex space-between items-center'>
                     <div className="premium_card-info">
