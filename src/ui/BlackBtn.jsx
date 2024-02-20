@@ -7,7 +7,6 @@ const BlackBtn = ({size, children, type, btnType='button'}) => {
     <div>
       <button type={btnType} className={'phone_btn ' + size}>
         <span className={type}>{children}</span>
-
       </button>
     </div>
   );

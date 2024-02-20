@@ -5,10 +5,12 @@ import search_icon from '../asserts/icons/search.svg'
 import filter_icon from '../asserts/icons/filter.svg'
 import MyCard from "../components/MyCard/MyCard";
 import StarComponent from "../components/ReviewComponents/StarComponents";
-import {useParams} from "react-router-dom";
+import {Navigate, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
-import {AVATAR_HOST, useTabletDetection} from "../utils";
+import {AVATAR_HOST, getCookie, useTabletDetection} from "../utils";
 import MoreSubMenu from "../ui/moreSubMenu";
+import { useSelector } from 'react-redux';
+import PreloaderComponent from '../components/Preloader/PreloaderComponent';
 
 
 const ProfilePage = () => {
@@ -20,10 +22,14 @@ const ProfilePage = () => {
   const [average, setAverage] = useState(0)
   const [choice, setChoice] = useState('active')
   const [openSubMenu, setOpenSubMenu] = useState(false)
+  const navigate = useNavigate();
+
+  const {user} = useSelector(state => state.user)
+
   let items = [
     {
       title: 'Редактировать',
-      onClick: null
+      onClick: () => navigate(`/editProfile/${id}`)
     },
     {
       title: 'Помощь',
@@ -35,6 +41,7 @@ const ProfilePage = () => {
     }
   ]
 
+  
   const isTablet = useTabletDetection(); //првоерка размера
 
   const getData = async () => {
@@ -49,7 +56,7 @@ const ProfilePage = () => {
   useEffect(() => {
     setLoading(true)
     getData(data)
-  }, [])
+  }, [id])
 
   // Вычисление средней оценки рейтинга
   useEffect(() => {
@@ -61,13 +68,20 @@ const ProfilePage = () => {
       setAverage(sum !== 0 ? (sum / ratings.length).toFixed(2) : 0)
     }
   }, [data, loading])
+  
 
+  // console.log(data)
+  // console.log(getCookie(profile.data))
 
-  if (loading) {
-    return <div>
-      loading...
-    </div>
+  const isCanEdit = function() {
+    if (user) {
+      return user.items.id === data.id ? true : false 
+     }
   }
+  
+  
+
+  if (loading) return <PreloaderComponent />
   return (
     <div className='container'>
       <div className='profile'>
@@ -83,14 +97,19 @@ const ProfilePage = () => {
                 <p className='profile_info-phone'>{data.phone}</p>
               </div>
             </div>
-            <div className="profile_info-icon" onClick={() => setOpenSubMenu(true)}>
-              <span><img src={dots} alt=""/></span>
-              {
-                openSubMenu ? <div className='profile_dots'>
-                  <MoreSubMenu items={items} setOpen={setOpenSubMenu}/> : null
-                </div> : null
-              }
+            { isCanEdit() ? (
+          <div className="profile_info-icon" onClick={() => setOpenSubMenu(true)}>
+            <span><img src={dots} alt=""/></span>
+            {
+              openSubMenu ? <div className='profile_dots'>
+                <MoreSubMenu items={items} setOpen={setOpenSubMenu}/> : null
+              </div> : null
+            }
             </div>
+            ) : (
+              <></>
+            ) }
+           
 
           </div>
           <div className="profile_reviews flex items-center">

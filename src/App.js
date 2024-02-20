@@ -80,7 +80,7 @@ function App() {
             {isTablet ? 
                       <Route path='/cardPage/:id' element={<CardPage/>}/>
               : console.log('err')
-          }
+            }
           </Route>
 
           <Route element={<LayoutFooter/>}>
@@ -103,13 +103,14 @@ function App() {
           <Route path='/support' element={<SupportPage/>}/>
           <Route path='/subCategory/:id' element={<SubCategoryPage/>}/>
           <Route path='/subCategory/:id/:obId' element={<SubCategoryPage/>}/>
-          <Route path='/editProfile' element={<EditProfilePage/>}/>
+          <Route path='/efitProfile' element={<EditProfilePage/>}/>
           <Route path='/review' element={<ReviewPage/>}/>
           <Route path='/addReview' element={<AddReviewPage/>}/>
           <Route path='/filterPage' element={<FilterPage/>}/>
           <Route path='/selectFilterPage' element={<SelectFilterPage/>}/>
           <Route path='/createAd' element={<CreateCardPage/>}/>
-          <Route path='/efitProfile/:id' element={<CreateCardPage/>}/>
+          
+          <Route path='/editProfile/:id' element={<EditProfilePage/>}/>
         </Routes>
 
       </BrowserRouter>
