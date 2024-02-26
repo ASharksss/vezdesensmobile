@@ -20,6 +20,7 @@ import FavoriteBtn from "../ui/favoriteBtn";
 import {useSelector} from "react-redux";
 import Fancybox from "../components/fancybox";
 import Long from '../components/Card/Long'
+import {shareOnMobile} from "react-mobile-share";
 
 const CardPage = () => {
   const {isAuth} = useSelector(state => state.user)
@@ -37,7 +38,7 @@ const CardPage = () => {
   useEffect(() => {
     getStaticAd(1, setStaticAd)
   }, [])
-  
+
   const getData = async () => {
     await axios.get(`api/ad/getOneAd/${id}`)
       .then(res => {
@@ -67,24 +68,22 @@ const CardPage = () => {
     search: `?object=${data?.object.id}`,
   })
 
-  const isGroup = function() {
-    return data.adCharacteristicSelects.length === 0 && data.adCharacteristicInputs.length === 0 ? 
-    false : true   
+  const isGroup = function () {
+    return data.adCharacteristicSelects.length === 0 && data.adCharacteristicInputs.length === 0 ?
+      false : true
   }
-  
+
   const groupedCharacteristics = {};
   if (data && data.adCharacteristicSelects) {
     data.adCharacteristicSelects.forEach((item) => {
-      const { name } = item.characteristic;
+      const {name} = item.characteristic;
       if (!groupedCharacteristics.hasOwnProperty(name)) {
         groupedCharacteristics[name] = [];
       }
       groupedCharacteristics[name].push(item.characteristicValue.name);
-      
+
     });
   }
-  
-
 
   if (isLoading) {
     return <PreloaderComponent/>
@@ -92,13 +91,12 @@ const CardPage = () => {
     return (
       <div className='card_page'>
         <div className='wrapper'>
-        
-        {
-        isTablet && staticAd[0]?.imageName !== undefined ?
-          <Long image={`${STATIC_HOST}/promotion/${staticAd[0]?.imageName}`} href={staticAd[1]?.href}/>
-          : null
-        }
 
+          {
+            isTablet && staticAd[0]?.imageName !== undefined ?
+              <Long image={`${STATIC_HOST}/promotion/${staticAd[0]?.imageName}`} href={staticAd[1]?.href}/>
+              : null
+          }
           <div className="card_header">
             <div className="flex space-between">
               <img src={back_icon} alt="" onClick={() => navigate(-1 || '/')}/>
@@ -106,8 +104,19 @@ const CardPage = () => {
                 <div className='card_icon'>
                   <FavoriteBtn id={data.id} isFavorite={data.favorites} userData={data?.user}/>
                 </div>
-                <img className='card_icon' src={share_icon} alt=""/>
 
+                <button className='card_icon' onClick={() =>
+                  shareOnMobile(
+                    {
+                      //text: "Hey checkout our package react-mobile-share",
+                      url: window.location.href,
+                      title: document.title,
+                      //images: [imgBase64]
+                    }
+                  )
+                }
+                ><img src={share_icon} alt=""/>
+                </button>
               </div>
             </div>
           </div>
@@ -126,7 +135,7 @@ const CardPage = () => {
             <SimilarBtn handleClick={handleShowSimilar}/>
           </div>
           <h1 className='card_title'>{data.title}</h1>
-          <h2 className='card_price' >{data.price} <span style={{fontFamily: 'Arial'}}>₽</span></h2>
+          <h2 className='card_price'>{data.price} <span style={{fontFamily: 'Arial'}}>₽</span></h2>
 
           <div className="card_seller_info">
             <NavLink to={`/profilePage/${data.user.id}`} className='noLink'>
@@ -161,17 +170,15 @@ const CardPage = () => {
 							{data.description}
 						</pre>
           </div>
-          { isGroup() ? (
-
-          
-          <div className="card_сharacteristics">
-            <h1 className="card_сharacteristics-title">Характеристики</h1>
+          {isGroup() ? (
+            <div className="card_сharacteristics">
+              <h1 className="card_сharacteristics-title">Характеристики</h1>
               <div className='card_сharacteristics-child'>
                 {
                   data.adCharacteristicInputs.map((item, index) => (
                     <ul className='сharacteristics_child-flex'>
                       <li className='_child-flex-title'>
-                        <b  key={index}>{item.characteristic.name}:&nbsp;</b>
+                        <b key={index}>{item.characteristic.name}:&nbsp;</b>
                         <span key={index}>{item.value}</span>
                       </li>
                     </ul>
@@ -179,22 +186,22 @@ const CardPage = () => {
                 }
               </div>
               <div className='card_сharacteristics-child'>
-              {Object.entries(groupedCharacteristics).map(([characteristic, values]) => (
-              <ul className='сharacteristics_child-flex' key={characteristic}>
-                <li className='_child-flex-title'>
-                  <b>{characteristic}:&nbsp;</b>
-                  {values.map((value, index) => (
-                    <span key={index}>{value}{values.length > 1? "; " : ""}</span>
-                  ))}
-                </li>
-              </ul>
-            ))}
+                {Object.entries(groupedCharacteristics).map(([characteristic, values]) => (
+                  <ul className='сharacteristics_child-flex' key={characteristic}>
+                    <li className='_child-flex-title'>
+                      <b>{characteristic}:&nbsp;</b>
+                      {values.map((value, index) => (
+                        <span key={index}>{value}{values.length > 1 ? "; " : ""}</span>
+                      ))}
+                    </li>
+                  </ul>
+                ))}
               </div>
-          </div>
+            </div>
           ) : (
             <>
             </>
-            )}
+          )}
           <div className="card_backbtn">
             <Backbtn/>
           </div>

@@ -28,7 +28,10 @@ import FilterPage from "./pages/FilterPage";
 import SelectFilterPage from "./pages/SelectFilterPage";
 import CreateCardPage from "./pages/CreateCardPage";
 
-axios.defaults.baseURL = "https://backend.vezdesens.ru/"
+
+// axios.defaults.baseURL = "https://backend.vezdesens.ru/"
+// axios.defaults.baseURL = "http://localhost:5000/"
+axios.defaults.baseURL = "http://192.168.1.121:5000/"
 
 function App() {
   const dispatch = useDispatch()

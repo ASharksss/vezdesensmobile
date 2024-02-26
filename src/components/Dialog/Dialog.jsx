@@ -24,7 +24,6 @@ const Dialog = () => {
           </div>
         </div>
       </NavLink>
-
     </div>
 
   );

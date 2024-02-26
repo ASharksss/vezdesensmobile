@@ -33,7 +33,7 @@ const ProfilePage = () => {
     },
     {
       title: 'Помощь',
-      onClick: () => null
+      onClick: () => navigate(`/support`)
     },
     {
       title: 'Выйти',

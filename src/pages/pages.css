@@ -18,7 +18,7 @@
     white-space: nowrap;
 }
 
-.breadcrumbs::-webkit-scrollbar{
+.breadcrumbs::-webkit-scrollbar {
     display: none;
 }
 
@@ -237,9 +237,8 @@
 }
 
 
-#active:checked ~  .profile_card-active,
-#archive:checked ~  .profile_card-archive
-{
+#active:checked ~ .profile_card-active,
+#archive:checked ~ .profile_card-archive {
     color: rgba(7, 12, 32, 1);
 }
 
@@ -663,12 +662,24 @@
     font-size: 20px;
     margin-bottom: 30px;
     margin-top: 25px;
-    margin-left: 20px;
 }
 
-.createCard-subtitle {
+.createCard_categories-subtitle {
     font-size: 20px;
     margin-bottom: 25px;
+}
+
+.createCard_categories-select {
+    width: 325px;
+    height: 47px;
+    background-color: rgba(236, 236, 236, 1);
+    border-radius: 10px;
+    border: none;
+    padding: 12px 20px;
+}
+
+.createCard_categories-select + .createCard_categories-select {
+    margin-top: 15px;
 }
 
 .descriptionCard {
@@ -707,11 +718,11 @@
 /* ._child-flex-value{
     display: flex;
 } */
-.card_сharacteristics-title{
+.card_сharacteristics-title {
     margin-bottom: 15px;
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
     .board_page {
         margin: 15px;
         display: flex;
@@ -730,21 +741,23 @@
         margin-bottom: 30px;
         padding: 13px 30px;
     }
+
     .profile_info-name {
         font-size: 20px;
     }
+
     .profile_info-phone {
         font-size: 16px;
         font-weight: 400;
     }
+
     .profile_info-img {
         width: 90px;
         height: 90px;
 
     }
-    
-    /* Card  */
 
+    /* Card  */
     .card_title {
         font-size: 28px;
         font-weight: 600;
@@ -764,39 +777,51 @@
         font-weight: 600;
     }
 
-    .card_page-count{
+    .card_page-count {
         font-size: 18px;
     }
-    .card_seller-address{
+
+    .card_seller-address {
         font-size: 16px;
         font-weight: 400;
     }
-    .card_description-title{
+
+    .card_description-title {
         font-family: 'OpenSansBold';
         font-weight: 700;
         font-size: 24px;
     }
-    .card_description-text{
+
+    .card_description-text {
         font-size: 14px;
         font-weight: 400;
     }
-    .card_statistic-text{
+
+    .card_statistic-text {
         font-weight: 400;
         font-size: 14px;
     }
+
     .card_backbtn {
         font-family: 'OpenSansBold';
         font-weight: 600;
         font-size: 18px;
     }
+
     .profile_cards-title {
         font-family: 'OpenSansBold';
         font-size: 24px;
         font-weight: 700;
-    }    
-  }
+    }
+}
 
+/* Support Page */
 
+.appeals {
+    padding: 20px 20px;
+}
 
-
-
+.appeals-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
