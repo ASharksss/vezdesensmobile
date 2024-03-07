@@ -15,9 +15,23 @@ const CreateCardPage = () => {
       ...prev,
       [e.target.name]: e.target.value
     }))
+    if (e.target.name === 'category') {
+      setSelectedCategoriesArray((prev) => ({
+        ...prev,
+        subCategory: 0,
+        object: 0
+      }))
+    }
+    if (e.target.name === 'subCategory') {
+      setSelectedCategoriesArray((prev) => ({
+        ...prev,
+        object: 0
+      }))
+    }
   }
 
   useEffect(() => {
+    setCharacterArray([])
     if (selectedCategoriesArray.category !== 0) {
       axios.get(`api/categories/getSubCategories?categoryId=${selectedCategoriesArray.category}`)
         .then(res => {
@@ -40,6 +54,7 @@ const CreateCardPage = () => {
       axios.get(`api/characteristic/getCharacteristicObject?objectId=${selectedCategoriesArray.object}`)
         .then(res => {
           setCharacterArray(res.data)
+          console.log(res.data)
         })
     }
   }, [selectedCategoriesArray])
@@ -68,7 +83,7 @@ const CreateCardPage = () => {
         <div className="column">
           <select className='createCard_categories-select' name='category' value={selectedCategoriesArray.category}
                   onChange={handleChange}>
-            <option value={0} disabled>Выберите подкатегорию...</option>
+            <option value={0} disabled={true}>Выберите подкатегорию...</option>
             {
               categoriesArray.category ? categoriesArray.category.map((item, index) => (
                 <option key={`category-${index}`} value={item.id}>{item.name}</option>
@@ -97,14 +112,73 @@ const CreateCardPage = () => {
         </div>
       </div>
       <div className="createCard_characteristics">
-        <h2>Технические характеристики</h2>
-        {
-          characterArray?.map(character => (
-            <div></div>
-          ))
-        }
 
-        <h2>Дополнительные опции</h2>
+        <h2 className='createCard_characteristics-title'>Технические характеристики</h2>
+        {characterArray?.map(character => {
+          if (character.characteristic.required) {
+            if (character.characteristic.typeCharacteristic.name === 'select') {
+              return (
+                <div>
+                  <label>{character.characteristic.name}</label>
+                  <select className='createCard_select'>
+                    <option value={0}>-</option>
+                    {
+                      character.characteristic.characteristicValues.map(value => (
+                        <option value={value.id}>{value.name}</option>
+                      ))
+                    }
+                  </select>
+                </div>
+              )
+            }
+            if (character.characteristic.typeCharacteristic.name === 'checkbox') {
+              return (
+                <div>
+                  <p>{character.characteristic.name}</p>
+                  <label>{
+                    character.characteristic.characteristicValues.map(value => (
+                      <div className='flex'>
+                        <label id={value.id}>{value.name}</label>
+                        <input type="checkbox" value={value.id}/>
+                      </div>
+                    ))
+                  }</label>
+
+                </div>
+              )
+            }
+            if (character.characteristic.typeCharacteristic.name === 'enter') {
+              return (
+                <div>
+                  <label>{character.characteristic.name}</label>
+                  <input type="text" className='createCard_characteristics-input'/>
+                </div>
+              )
+            }
+          }
+        })}
+
+        <h2 className='createCard_characteristics-title'>Дополнительные опции</h2>
+        {characterArray?.map(character => {
+          if (!character.characteristic.required) {
+            if (character.characteristic.typeCharacteristic.name === 'select') {
+              return (
+                <div>
+                  <label>{character.characteristic.name}</label>
+                  <select className='createCard_select'>
+                    <option value="" disabled>-</option>
+                    {
+                      character.characteristic.characteristicValues.map(value => (
+                        <option value={value.id}>{value.name}</option>
+                      ))
+                    }
+                  </select>
+                </div>
+              )
+            }
+          }
+        })}
+
       </div>
     </div>
   );
