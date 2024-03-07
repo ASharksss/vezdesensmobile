@@ -15,7 +15,7 @@ const PremiumTablet = ({data}) => {
       <span className='card_favorite'><FavoriteBtn id={data?.id} isFavorite={data?.favorites} userData={data?.user}/></span>
 
       <NavLink to={`/cardPage/${data?.id}`} className='noLink'>
-        <img src={`${STATIC_HOST}/${data?.previewImageAds[0]?.name}`} alt="" className='premium_card-img'/>
+        <img src={`${STATIC_HOST}/${data?.commercialImageAds[0]?.name}`} alt="" className='premium_card-img'/>
         <div className='flex space-between items-center'>
           <div className="premium_card-info">
             <h1 className='premium_card-title'>{data?.title}</h1>

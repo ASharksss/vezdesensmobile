@@ -8,6 +8,7 @@ const CreateCardPage = () => {
   const [selectedCategoriesArray, setSelectedCategoriesArray] = useState({
     category: 0, subCategory: 0, object: 0
   })
+  const [characterArray, setCharacterArray] = useState([])
 
   const handleChange = async (e) => {
     setSelectedCategoriesArray((prev) => ({
@@ -33,6 +34,12 @@ const CreateCardPage = () => {
             ...prev,
             object: res.data
           }))
+        })
+    }
+    if (selectedCategoriesArray.object !== 0) {
+      axios.get(`api/characteristic/getCharacteristicObject?objectId=${selectedCategoriesArray.object}`)
+        .then(res => {
+          setCharacterArray(res.data)
         })
     }
   }, [selectedCategoriesArray])
@@ -91,6 +98,12 @@ const CreateCardPage = () => {
       </div>
       <div className="createCard_characteristics">
         <h2>Технические характеристики</h2>
+        {
+          characterArray?.map(character => (
+            <div></div>
+          ))
+        }
+
         <h2>Дополнительные опции</h2>
       </div>
     </div>

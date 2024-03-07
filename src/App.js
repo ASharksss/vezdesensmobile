@@ -25,7 +25,6 @@ import {fetchAuth} from "./redux/slices/AuthSlice";
 import SimilarPage from "./pages/SimilarPage";
 import FavoritePage from "./pages/FavoritePage";
 import FilterPage from "./pages/FilterPage";
-import SelectFilterPage from "./pages/SelectFilterPage";
 import CreateCardPage from "./pages/CreateCardPage";
 
 
@@ -110,7 +109,6 @@ function App() {
           <Route path='/review' element={<ReviewPage/>}/>
           <Route path='/addReview' element={<AddReviewPage/>}/>
           <Route path='/filterPage' element={<FilterPage/>}/>
-          <Route path='/selectFilterPage' element={<SelectFilterPage/>}/>
           <Route path='/createAd' element={<CreateCardPage/>}/>
           
           <Route path='/editProfile/:id' element={<EditProfilePage/>}/>
