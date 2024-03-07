@@ -25,13 +25,12 @@ import {fetchAuth} from "./redux/slices/AuthSlice";
 import SimilarPage from "./pages/SimilarPage";
 import FavoritePage from "./pages/FavoritePage";
 import FilterPage from "./pages/FilterPage";
-import SelectFilterPage from "./pages/SelectFilterPage";
 import CreateCardPage from "./pages/CreateCardPage";
 
 
-// axios.defaults.baseURL = "https://backend.vezdesens.ru/"
-// axios.defaults.baseURL = "http://localhost:5000/"
-axios.defaults.baseURL = "http://192.168.1.121:5000/"
+axios.defaults.baseURL = "https://backend.vezdesens.ru/"
+//axios.defaults.baseURL = "http://localhost:5000/"
+//axios.defaults.baseURL = "http://192.168.1.119:5000/"
 
 function App() {
   const dispatch = useDispatch()
@@ -110,7 +109,6 @@ function App() {
           <Route path='/review' element={<ReviewPage/>}/>
           <Route path='/addReview' element={<AddReviewPage/>}/>
           <Route path='/filterPage' element={<FilterPage/>}/>
-          <Route path='/selectFilterPage' element={<SelectFilterPage/>}/>
           <Route path='/createAd' element={<CreateCardPage/>}/>
           
           <Route path='/editProfile/:id' element={<EditProfilePage/>}/>
