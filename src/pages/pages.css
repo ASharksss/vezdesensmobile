@@ -254,10 +254,12 @@
     height: 5px;
     transition: all 0.3s ease;
 }
-
-#archive:checked ~ .slider {
+.p-l-50{
     left: 50%;
 }
+/* #archive:checked ~ .slider {
+    left: 50%;
+} */
 
 .profile_cards {
     margin-top: 29px;

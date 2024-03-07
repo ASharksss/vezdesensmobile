@@ -22,10 +22,12 @@ const ProfilePage = () => {
   const [average, setAverage] = useState(0)
   const [choice, setChoice] = useState('active')
   const [openSubMenu, setOpenSubMenu] = useState(false)
+  const [openEditUser, setEditUser] = useState(false);
   const navigate = useNavigate();
 
   const {user} = useSelector(state => state.user)
 
+   
   let items = [
     {
       title: 'Редактировать',
@@ -39,6 +41,14 @@ const ProfilePage = () => {
       title: 'Выйти',
       onClick: () => null
     }
+  ]
+  let tabletImtes = [
+    {
+      ...items,
+      title: 'Реданктировать',
+      onClick: () => setEditUser(!openEditUser)
+    },
+    
   ]
 
   
@@ -79,8 +89,6 @@ const ProfilePage = () => {
      }
   }
   
-  
-
   if (loading) return <PreloaderComponent />
   return (
     <div className='container'>
@@ -109,8 +117,6 @@ const ProfilePage = () => {
             ) : (
               <></>
             ) }
-           
-
           </div>
           <div className="profile_reviews flex items-center">
             <span>{average}</span>
@@ -128,7 +134,7 @@ const ProfilePage = () => {
             <input type="radio" id="active" name='item' checked/>
             <input type="radio" id="archive" name='item'/>
 
-            <div className="slider"></div>
+            <div className={choice === "active" ? "slider" : "slider p-l-50"}></div>
             <div className='flex space-between items-center'>
               {
                 isTablet ? (
@@ -153,7 +159,6 @@ const ProfilePage = () => {
                 </>
                 )
               }
-              
             </div>
 
             {
