@@ -28,9 +28,9 @@ import FilterPage from "./pages/FilterPage";
 import CreateCardPage from "./pages/CreateCardPage";
 
 
-axios.defaults.baseURL = "https://backend.vezdesens.ru/"
+// axios.defaults.baseURL = "https://backend.vezdesens.ru/"
 // axios.defaults.baseURL = "http://localhost:5000/"
-// axios.defaults.baseURL = "http://192.168.1.121:5000/"
+axios.defaults.baseURL = "http://192.168.1.119:5000/"
 
 function App() {
   const dispatch = useDispatch()
@@ -81,7 +81,7 @@ function App() {
             <Route path='/similarPage' element={<SimilarPage/>}/>
             {isTablet ? 
                       <Route path='/cardPage/:id' element={<CardPage/>}/>
-              : console.log('err')
+              : null
             }
           </Route>
 
