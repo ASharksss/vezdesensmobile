@@ -177,6 +177,10 @@ button {
 .pd-l-30{
     padding-left: 30px;
 }
+.visibal-collapse{
+    visibility: collapse;
+    display: none !important;
+}
 
 
 @media (min-width: 768px){

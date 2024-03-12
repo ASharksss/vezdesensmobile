@@ -11,6 +11,7 @@ import {AVATAR_HOST, getCookie, useTabletDetection} from "../utils";
 import MoreSubMenu from "../ui/moreSubMenu";
 import { useSelector } from 'react-redux';
 import PreloaderComponent from '../components/Preloader/PreloaderComponent';
+import EditProfilePage from './EditProfilePage';
 
 
 const ProfilePage = () => {
@@ -30,10 +31,6 @@ const ProfilePage = () => {
    
   let items = [
     {
-      title: 'Редактировать',
-      onClick: () => navigate(`/editProfile/${id}`)
-    },
-    {
       title: 'Помощь',
       onClick: () => navigate(`/support`)
     },
@@ -42,13 +39,19 @@ const ProfilePage = () => {
       onClick: () => null
     }
   ]
+  let phoneItems = [
+    {
+      title: 'Редактировать',
+      onClick: () => navigate(`/editProfile/${id}`)
+    },
+    ...items,
+  ] 
   let tabletImtes = [
     {
-      ...items,
-      title: 'Реданктировать',
+      title: 'Редактировать',
       onClick: () => setEditUser(!openEditUser)
     },
-    
+    ...items,
   ]
 
   
@@ -92,6 +95,9 @@ const ProfilePage = () => {
   if (loading) return <PreloaderComponent />
   return (
     <div className='container'>
+      <div className={isTablet && openEditUser ?  'edit profile' :  'edit profile visibal-collapse'}>
+        <EditProfilePage/>
+      </div>
       <div className='profile'>
         <div>
           <div className="profile_info flex space-between">
@@ -110,7 +116,7 @@ const ProfilePage = () => {
             <span><img src={dots} alt=""/></span>
             {
               openSubMenu ? <div className='profile_dots'>
-                <MoreSubMenu items={items} setOpen={setOpenSubMenu}/> : null
+                <MoreSubMenu  items={ isTablet ? tabletImtes : phoneItems} setOpen={setOpenSubMenu}/> : null
               </div> : null
             }
             </div>

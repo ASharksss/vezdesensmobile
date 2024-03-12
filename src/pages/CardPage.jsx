@@ -84,7 +84,7 @@ const CardPage = () => {
 
     });
   }
-
+ 
   if (isLoading) {
     return <PreloaderComponent/>
   } else {
@@ -155,13 +155,12 @@ const CardPage = () => {
           <span className='card_seller-address'>
 						  {data.address}
 					</span>
-
           <div className="card_btns">
-            <button className='black_btn'><img src={phone_icon} alt=""/></button>
-            <NavLink to='/dialog'>
-              <button className='white_btn'><img src={message_icon} alt=""/></button>
+            {/* !ЗВОНКИ 1 И 0  */}
+              <button className={data.showPhone === 2 ? 'black_btn visibal-collapse' : 'black_btn' } ><img src={phone_icon} alt=""/></button>
+            <NavLink to='/dialog' >
+              <button className={data.showPhone === 1 ? 'white_btn visibal-collapse' : 'white_btn' }><img src={message_icon} alt=""/></button>
             </NavLink>
-
           </div>
 
           <div className="card_description">
