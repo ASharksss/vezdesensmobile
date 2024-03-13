@@ -136,6 +136,9 @@ button {
 .items-center {
     align-items: center;
 }
+.space-evenly{
+    justify-content: space-evenly;
+}
 
 .center {
     justify-content: center;
@@ -176,6 +179,13 @@ button {
 
 .pd-l-30{
     padding-left: 30px;
+}
+.visibal-collapse{
+    visibility: collapse;
+    display: none !important;
+}
+a{
+    text-decoration: none;
 }
 
 

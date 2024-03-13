@@ -21,6 +21,8 @@ import {useSelector} from "react-redux";
 import Fancybox from "../components/fancybox";
 import Long from '../components/Card/Long'
 import {shareOnMobile} from "react-mobile-share";
+import {v4 as uuidV4} from 'uuid';
+
 
 const CardPage = () => {
   const {isAuth} = useSelector(state => state.user)
@@ -32,6 +34,8 @@ const CardPage = () => {
   const [data, setData] = useState({})
   const [average, setAverage] = useState(0)
   const [staticAd, setStaticAd] = useState([])
+	const {items} = useSelector(state => state.user.user)
+
 
   const isTablet = useTabletDetection(); //првоерка размера
   // Для банера 
@@ -84,7 +88,7 @@ const CardPage = () => {
 
     });
   }
-
+  // console.log(data);
   if (isLoading) {
     return <PreloaderComponent/>
   } else {
@@ -155,13 +159,13 @@ const CardPage = () => {
           <span className='card_seller-address'>
 						  {data.address}
 					</span>
-
           <div className="card_btns">
-            <button className='black_btn'><img src={phone_icon} alt=""/></button>
-            <NavLink to='/dialog'>
-              <button className='white_btn'><img src={message_icon} alt=""/></button>
+            {/* !ЗВОНКИ 1 И 0  */}
+              <button className={data.showPhone === 2 ? 'black_btn visibal-collapse' : 'black_btn' } ><img src={phone_icon} alt=""/></button>
+            <NavLink state={{from: data.user, tovar: data}}
+										 to={`/dialog/?adId=${data.id}&senderId=${items.id}&receiverId=${data.userId}#chat-${uuidV4()}`}>
+              <button className={data.showPhone === 1 ? 'white_btn visibal-collapse' : 'white_btn' }><img src={message_icon} alt=""/></button>
             </NavLink>
-
           </div>
 
           <div className="card_description">

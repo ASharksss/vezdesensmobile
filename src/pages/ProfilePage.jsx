@@ -11,6 +11,7 @@ import {AVATAR_HOST, getCookie, useTabletDetection} from "../utils";
 import MoreSubMenu from "../ui/moreSubMenu";
 import { useSelector } from 'react-redux';
 import PreloaderComponent from '../components/Preloader/PreloaderComponent';
+import EditProfilePage from './EditProfilePage';
 
 
 const ProfilePage = () => {
@@ -22,15 +23,13 @@ const ProfilePage = () => {
   const [average, setAverage] = useState(0)
   const [choice, setChoice] = useState('active')
   const [openSubMenu, setOpenSubMenu] = useState(false)
+  const [openEditUser, setEditUser] = useState(false);
   const navigate = useNavigate();
 
   const {user} = useSelector(state => state.user)
 
+   
   let items = [
-    {
-      title: 'Редактировать',
-      onClick: () => navigate(`/editProfile/${id}`)
-    },
     {
       title: 'Помощь',
       onClick: () => navigate(`/support`)
@@ -39,6 +38,20 @@ const ProfilePage = () => {
       title: 'Выйти',
       onClick: () => null
     }
+  ]
+  let phoneItems = [
+    {
+      title: 'Редактировать',
+      onClick: () => navigate(`/editProfile/${id}`)
+    },
+    ...items,
+  ] 
+  let tabletImtes = [
+    {
+      title: 'Редактировать',
+      onClick: () => setEditUser(!openEditUser)
+    },
+    ...items,
   ]
 
   
@@ -79,11 +92,12 @@ const ProfilePage = () => {
      }
   }
   
-  
-
   if (loading) return <PreloaderComponent />
   return (
     <div className='container'>
+      <div className={isTablet && openEditUser ?  'edit profile' :  'edit profile visibal-collapse'}>
+        <EditProfilePage/>
+      </div>
       <div className='profile'>
         <div>
           <div className="profile_info flex space-between">
@@ -102,15 +116,13 @@ const ProfilePage = () => {
             <span><img src={dots} alt=""/></span>
             {
               openSubMenu ? <div className='profile_dots'>
-                <MoreSubMenu items={items} setOpen={setOpenSubMenu}/> : null
+                <MoreSubMenu  items={ isTablet ? tabletImtes : phoneItems} setOpen={setOpenSubMenu}/> : null
               </div> : null
             }
             </div>
             ) : (
               <></>
             ) }
-           
-
           </div>
           <div className="profile_reviews flex items-center">
             <span>{average}</span>
@@ -128,7 +140,7 @@ const ProfilePage = () => {
             <input type="radio" id="active" name='item' checked/>
             <input type="radio" id="archive" name='item'/>
 
-            <div className="slider"></div>
+            <div className={choice === "active" ? "slider" : "slider p-l-50"}></div>
             <div className='flex space-between items-center'>
               {
                 isTablet ? (
@@ -153,7 +165,6 @@ const ProfilePage = () => {
                 </>
                 )
               }
-              
             </div>
 
             {
