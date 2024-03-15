@@ -26,11 +26,12 @@ import SimilarPage from "./pages/SimilarPage";
 import FavoritePage from "./pages/FavoritePage";
 import FilterPage from "./pages/FilterPage";
 import CreateCardPage from "./pages/CreateCardPage";
+import DialogAppeal from './components/Support/dialogAppeal';
 
 
-// axios.defaults.baseURL = "https://backend.vezdesens.ru/"
+axios.defaults.baseURL = "https://backend.vezdesens.ru/"
 // axios.defaults.baseURL = "http://localhost:5000/"
-axios.defaults.baseURL = "http://192.168.1.119:5000/"
+// axios.defaults.baseURL = "http://192.168.1.119:5000/"
 
 function App() {
   const dispatch = useDispatch()
@@ -91,6 +92,7 @@ function App() {
             <Route path='/categoryPage/:id' element={<CategoryPage/>}/>
             <Route path='/servicePage' element={<ServicePage/>}/>
             <Route path='/favoritePage' element={<FavoritePage/>}/>
+            <Route path='/support' element={<SupportPage/>}/>
           </Route>
 
           {!isAuth &&
@@ -102,7 +104,6 @@ function App() {
           <Route path='/newPassword' element={<NewPassword/>}/>
           <Route path='/cardPage/:id' element={<CardPage/>}/>
           <Route path='/dialog' element={<DialogPage/>}/>
-          <Route path='/support' element={<SupportPage/>}/>
           <Route path='/subCategory/:id' element={<SubCategoryPage/>}/>
           <Route path='/subCategory/:id/:obId' element={<SubCategoryPage/>}/>
           <Route path='/efitProfile' element={<EditProfilePage/>}/>
@@ -110,7 +111,8 @@ function App() {
           <Route path='/addReview' element={<AddReviewPage/>}/>
           <Route path='/filterPage' element={<FilterPage/>}/>
           <Route path='/createAd' element={<CreateCardPage/>}/>
-          
+          <Route path='/appeal' element={<DialogAppeal/>}/>
+
           <Route path='/editProfile/:id' element={<EditProfilePage/>}/>
         </Routes>
 

@@ -85,6 +85,8 @@ margin-top: 10vh;
 .mess_time {
     color: rgba(181, 183, 189, 1);
     font-size: 12px;
+    display: block;
+    width: 100%;
 }
 
 /* Dialog Sender*/

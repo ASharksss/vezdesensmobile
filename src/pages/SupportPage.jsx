@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {Children, useEffect, useState} from 'react';
 import backbtn from '../asserts/cardPage/back_arrow.svg'
 import DialogSender from "../components/Dialog/DialogSender";
 import DialogRecipient from "../components/Dialog/DialogRecipient";
@@ -7,12 +7,22 @@ import send_icon from '../asserts/messages/send_icon.svg'
 import {useNavigate} from "react-router";
 import Appeal from "../components/Support/Appeal";
 import axios from "axios";
+import { NavLink } from 'react-router-dom';
+import DialogAppeal from '../components/Support/dialogAppeal';
+import ModalTemplate from '../components/Modal/ModalTemplate';
+import AddAppeal from '../components/Modal/AddAppeal';
+import { useSelector } from 'react-redux';
 
 const SupportPage = () => {
+
+  const {user} = useSelector(state => state.user)
 
   const [data, setData] = useState([])
   const [statusOfAppealId, setTypeAppeal] = useState(1)
 
+  const [activeModal, setActiveModal] = useState(false);
+
+ 
 
   const getData = async () => {
     await axios({
@@ -23,22 +33,31 @@ const SupportPage = () => {
   }
 
   useEffect(() => {
+    if (user.status === 'loading') return; // заглушка для получения данных при обнавлении
     getData()
-  }, [])
+  }, [user.status])
 
-
+ 
   return (
-
     <>
       <div className="appeals">
         <h1 className='appeals-title'>Ваши обращения</h1>
+        <button className='main_black_btn w-max h-38' onClick={() => setActiveModal(true)} >Задать вопрос</button>
         {
           data.map(item => (
+            <NavLink state={{data: item}} to={`/appeal/?id=${item.id}`} className='appeal'>
             <Appeal item={item}/>
+            </NavLink>
           ))
+          
         }
 
       </div>
+      {
+      
+      activeModal ? <ModalTemplate activeModal={activeModal} setActiveModal={setActiveModal} children={<AddAppeal/>}/>
+      : null
+      }
 
       {/*<div className='chatPage'>
         <div className="chat_page-header flex">

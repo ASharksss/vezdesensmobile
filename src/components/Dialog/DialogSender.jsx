@@ -6,7 +6,7 @@ const DialogSender = ({date, text}) => {
 
       <div className=' mess dialog_sender'>
         <div>
-          <span className='mess_time'>{relativeDate(new Date(date))}</span>
+          <span className='mess_time' style={{textAlign: "left"}}>{relativeDate(new Date(date))}</span>
           {/*<div className="tringle"></div>*/}
           <div className="message_block">
             {text}

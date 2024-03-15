@@ -112,6 +112,19 @@
     margin-top: 30px;
     margin-bottom: 30px;
 }
+.main_black_btn {
+    background-color: rgba(22, 22, 22, 1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 13px;
+    color: white;
+    font-family: 'OpenSansSemiBold';
+}
+.main_black_btn:hover{
+    background-color: rgba(131, 134, 144, 1);
+}
 
 .black_btn {
     background-color: rgba(22, 22, 22, 1);
@@ -360,6 +373,7 @@
     padding: 17px;
     background-color: rgba(236, 236, 236, 1);
     border-radius: 10px;
+    z-index: 3;
 }
 
 .chat_textarea {
@@ -825,9 +839,12 @@
 
 .appeals {
     padding: 20px 20px;
+    padding-bottom: 60px;
 }
 
 .appeals-title {
-    font-size: 28px;
+    font-size: 20px;
     margin-bottom: 30px;
+    font-family: 'OpenSansBold' ;
+    margin-left: 15px;
 }
