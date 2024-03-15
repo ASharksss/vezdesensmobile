@@ -71,6 +71,9 @@
 .green {
     color: rgba(16, 201, 90, 1);
 }
+.gray {
+    color: gray;
+}
 
 .mess {
     width: 100%;

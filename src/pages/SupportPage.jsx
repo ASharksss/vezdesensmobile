@@ -12,6 +12,7 @@ import DialogAppeal from '../components/Support/dialogAppeal';
 import ModalTemplate from '../components/Modal/ModalTemplate';
 import AddAppeal from '../components/Modal/AddAppeal';
 import { useSelector } from 'react-redux';
+import arrow_icon from '../asserts/icons/arrow_down.svg'
 
 const SupportPage = () => {
 
@@ -19,6 +20,10 @@ const SupportPage = () => {
 
   const [data, setData] = useState([])
   const [statusOfAppealId, setTypeAppeal] = useState(1)
+  
+  const [topic, setTopic] = useState('Открытые')
+	const [open, setOpen] = useState(false)
+
 
   const [activeModal, setActiveModal] = useState(false);
 
@@ -35,7 +40,7 @@ const SupportPage = () => {
   useEffect(() => {
     if (user.status === 'loading') return; // заглушка для получения данных при обнавлении
     getData()
-  }, [user.status])
+  }, [user.status, statusOfAppealId])
 
  
   return (
@@ -43,6 +48,39 @@ const SupportPage = () => {
       <div className="appeals">
         <h1 className='appeals-title'>Ваши обращения</h1>
         <button className='main_black_btn w-max h-38' onClick={() => setActiveModal(true)} >Задать вопрос</button>
+        
+
+        <div className="filter">
+				<div className="Edited_appeal-select">
+					<div className="flex items-center space-between Edited_filter-header" onClick={() => setOpen(!open)}>
+						{/* Вывожу значние topic  */}
+						{topic === 'Все' ? 'Все' : topic}
+						<img src={arrow_icon} alt=""/>
+					</div>
+					<div className={open ? 'block Edited_filter_select-body' : 'filter_select-body-none'}>
+						
+								<div className='Edited_filter_select-item' onClick={() => {
+									setTopic('Все')
+									setTypeAppeal('')
+									setOpen(!open)
+								}}>Все</div>
+
+<div className='Edited_filter_select-item' onClick={() => {
+									setTopic('Открытые')
+									setTypeAppeal(1)
+									setOpen(!open)
+								}}>Открытые</div>
+
+<div className='Edited_filter_select-item' onClick={() => {
+									setTopic('Решенные')
+									setTypeAppeal(2)
+									setOpen(!open)
+								}}>Решенные</div>
+
+					</div>
+				</div>
+			</div>
+
         {
           data.map(item => (
             <NavLink state={{data: item}} to={`/appeal/?id=${item.id}`} className='appeal'>
