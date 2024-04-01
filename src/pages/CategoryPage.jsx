@@ -70,7 +70,7 @@ const CategoryPage = () => {
       <div className="categoryPage_list">
         <div className="grid">
           {
-            data.map((item) => (
+            data?.map((item) => (
               <Card classname={'xs'} data={item}/>
             ))
           }

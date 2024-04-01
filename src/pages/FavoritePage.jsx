@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react';
 import FavoriteItem from "../components/FavoriteItem/FavoriteItem";
 import settings from '../asserts/messages/setting.svg'
 import axios from "axios";
+import {useSelector} from "react-redux";
 
 const FavoritePage = () => {
 
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
+  const {isAuth} = useSelector(state => state.user)
 
   const getData = () => {
     axios.get(`api/user/getFavorite`)
@@ -14,9 +16,12 @@ const FavoritePage = () => {
   }
 
   useEffect(() => {
+    if (!isAuth) return;
     getData()
-  }, [])
+  }, [isAuth])
 
+
+  console.log(data)
   return (
     <div className='favoritePage'>
       <div className="flex space-between ">
