@@ -49,7 +49,6 @@ const MyCard = ({item, choice}) => {
     ]
   }
 
-
   return (
 
     <>

@@ -9,6 +9,7 @@ import {useHref, useLocation, useNavigate} from "react-router";
 import {io} from 'socket.io-client'
 import { useSelector } from 'react-redux';
 import '../components/Dialog/dialog.css'
+import NothingYeat from '../components/nothingYeat/nothingYeat';
 
 
 const DialogPage = () => {
@@ -87,7 +88,7 @@ const DialogPage = () => {
       textareaRef.current.style.height = '28px'
     });
   }
-  
+// Фкнуция скролллинга
   function handleScrollTo() {
       Wall.current.scrollIntoView({
           behavior: 'smooth',
@@ -140,6 +141,8 @@ useEffect(() => {
   }, [isConnected, socket]);
   // console.log(tovar)
   return (
+    <>
+    <div className='FixBlock'></div>
     <div className='chatPage' >
       <div className="chat_page-header flex">
         <img src={backbtn} alt="" onClick={() => navigate(-1)}/>
@@ -164,7 +167,7 @@ useEffect(() => {
               : 
                 <DialogSender  text={item.text} date={item.createdAt}/>
               )) :
-            <p>Нет сообщений</p>}
+              <NothingYeat message={'Сообщений пока нет'}/>}
             <span  id='bottom' style={{visibility: "hidden", height: "1px"}} ref={Wall}>asdf</span>
       </div>
       <form onSubmit={handleSubmit}>
@@ -179,14 +182,13 @@ useEffect(() => {
         <div className='flex'>
           {/* <img src={attach_icon} alt="" className='chat_icon'/> */}
           {/* <img src={send_icon} alt="" className='chat_icon'/> */}
-          <button disabled={isLoading} className='dialog_sender_btn' type="submit" 
-          
-                  ></button>
-                  
+          <button disabled={isLoading} className='dialog_sender_btn' type="submit" ></button> 
         </div>
       </div>
      </form>
     </div>
+    <div className='FixAnotherBlock'></div>
+    </>
   );
 };
 

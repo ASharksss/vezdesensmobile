@@ -6,7 +6,7 @@ const MoreSubMenu = ({items, setOpen}) => {
 
   const handleClickOutside = (event) => {
     if (wrapperRef.current && !wrapperRef.current.contains(event.target))
-      setOpen(false)
+      setOpen(true) // исправил закрытие :)
   }
 
   useEffect(() => {

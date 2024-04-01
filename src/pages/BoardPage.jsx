@@ -67,12 +67,12 @@ const BoardPage = () => {
     })
     if (node) observer.current.observe(node)
   }, [loading, hasMore, offset, standardCount, standardPlusCount, vipCount])
-
+  // console.log(premium);
   return (
     <div>
       <div className="board_page">
         {/* Меняю размер в зависимости от разрешения экрана  */}
-       {isTablet ? (
+       {isTablet  ? (
         <PremiumTablet data={premium[Math.floor(Math.random(premium.length))]}/>
        ) : (
         <Premium data={premium[Math.floor(Math.random(premium.length))]}/>
