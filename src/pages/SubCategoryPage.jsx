@@ -38,10 +38,15 @@ const SubCategoryPage = () => {
   }, [id, obId])
 
   const constructList = useMemo(() => {
+    if (isLoading) return ;
     const combined = []
-    if(obId === undefined && !isLoading){
+    if(obId === undefined){
       data[0]?.subCategories !== undefined && data[0]?.subCategories.map((item, index) => {
         combined.push(<CategoryItem key={`subCategory-${index}`} address={`subCategory/${id}`} item={item}/>)
+      })
+    } else if (parseInt(id) === 3) {
+      data[0]?.objects !== undefined && data[0]?.objects.map((item, index) => {
+        combined.push(<CategoryItem key={`servicePage-${index}`} address={`servicePage/${id}/${obId}`} item={item}/>)
       })
     } else {
       data[0]?.objects !== undefined && data[0].objects.map((item, index) => {
@@ -49,7 +54,7 @@ const SubCategoryPage = () => {
       })
     }
     return combined
-  }, [obId, isLoading, data])
+  }, [id, obId, isLoading, data])
 
   if (isLoading) {
     return <PreloaderComponent/>
@@ -64,12 +69,12 @@ const SubCategoryPage = () => {
       </div>
       <div className="category_list">
         {constructList}
-        <NavLink to={'/servicePage'} className='noLink'>
-          <div className="category_item flex items-center space-between">
-            <span className='category_item-title'>Работа</span>
-            <img src={arrow} alt="" className='category_item-icon'/>
-          </div>
-        </NavLink>
+        {/*<NavLink to={'/servicePage'} className='noLink'>*/}
+        {/*  <div className="category_item flex items-center space-between">*/}
+        {/*    <span className='category_item-title'>Работа</span>*/}
+        {/*    <img src={arrow} alt="" className='category_item-icon'/>*/}
+        {/*  </div>*/}
+        {/*</NavLink>*/}
       </div>
 
     </div>

@@ -72,11 +72,11 @@ const BoardPage = () => {
     <div>
       <div className="board_page">
         {/* Меняю размер в зависимости от разрешения экрана  */}
-       {isTablet  ? (
-        <PremiumTablet data={premium[Math.floor(Math.random(premium.length))]}/>
-       ) : (
-        <Premium data={premium[Math.floor(Math.random(premium.length))]}/>
-       )} 
+       {isTablet  ?
+         premium.length > 0 ? <PremiumTablet data={premium[Math.floor(Math.random(premium.length))]}/> : null
+        :
+         premium.length > 0 ? <Premium data={premium[Math.floor(Math.random(premium.length))]}/> : null
+       }
         {
           staticAd[0]?.imageName !== undefined ?
             <Long image={`${STATIC_HOST}/promotion/${staticAd[0]?.imageName}`} href={staticAd[1]?.href}/>

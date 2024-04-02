@@ -462,6 +462,10 @@
 
 .serviceItem_header_info-title {
     font-size: 18px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 
 .serviceItem_header_info-price {
@@ -470,9 +474,13 @@
 
 .serviceItem_description {
     font-size: 10px;
+    overflow: hidden;
     color: rgba(131, 134, 144, 1);
     margin-top: 15px;
     line-height: 15.57px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
 }
 
 .serviceItem_time {

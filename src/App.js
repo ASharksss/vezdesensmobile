@@ -90,7 +90,7 @@ function App() {
             <Route path='/profilePage/:id' element={<ProfilePage/>}/>
             <Route path='/messages' element={<MessagesPage/>}/>
             <Route path='/categoryPage/:id' element={<CategoryPage/>}/>
-            <Route path='/servicePage' element={<ServicePage/>}/>
+            <Route path='/servicePage/:id/:sId/:obId' element={<ServicePage/>}/>
             <Route path='/favoritePage' element={<FavoritePage/>}/>
             <Route path='/support' element={<SupportPage/>}/>
           </Route>
