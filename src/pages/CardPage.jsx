@@ -22,6 +22,7 @@ import Fancybox from "../components/fancybox";
 import Long from '../components/Card/Long'
 import {shareOnMobile} from "react-mobile-share";
 import {v4 as uuidV4} from 'uuid';
+import ModalTemplate from "../components/Modal/ModalTemplate";
 
 
 const CardPage = () => {
@@ -34,6 +35,7 @@ const CardPage = () => {
   const [data, setData] = useState({})
   const [average, setAverage] = useState(0)
   const [staticAd, setStaticAd] = useState([])
+  const [activeModal, setActiveModal] = useState(false)
 	const {items} = useSelector(state => state.user.user)
 
 
@@ -161,7 +163,11 @@ const CardPage = () => {
 					</span>
           <div className="card_btns">
             {/* !ЗВОНКИ 1 И 0  */}
-              <button className={data.showPhone === 2 ? 'black_btn visibal-collapse' : 'black_btn' } ><img src={phone_icon} alt=""/></button>
+              <button onClick={() => setActiveModal(true)} className={data.showPhone === 2 ? 'black_btn visibal-collapse' : 'black_btn' } >
+                <img src={phone_icon} alt=""/>
+              </button>
+              <ModalTemplate activeModal={activeModal} setActiveModal={setActiveModal}
+                             children={<span className='off_card-bold'>{data.user.phone}</span>}/>
             <NavLink state={{from: data.user, tovar: data}}
 										 to={`/dialog/?adId=${data.id}&senderId=${items.id}&receiverId=${data.userId}#chat-${uuidV4()}`}>
               <button className={data.showPhone === 1 ? 'white_btn visibal-collapse' : 'white_btn' }><img src={message_icon} alt=""/></button>

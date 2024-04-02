@@ -113,11 +113,16 @@
     margin-bottom: 15px;
 }
 
+.vip_card .card_favorite {
+    top: 0;
+    right: 10px;
+}
+
 .vip_card-img {
     width: 325px;
     height: 199px;
     border-radius: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 /* Standart plus */

@@ -208,6 +208,12 @@
     right: 150px;
 }
 
+.profile_filter {
+    position: absolute;
+    top: 25px;
+    right: 180px;
+}
+
 .profile_info-avatar {
     margin-right: 15px;
 }
@@ -655,6 +661,12 @@
     padding-bottom: 125px;
 }
 
+.favoritePage_subMenu {
+    position: absolute;
+    top:40px;
+    right: 190px;
+}
+
 /* Filter Page */
 
 .filterPage {
@@ -822,7 +834,6 @@
     margin-top: 25px;
     margin-left: 40px;
 }
-
 
 
 /* Характеристики  */

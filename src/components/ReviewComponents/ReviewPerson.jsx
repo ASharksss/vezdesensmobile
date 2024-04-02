@@ -8,9 +8,9 @@ const ReviewPerson = ({item}) => {
   return (
     <div className='reviewPerson'>
       <div className="flex items-center">
-        <img src={`${AVATAR_HOST}/${item.user.userAvatars[0]?.name}`} alt="" className='reviewPerson-avatar'/>
+        <img src={`${AVATAR_HOST}/${item.writer?.userAvatars[0]?.name}`} alt="" className='reviewPerson-avatar'/>
         <div className='review_info'>
-          <h1 className='reviewPerson-title'>{item.user.name}</h1>
+          <h1 className='reviewPerson-title'>{item.writer.name}</h1>
           <span className='reviewPerson-time'>{formatDateToRelative(new Date(item.createdAt))}</span>
 
         </div>
