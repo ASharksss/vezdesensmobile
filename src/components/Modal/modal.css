@@ -106,6 +106,13 @@
     padding: 15px;
 }
 
+.auth_error {
+    font-size: 12px;
+    color: #FC372A;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
 .missPassword_sendAgain {
     font-family: OpenSansSemiBold;
     margin-right: 10px;

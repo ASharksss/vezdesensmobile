@@ -11,6 +11,7 @@ import Danger from "../ui/danger";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchLogin} from "../redux/slices/AuthSlice";
 import {useNavigate} from "react-router";
+import axios from "axios";
 
 const Auth = () => {
 
@@ -23,6 +24,8 @@ const Auth = () => {
   const [codeModal, setCodeModal] = useState(false)
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
+  const [email, setEmail] = useState(null)
+  const [error, setError] = useState('')
 
   const isLoading = user.status === 'loading'
 
@@ -36,6 +39,19 @@ const Auth = () => {
         window.location.reload()
       }
     })
+  }
+  const handleSendEmail = async (event) => {
+    event.preventDefault()
+    setError('')
+    await axios.post('api/user/password/rebase', {email})
+      .then(res => {
+        window.alert(res.data.message)
+        setPasswordModal(false)
+        setCodeModal(true)
+      })
+      .catch(e => {
+        setError(e.response.data.message)
+      })
   }
 
   return (
@@ -71,9 +87,10 @@ const Auth = () => {
       <ModalTemplate activeModal={activeModal} setActiveModal={setActiveModal} children={
         <>
           {passwordModal &&
-            <MissPassword setPasswordModal={setPasswordModal} setActiveModal={setActiveModal}
-                          setCodeModal={setCodeModal}/>}
-          {codeModal && <AddCode setActiveModal={setActiveModal}/>}
+            <MissPassword email={email} setEmail={setEmail} setPasswordModal={setPasswordModal}
+                          setActiveModal={setActiveModal} error={error}
+                          setCodeModal={setCodeModal} handleSendEmail={handleSendEmail}/>}
+          {codeModal && <AddCode email={email} setActiveModal={setActiveModal} handleSendEmail={handleSendEmail}/>}
         </>
       }/>
     </form>
