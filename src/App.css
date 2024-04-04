@@ -54,6 +54,7 @@ body {
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
+    font-family: 'OpenSansRegular';
 }
 
 /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
@@ -85,7 +86,36 @@ textarea,
 select {
     font: inherit;
 }
+/* Глобальные элементы размеров */
+.h-38 { height: 38px;}
+.h-100{ height: 100px; }
+.h-200{ height: 200px; }
+.h-300{ height: 300px; }
+.h-400{ height: 400px; }
+.h-500{ height: 500px; }
+.h-600{ height: 600px; }
+.h-700{ height: 700px; }
+.h-800{ height: 800px; }
+.h-max{ height: 100% }
 
+.w-100{ width: 100px; }
+.w-200{ width: 200px; }
+.w-300{ width: 300px; }
+.w-400{ width: 400px; }
+.w-500{ width: 500px; }
+.w-600{ width: 600px; }
+.w-700{ width: 700px; }
+.w-800{ width: 800px; }
+.w-max{ width: 100% }
+
+.fz-8 { font-size: 8px; }
+.fz-9 { font-size: 9px; }
+.fz-10 { font-size: 10px; }
+.fz-12 { font-size: 12px; }
+.fz-14 { font-size: 14px; }
+.fz-16 { font-size: 16px; }
+.fz-18 { font-size: 18px; }
+.fz-20 { font-size: 20px; }
 /* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -95,7 +125,6 @@ select {
         scroll-behavior: auto !important;
     }
 }
-
 
 input {
     border: none;
@@ -136,6 +165,9 @@ button {
 .items-center {
     align-items: center;
 }
+.space-evenly{
+    justify-content: space-evenly;
+}
 
 .center {
     justify-content: center;
@@ -173,3 +205,51 @@ button {
 .pd-14 {
     padding: 14px;
 }
+
+.pd-l-30{
+    padding-left: 30px;
+}
+.visibal-collapse{
+    visibility: collapse;
+    display: none !important;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+/* для сообщений  */
+.FixBlock{
+    width: 100%;
+    background: white;
+    height: 100px;
+    position: fixed;
+    z-index: 2;
+}
+.FixAnotherBlock{
+    display: block;
+    position: fixed;
+    height: 100px;
+    bottom: 0px;
+    width: 100%;
+    background: white;
+}
+/* для сообщений  */
+
+
+@media (min-width: 768px){
+    .container{
+      max-width: 768px;
+      overflow: hidden;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .wrapper {
+        width: auto;
+        padding: 0px 30px;
+        margin: 0 auto;
+    
+    }
+    .img_25 {
+        width:25px;
+    }
+  }

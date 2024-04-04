@@ -20,15 +20,19 @@ import Registration from "./pages/Registration";
 import ReviewPage from "./pages/ReviewPage";
 import AddReviewPage from "./pages/AddReviewPage";
 import {useEffect, useState} from "react";
-import {getCookie, isOnline} from "./utils";
+import {getCookie, isOnline, useTabletDetection} from "./utils";
 import {fetchAuth} from "./redux/slices/AuthSlice";
 import SimilarPage from "./pages/SimilarPage";
 import FavoritePage from "./pages/FavoritePage";
 import FilterPage from "./pages/FilterPage";
-import SelectFilterPage from "./pages/SelectFilterPage";
 import CreateCardPage from "./pages/CreateCardPage";
+import DialogAppeal from './components/Support/dialogAppeal';
+import RegistrationBuisness from "./pages/RegistrationBuisness";
+
 
 axios.defaults.baseURL = "https://backend.vezdesens.ru/"
+// axios.defaults.baseURL = "http://localhost:5000/"
+// axios.defaults.baseURL = "http://192.168.1.119:5000/"
 
 function App() {
   const dispatch = useDispatch()
@@ -39,6 +43,7 @@ function App() {
 
   const loadingIsAuth = user.status === 'loading'
 
+  const isTablet = useTabletDetection(); //првоерка размера
   useEffect(() => {
     function checkAuth() {
       const checkSession = getCookie('session')
@@ -76,35 +81,41 @@ function App() {
           <Route element={<LayoutAll/>}>
             <Route path='/' element={<BoardPage/>}/>
             <Route path='/similarPage' element={<SimilarPage/>}/>
+            {isTablet ? 
+                      <Route path='/cardPage/:id' element={<CardPage/>}/>
+              : null
+            }
           </Route>
 
           <Route element={<LayoutFooter/>}>
             <Route path='/profilePage/:id' element={<ProfilePage/>}/>
             <Route path='/messages' element={<MessagesPage/>}/>
             <Route path='/categoryPage/:id' element={<CategoryPage/>}/>
-            <Route path='/servicePage' element={<ServicePage/>}/>
+            <Route path='/servicePage/:id/:sId/:obId' element={<ServicePage/>}/>
             <Route path='/favoritePage' element={<FavoritePage/>}/>
+            <Route path='/support' element={<SupportPage/>}/>
           </Route>
 
           {!isAuth &&
             <>
               <Route path='/auth' element={<Auth/>}/>
               <Route path='/registration' element={<Registration/>}/>
+              <Route path='/registrationBuisness' element={<RegistrationBuisness/>}/>
             </>
           }
           <Route path='/newPassword' element={<NewPassword/>}/>
           <Route path='/cardPage/:id' element={<CardPage/>}/>
           <Route path='/dialog' element={<DialogPage/>}/>
-          <Route path='/support' element={<SupportPage/>}/>
           <Route path='/subCategory/:id' element={<SubCategoryPage/>}/>
           <Route path='/subCategory/:id/:obId' element={<SubCategoryPage/>}/>
-          <Route path='/editProfile' element={<EditProfilePage/>}/>
+          <Route path='/efitProfile' element={<EditProfilePage/>}/>
           <Route path='/review' element={<ReviewPage/>}/>
           <Route path='/addReview' element={<AddReviewPage/>}/>
           <Route path='/filterPage' element={<FilterPage/>}/>
-          <Route path='/selectFilterPage' element={<SelectFilterPage/>}/>
           <Route path='/createAd' element={<CreateCardPage/>}/>
-          <Route path='/efitProfile/:id' element={<CreateCardPage/>}/>
+          <Route path='/appeal' element={<DialogAppeal/>}/>
+
+          <Route path='/editProfile/:id' element={<EditProfilePage/>}/>
         </Routes>
 
       </BrowserRouter>

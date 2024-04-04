@@ -10,9 +10,8 @@ import OffCard from "../Modal/OffCard";
 import {pluralRusVariant, STATIC_HOST} from "../../utils";
 import axios from "axios";
 
-const MyCard = ({item, choice}) => {
+const MyCard = ({item, choice, isCanEdit}) => {
   const [open, setOpen] = useState(false)
-
   const [activeModal, setActiveModal] = useState(false)
   let items = []
 
@@ -48,12 +47,8 @@ const MyCard = ({item, choice}) => {
       }
     ]
   }
-
-
   return (
-
     <>
-
       <div className='myCard'>
         <div className=' flex'>
           <NavLink to={`/cardPage/${item.id}`} className='noLink'>
@@ -62,21 +57,24 @@ const MyCard = ({item, choice}) => {
                    className='myCard_img-image'/>
             </div>
           </NavLink>
-          <div className="myCard_info">
-            <div className="myCard_info-dop flex space-between">
-              <span className='myCard_info-type'>{item.typeAd.name}</span>
-              <img src={dots} alt="" onClick={() => setOpen(!open)}/>
+          <div className="myCard_info f_column">
+            <div className='for_betterFlex'>
+              {isCanEdit ? <div className="myCard_info-dop flex space-between">
+                <span className='myCard_info-type'>{item.typeAd.name}</span>
+                <img src={dots} alt="" onClick={() => setOpen(!open)}/>
+              </div> : null}
+              {
+                open ?
+                  <MoreSubMenu items={items} setOpen={setOpen}/> : null
+              }
+              <NavLink to={`/cardPage/${item.id}`} className='noLink'>
+                <div className="myCard_info-main">
+                  <h1 className='myCard_info-title'>{item.title}</h1>
+                  <h1 className='myCard_info-price'>{item.price}</h1>
+                </div>
+              </NavLink>
             </div>
-            {
-              open ?
-                <MoreSubMenu items={items} setOpen={setOpen}/> : null
-            }
             <NavLink to={`/cardPage/${item.id}`} className='noLink'>
-              <div className="myCard_info-main">
-                <h1 className='myCard_info-title'>{item.title}</h1>
-                <h1 className='myCard_info-price'>{item.price}</h1>
-              </div>
-
               <div className="myCard_info-footer">
                 <span className=''>Осталось: </span><span
                 className=''>{new Date(new Date(item.dateEndActive) - new Date()).getDate()} {["день", "дня", "дней"][pluralRusVariant(new Date(new Date(item.dateEndActive) - new Date()).getDate())]}</span>
@@ -97,8 +95,6 @@ const MyCard = ({item, choice}) => {
       </div>
       <ModalTemplate children={<OffCard item={item}/>} activeModal={activeModal} setActiveModal={setActiveModal}/>
     </>
-
-
   );
 };
 

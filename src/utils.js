@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState, useEffect } from 'react'; //для проверки размера страницы
 
 export const STATIC_HOST = 'https://backend.vezdesens.ru/static/'
 export const AVATAR_HOST = 'https://backend.vezdesens.ru/static/avatar'
@@ -105,5 +106,34 @@ export const getStaticAd = async (limit=2, setValue) => {
       setValue(res.data)
     })
 }
+
+export const DataURIToBlob = (dataURI) => {
+	const splitDataURI = dataURI.split(',')
+	const byteString = splitDataURI[0].indexOf('base64') >= 0 ? atob(splitDataURI[1]) : decodeURI(splitDataURI[1])
+	const mimeString = splitDataURI[0].split(':')[1].split(';')[0]
+
+	const ia = new Uint8Array(byteString.length)
+	for (let i = 0; i < byteString.length; i++)
+		ia[i] = byteString.charCodeAt(i)
+
+	return new Blob([ia], { type: mimeString })
+}
+
+
+// робит
+export const useTabletDetection = () => {
+  const [isTablet, setIsTablet] = useState(window.innerWidth > 768);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsTablet(window.innerWidth > 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return isTablet;
+};
 
 

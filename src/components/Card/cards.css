@@ -81,6 +81,9 @@
     font-size: 14px;
     margin-top: 8px;
     margin-bottom: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .premium_card-address {
@@ -110,11 +113,16 @@
     margin-bottom: 15px;
 }
 
+.vip_card .card_favorite {
+    top: 0;
+    right: 10px;
+}
+
 .vip_card-img {
     width: 325px;
     height: 199px;
     border-radius: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 /* Standart plus */
@@ -135,6 +143,9 @@
     font-size: 14px;
     margin-bottom: 5px;
     color: rgba(255, 255, 255, 1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .plus_card_info-address, .plus_card_info-time {
@@ -162,4 +173,83 @@
 .similar_title {
     font-size: 20px;
     margin-bottom: 25px;
+}
+
+@media (min-width: 768px) {
+
+    /* Premium  */
+.premium_card {
+    width: 708px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.premium_card-img {
+    width: 708px;
+    height: 245px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.premium_card-title {
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.premium_card-address {
+    font-size: 12px;
+    font-weight: 400;
+    color: #838690;
+    margin-bottom: 4px;
+}
+
+.premium_card-time {
+    font-size: 12px;
+    font-weight: 400;
+    color: #B5B7BD;
+    margin-bottom: 8px;
+}
+
+.premium_card-price {
+    width: 10vh;
+    font-size: 20px;
+    font-family: 'OpenSansBold';
+    font-weight: 600;
+}
+   /* Premium  */
+.long_img {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 708px;
+    height: 53px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+    /* Premium  */
+
+    /* Card  */
+.card {
+    width: 166px;
+    position: relative;
+}
+.card_img-image {
+    width: 166px;
+    height: 210px;
+    margin-bottom: 8px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+.card_favorite{
+    padding: 12px 20px;
+}
+/* Vip  */
+.vip_card {    
+    margin: 15px;
+}
+
 }

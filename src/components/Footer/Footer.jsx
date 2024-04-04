@@ -18,12 +18,12 @@ const Footer = () => {
     <div className='footer'>
       <NavLink to='/'>
         <div className="footer_section">
-          <img src={home_icon} alt=""/>
+          <img className='img_25' src={home_icon} alt=""/>
         </div>
       </NavLink>
       <NavLink to={isAuth ? '/favoritePage' : '/auth'}>
         <div className="footer_section">
-          <img src={favorite_icon} alt=""/>
+          <img className='img_25' src={favorite_icon} alt=""/>
         </div>
       </NavLink>
 
@@ -38,13 +38,13 @@ const Footer = () => {
 
       <NavLink to={isAuth ? '/messages' : '/auth'}>
         <div className="footer_section">
-          <img src={message_icon} alt=""/>
+          <img className='img_25' src={message_icon} alt=""/>
         </div>
       </NavLink>
 
       <NavLink to={isAuth ? `/profilePage/${user.items.id}` : '/auth'}>
         <div className="footer_section">
-          <img src={profile_icon} alt=""/>
+          <img className='img_25' src={profile_icon} alt=""/>
         </div>
       </NavLink>
 

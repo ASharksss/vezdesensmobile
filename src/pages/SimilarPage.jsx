@@ -10,7 +10,7 @@ const SimilarPage = () => {
   let [searchParams, ] = useSearchParams();
   const objectId = parseInt(searchParams.get('object')) || null
 
-  const [offset, setOffset] = useState('0|0|0')
+  const [offset, setOffset] = useState(0)
   const [allData, setAllData] = useState([])
   const [standardCount, setStandardCount] = useState(0)
   const [standardPlusCount, setStandardPlusCount] = useState(0)

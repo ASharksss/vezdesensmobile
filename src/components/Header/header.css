@@ -15,6 +15,7 @@
 .header_location {
     padding-top: 20px;
     margin-bottom: 13px;
+    font-size: 14px;
 }
 
 .header_location-icon {
@@ -32,7 +33,10 @@
     background-color: rgba(22, 22, 22, 1);
     border: none;
     border-radius: 10px;
-    padding: 19px 20px;
+    /* padding: 19px 20px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-right: 5px;
     cursor: pointer;
     transition: .15s;
@@ -44,17 +48,18 @@
     background-color: rgba(131, 134, 144, 1);
     border: none;
     border-radius: 10px;
-    padding: 19px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-right: 5px;
     cursor: pointer;
     transition: .25s;
-
 }
 
 .header_search_wrapper {
     padding: 18px;
     width: 266px;
-    height: 54px;
+    /* height: 54px; */
     background-color: rgba(236, 236, 236, 1);
     border-radius: 10px;
 }
@@ -78,4 +83,65 @@
     background-color: rgba(255, 255, 255, 1);
     margin-top: 20px;
     z-index: 5;
+}
+
+.wrapper-tablet{
+    display: flex;
+    padding: 0 10px;
+}
+.header_logo{
+    width: 117px;
+    padding: 10px;
+}
+.header_logo-img{
+    padding-top: 15px;
+    width: 97px;
+}
+.item{
+    margin: 0 10px;
+}
+
+@media (min-width: 768px){
+    .header {
+        margin: 10px;
+        width: auto;
+        height: 121px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        margin-bottom: 30px;
+    }
+    .header_search_btn {
+        width: 93px;
+        height: 47px;
+        background-color: rgba(22, 22, 22, 1);
+        border: none;
+        border-radius: 10px;
+        margin-right: 15px;
+        cursor: pointer;
+        transition: .15s;
+        }
+        .header_search_btn_white {
+            width: 93px;
+            height: 47px;
+            background-color: rgba(131, 134, 144, 1);
+            border: none;
+            border-radius: 10px;
+            margin-right: 15px;
+            cursor: pointer;
+            transition: .25s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header_search_wrapper {
+            padding: 0px 20px;
+            width: 467px;
+            display: flex;
+            align-items: center;
+            /* height: 54px; */
+            background-color: rgba(236, 236, 236, 1);
+            border-radius: 10px;
+        }
+    
+    
 }

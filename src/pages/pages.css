@@ -18,7 +18,7 @@
     white-space: nowrap;
 }
 
-.breadcrumbs::-webkit-scrollbar{
+.breadcrumbs::-webkit-scrollbar {
     display: none;
 }
 
@@ -70,6 +70,7 @@
 .card_price {
     font-size: 32px;
     font-weight: bold;
+    font-family: 'OpenSansBold';
 }
 
 .card_seller-title {
@@ -110,6 +111,21 @@
     display: flex;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.main_black_btn {
+    background-color: rgba(22, 22, 22, 1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 13px;
+    color: white;
+    font-family: 'OpenSansSemiBold';
+}
+
+.main_black_btn:hover {
+    background-color: rgba(131, 134, 144, 1);
 }
 
 .black_btn {
@@ -192,6 +208,12 @@
     right: 150px;
 }
 
+.profile_filter {
+    position: absolute;
+    top: 25px;
+    right: 180px;
+}
+
 .profile_info-avatar {
     margin-right: 15px;
 }
@@ -204,8 +226,15 @@
 }
 
 .profile_info-name {
-    width: 136px;
+    width: 150px;
     font-size: 18px;
+}
+
+.profile_info-company_name {
+    width: 136px;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .profile_info-phone {
@@ -236,9 +265,8 @@
 }
 
 
-#active:checked ~  .profile_card-active,
-#archive:checked ~  .profile_card-archive
-{
+#active:checked ~ .profile_card-active,
+#archive:checked ~ .profile_card-archive {
     color: rgba(7, 12, 32, 1);
 }
 
@@ -255,9 +283,13 @@
     transition: all 0.3s ease;
 }
 
-#archive:checked ~ .slider {
+.p-l-50 {
     left: 50%;
 }
+
+/* #archive:checked ~ .slider {
+    left: 50%;
+} */
 
 .profile_cards {
     margin-top: 29px;
@@ -338,22 +370,27 @@
 
 .chat_info {
     margin-left: 31px;
+    width: 80%;
 }
+
 
 .chat_list {
     margin-top: 45px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 
 .chat_input {
     margin-top: 40px;
-    width: 325px;
+    /* width: 325px; */
+    /* на других устройствах плохо выглядит */
+    width: 90%;
     position: fixed;
     bottom: 25px;
     left: 20px;
     padding: 17px;
     background-color: rgba(236, 236, 236, 1);
     border-radius: 10px;
+    z-index: 3;
 }
 
 .chat_textarea {
@@ -432,6 +469,10 @@
 
 .serviceItem_header_info-title {
     font-size: 18px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 
 .serviceItem_header_info-price {
@@ -440,9 +481,13 @@
 
 .serviceItem_description {
     font-size: 10px;
+    overflow: hidden;
     color: rgba(131, 134, 144, 1);
     margin-top: 15px;
     line-height: 15.57px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
 }
 
 .serviceItem_time {
@@ -481,7 +526,7 @@
 }
 
 .editProfile_btns {
-    margin-top: 90px;
+    margin-top: 10vh;
 }
 
 .editProfile_btn + .editProfile_btn {
@@ -499,7 +544,7 @@
     text-align: center;
     font-family: OpenSansBold;
     font-size: 32px;
-    margin-top: 30%;
+    margin-top: 25%;
     margin-bottom: 20px;
 }
 
@@ -517,7 +562,7 @@
 
 
 .auth_btns {
-    margin-top: 122px;
+    margin-top: 90px;
 }
 
 .auth_btn {
@@ -631,6 +676,12 @@
     padding-bottom: 125px;
 }
 
+.favoritePage_subMenu {
+    position: absolute;
+    top:40px;
+    right: 190px;
+}
+
 /* Filter Page */
 
 .filterPage {
@@ -662,12 +713,24 @@
     font-size: 20px;
     margin-bottom: 30px;
     margin-top: 25px;
-    margin-left: 20px;
 }
 
-.createCard-subtitle {
+.createCard_categories-subtitle {
     font-size: 20px;
     margin-bottom: 25px;
+}
+
+.createCard_categories-select {
+    width: 325px;
+    height: 47px;
+    background-color: rgba(236, 236, 236, 1);
+    border-radius: 10px;
+    border: none;
+    padding: 12px 20px;
+}
+
+.createCard_categories-select + .createCard_categories-select {
+    margin-top: 15px;
 }
 
 .descriptionCard {
@@ -698,7 +761,223 @@
     margin-top: 50px;
 }
 
+.characteristic_item + .characteristic_item {
+    margin-top: 10px;
+}
+
+.characteristic_item-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.characteristic_item-values {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.characteristic_item-checkbox {
+    width: 24px;
+    height: 24px;
+    margin-right: 13px;
+}
+
+.characteristic_item-text {
+    font-size: 14px;
+}
+
+.createCard_characteristics-title {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.createCard_select {
+    width: 325px;
+    height: 47px;
+    background-color: rgba(236, 236, 236, 1);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.createCard_characteristics-input {
+    width: 325px;
+    height: 47px;
+    background-color: rgba(236, 236, 236, 1);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.size_block + .size_block {
+    margin-top: 15px;
+}
+
+.size_standart-checkbox {
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+}
+
+.size_standart-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 25px;
+}
+
+.size_standart-price {
+    color: #B5B7BD;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.size_standart-description {
+    font-size: 10px;
+    color: #838690;
+    line-height: 14.77px;
+    margin-top: 10px;
+}
+
+.size_standart-btn {
+    font-size: 16px;
+    color: #070C20;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.size_standart-preview {
+    margin-top: 25px;
+    margin-left: 40px;
+}
 
 
+/* Характеристики  */
 
+/* .сharacteristics_child-flex{
+    display: flex;
+} */
+/* ._child-flex-value{
+    display: flex;
+} */
+.card_сharacteristics-title {
+    margin-bottom: 15px;
+}
 
+.createCard_textarea {
+    width: 325px;
+    height: 185px;
+    background-color: #ECECEC;
+    border-radius: 10px;
+    border: none;
+    padding: 16px 20px;
+}
+
+@media (min-width: 768px) {
+    .board_page {
+        margin: 15px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .profile_search {
+        margin: 0 10px 0 0;
+        height: 47px;
+        background-color: rgba(236, 236, 236, 1);
+        border-radius: 10px;
+        margin-top: 35px;
+        margin-bottom: 30px;
+        padding: 13px 30px;
+    }
+
+    .profile_info-name {
+        font-size: 20px;
+    }
+
+    .profile_info-phone {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .profile_info-img {
+        width: 90px;
+        height: 90px;
+
+    }
+
+    /* Card  */
+    .card_title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .card_price {
+        font-size: 38px;
+        font-weight: 700;
+        font-family: 'OpenSansBold';
+    }
+
+    .card_seller-title {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .card_page-count {
+        font-size: 18px;
+    }
+
+    .card_seller-address {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .card_description-title {
+        font-family: 'OpenSansBold';
+        font-weight: 700;
+        font-size: 24px;
+    }
+
+    .card_description-text {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .card_statistic-text {
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    .card_backbtn {
+        font-family: 'OpenSansBold';
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .profile_cards-title {
+        font-family: 'OpenSansBold';
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+/* Support Page */
+
+.appeals {
+    padding: 20px 20px;
+    padding-bottom: 60px;
+}
+
+.appeals-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-family: 'OpenSansBold';
+    margin-left: 15px;
+}

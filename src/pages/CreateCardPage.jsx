@@ -1,136 +1,254 @@
 import React, {useEffect, useState} from 'react';
-import SelectFilter from "../ui/filterComponents/selectFilter";
-import Back from "../ui/Back";
-import EnterFilter from "../ui/filterComponents/enterFilter";
-import CheckboxFilter from "../ui/filterComponents/CheckboxFilter";
-import CreateEnterFilter from "../ui/filterComponents/createEnterFilter";
 import axios from "axios";
-import ModalTemplate from "../components/Modal/ModalTemplate";
-import SelectFilterPage from "./SelectFilterPage";
+import preview_standart from '../asserts/createCard/preview_standart.svg'
+import preview_standartPlus from '../asserts/createCard/preview_standartPlus.svg'
+import preview_vip from '../asserts/createCard/preview_vip.svg'
+import preview_premium from '../asserts/createCard/preview_premium.svg'
+import SizeBlock from "../components/CreateCardPage/SizeBlock";
+
 
 const CreateCardPage = () => {
+  const [categoriesArray, setCategoriesArray] = useState({
+    category: [], subCategory: [], object: []
+  })
+  const [selectedCategoriesArray, setSelectedCategoriesArray] = useState({
+    category: 0, subCategory: 0, object: 0
+  })
+  const [characterArray, setCharacterArray] = useState([])
+  const [preview, setPreview] = useState({
+    isOpen: false, name: null
+  })
 
-  const [dataCategories, setDataCategories] = useState([])
-  const [dataSubCategories, setDataSubCategories] = useState([])
-  const [dataObject, setDataObject] = useState([])
-  const [open, setOpen] = useState(false)
-  const [loading, setLoading] = useState(true)
-  const [enter, setEnter] = useState('')
-  const [input, setInput] = useState('')
-
-  const [category, setCategory] = useState(null)
-  const [subCategory, setSubCategory] = useState(null)
-  const [object, setObject] = useState(null)
-  const [characteristic, setCharacteristic] = useState(null)
-
-  const getDataCategories = async () => {
-    await axios.get(`api/categories/getCategories`)
-      .then(res => setDataCategories(res.data.categories))
-  }
-
-  const getDataSubCategories = async () => {
-    await axios.get(`api/categories/getSubCategories?categoryId=${category?.id}`)
-      .then(res => setDataSubCategories(res.data))
-  }
-
-  const getDataObject = async () => {
-    await axios.get(`api/categories/getObjects?subCategoryId=${subCategory?.id}`)
-      .then(res => setDataObject(res.data))
-  }
-
-  const getDataCharacteristic = async () => {
-    await axios.get(`api/characteristic/getCharacteristicObject?objectId=${object?.id}`)
-      .then(res => setCharacteristic(res.data))
+  const handleChange = async (e) => {
+    setSelectedCategoriesArray((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
+    if (e.target.name === 'category') {
+      setSelectedCategoriesArray((prev) => ({
+        ...prev,
+        subCategory: 0,
+        object: 0
+      }))
+    }
+    if (e.target.name === 'subCategory') {
+      setSelectedCategoriesArray((prev) => ({
+        ...prev,
+        object: 0
+      }))
+    }
   }
 
   useEffect(() => {
-    getDataCategories()
-    setLoading(false)
+    setCharacterArray([])
+    if (selectedCategoriesArray.category !== 0) {
+      axios.get(`api/categories/getSubCategories?categoryId=${selectedCategoriesArray.category}`)
+        .then(res => {
+          setCategoriesArray((prev) => ({
+            ...prev,
+            subCategory: res.data
+          }))
+        })
+    }
+    if (selectedCategoriesArray.subCategory !== 0) {
+      axios.get(`api/categories/getObjects?subCategoryId=${selectedCategoriesArray.subCategory}`)
+        .then(res => {
+          setCategoriesArray((prev) => ({
+            ...prev,
+            object: res.data
+          }))
+        })
+    }
+    if (selectedCategoriesArray.object !== 0) {
+      axios.get(`api/characteristic/getCharacteristicObject?objectId=${selectedCategoriesArray.object}`)
+        .then(res => {
+          setCharacterArray(res.data)
+          console.log(res.data)
+        })
+    }
+  }, [selectedCategoriesArray])
+
+  useEffect(() => {
+    const getCategories = async () => {
+      await axios.get(`api/categories/getCategories`)
+        .then(res => {
+          setCategoriesArray((prev) => ({
+            ...prev,
+            category: res.data.categories
+          }))
+        })
+    }
+    getCategories()
   }, [])
 
-  useEffect(() => {
-    setLoading(false)
-    setOpen(false)
-    getDataSubCategories()
-  }, [category])
 
-  useEffect(() => {
-    getDataObject()
-    setOpen(false)
-    setLoading(false)
-  }, [subCategory])
+  console.log(characterArray)
 
-  useEffect(() => {
-    getDataCharacteristic()
-    setOpen(false)
-    setLoading(false)
-  }, [object])
-
-  if (loading) {
-    return <div>
-      loading...
-    </div>
-  }
   return (
     <div className='createCard'>
-      <div className="flex items-center">
-        <Back/>
-        <h1 className='createCard-title'>Подать объявление</h1>
-      </div>
-      <h2 className='createCard-subtitle'>Категория</h2>
-
-      {/*<div className='filter_item'>/!**/}
-      {/*  <label className='enterFilter-title'>Название</label>*!/*/}
-      {/*  <div className='selectInput' onClick={() => setOpen(true)}>*/}
-      {/*    {category ? category : 'Выберите значение...'}*/}
-      {/*  </div>*/}
-      {/*  {*/}
-      {/*    open ?*/}
-      {/*      <ModalTemplate activeModal={open} setActiveModal={setOpen}*/}
-      {/*                     children={<SelectFilterPage/> }/>*/}
-      {/*      : null*/}
-      {/*  }*/}
-      {/*</div>*/}
-
-      <SelectFilter data={dataCategories} setValue={setCategory} value={category?.name} type={'radio'}/>
-      <SelectFilter data={dataSubCategories} setValue={setSubCategory} value={subCategory?.name} type={'radio'}/>
-      <SelectFilter data={dataObject} setValue={setObject} value={object?.name} type={'radio'}/>
-
-      <div className="required technical_characteristic">
-        <h1 className='createCard-char_title'>Обязательные характеристики</h1>
-        <CreateEnterFilter item={{name: 'Название'}} setValue={setEnter}/>
-
-        {
-          characteristic?.map((item) => item.characteristic.required && (
-            <>
-              {item.characteristic.typeCharacteristic.name === 'enter' &&
-                <CreateEnterFilter item={item.characteristic} setValue={setEnter}/>}
-              {item.characteristic.typeCharacteristic.name === 'checkbox' &&
-                <CheckboxFilter item={item.characteristic.characteristicValues} type={'checkbox'} setValue={setInput}/>}
-              {item.characteristic.typeCharacteristic.name === 'select' &&
-                <SelectFilter data={item.characteristic.characteristicValues} type={'radio'} setValue={setInput}/> }
-            </>
-          ))
-        }
-
+      <h1 className='createCard-title'>Подать объявление</h1>
+      <div className="createCard_categories">
+        <h2 className='createCard_categories-subtitle'>Категория</h2>
+        <div className="column">
+          <select className='createCard_categories-select' name='category' value={selectedCategoriesArray.category}
+                  onChange={handleChange}>
+            <option value={0} disabled={true}>Выберите подкатегорию...</option>
+            {
+              categoriesArray.category ? categoriesArray.category.map((item, index) => (
+                <option key={`category-${index}`} value={item.id}>{item.name}</option>
+              )) : null
+            }
+          </select>
+          <select className='createCard_categories-select' name='subCategory'
+                  value={selectedCategoriesArray.subCategory}
+                  onChange={handleChange}>
+            <option value={0} disabled={true}>Выберите подкатегорию...</option>
+            {
+              categoriesArray.subCategory ? categoriesArray.subCategory.map((item, index) => (
+                <option key={`subcategory-${index}`} value={item.id}>{item.name}</option>
+              )) : null
+            }
+          </select>
+          <select className='createCard_categories-select' name='object' value={selectedCategoriesArray.object}
+                  onChange={handleChange}>
+            <option value={0} disabled={true}>Выберите подкатегорию...</option>
+            {
+              categoriesArray.object ? categoriesArray.object.map((item, index) => (
+                <option key={`object-${index}`} value={item.id}>{item.name}</option>
+              )) : null
+            }
+          </select>
+        </div>
       </div>
 
-      <div className="additionally technical_characteristic">
-        <h1 className='createCard-char_title'>Дополнительные характеристики</h1>
-        <CreateEnterFilter/>
-        <SelectFilter/>
-        <CheckboxFilter/>
-      </div>
+      {
+        characterArray.length > 0 ?
+          <div className="createCard_characteristics">
+            <h2 className='createCard_characteristics-title'>Технические характеристики</h2>
+            {characterArray?.map(character => {
+              if (character.characteristic.required) {
+                if (character.characteristic.typeCharacteristic.name === 'select') {
+                  return (
+                    <div className='characteristic_item'>
+                      <label className='characteristic_item-label'>{character.characteristic.name}</label>
+                      <select className='createCard_select'>
+                        <option value={0}>-</option>
+                        {
+                          character.characteristic.characteristicValues.map(value => (
+                            <option value={value.id}>{value.name}</option>
+                          ))
+                        }
+                      </select>
+                    </div>
+                  )
+                }
+                if (character.characteristic.typeCharacteristic.name === 'checkbox') {
+                  return (
+                    <div className='characteristic_item'>
+                      <p className='characteristic_item-label'>{character.characteristic.name}</p>
+                      <label>{
+                        character.characteristic.characteristicValues.map(value => (
+                          <div className='characteristic_item-values '>
+                            <input className='characteristic_item-checkbox' type="checkbox" value={value.id}/>
+                            <label className='characteristic_item-text' id={value.id}>{value.name}</label>
+                          </div>
+                        ))
+                      }</label>
+                    </div>
+                  )
+                }
+                if (character.characteristic.typeCharacteristic.name === 'enter') {
+                  return (
+                    <div className='characteristic_item'>
+                      <label className='characteristic_item-label'>{character.characteristic.name}</label>
+                      <input type="text" className='createCard_characteristics-input'/>
+                    </div>
+                  )
+                }
+              }
+            })}
+            <h2 className='createCard_characteristics-title'>Дополнительные опции</h2>
+            {characterArray?.map(character => {
+              if (!character.characteristic.required) {
+                if (character.characteristic.typeCharacteristic.name === 'select') {
+                  return (
+                    <div className='characteristic_item'>
+                      <label className='characteristic_item-label'>{character.characteristic.name}</label>
+                      <select className='createCard_select'>
+                        <option value={0} disabled>-</option>
+                        {
+                          character.characteristic.characteristicValues.map(value => (
+                            <option value={value.id}>{value.name}</option>
+                          ))
+                        }
+                      </select>
+                    </div>
+                  )
+                }
+                if (character.characteristic.typeCharacteristic.name === 'checkbox') {
+                  return (
+                    <div className='characteristic_item'>
+                      <label>{character.characteristic.name}</label>
+                      <select className='createCard_select'>
+                        <option value="" disabled>-</option>
+                        {
+                          character.characteristic.characteristicValues.map(value => (
+                            <option value={value.id}>{value.name}</option>
+                          ))
+                        }
+                      </select>
+                    </div>
+                  )
+                }
+                if (character.characteristic.typeCharacteristic.name === 'enter') {
+                  return (
+                    <div className='characteristic_item'>
+                      <label className='characteristic_item-label'>{character.characteristic.name}</label>
+                      <input type="text" className='createCard_characteristics-input'/>
+                    </div>
+                  )
+                }
+              }
+            })}
+          </div>
+          : null
+      }
+      <h2 className='createCard_characteristics-title'>Описание</h2>
+      <textarea className='createCard_textarea' placeholder="Опишите подробнее товар"></textarea>
 
-      <div className="descriptionCard">
-        <h1 className='descriptionCard-title'>Описание</h1>
-        <textarea className='createCard_description' placeholder='Опишите подробнее товар'/>
-      </div>
+      <h2 className='createCard_characteristics-title'>Размер объявления</h2>
+      <div className="createPage_size">
+        <div className="createPage_size-standart">
 
-      <div className="sizeCard">
-        <h1 className='descriptionCard-title'>Размер объявления</h1>
-      </div>
+          <SizeBlock name={'Стандарт'} price={'Бесплатно'} preview={preview} setPreview={setPreview}
+                     preview_image={preview_standart}
+                     description={'Размер изображения 248 на 233 пикселей. Показывается в течение 30 дней, после чего его\n' +
+                       '                  можно заново запустить. Таких объявлений большинство. Бронирования не требует.'}/>
 
+
+
+          <SizeBlock name={'Стандарт +'} price={'4 р в сутки'} setPreview={setPreview} preview={preview}
+                     description={'Размер изображения 315 на 417 пикселей. Требует бронирования,\n' +
+                       '                  указываются дата начала и конца показов. Далее рассчитывается по формуле:\n' +
+                       '                 Итоговая стоимость = рубли в сутки * количество дней.\n' +
+                       '                  В случае, если выбранный диапазон меньше 30 дней, то по истечению бронирования объявление станет\n' +
+                       '                  стандартным.'} preview_image={preview_standartPlus}/>
+          <SizeBlock name={'ВИП'} price={'8 р в сутки'}
+                     description={'Размер изображения 690 на 417 пикселей. Требует бронирования,\n' +
+                       '                  указываются дата начала и конца показов. Далее рассчитывается по формуле:\n' +
+                       '                  Итоговая стоимость = рубли в сутки * количество дней.\n' +
+                       '                  В случае, если выбранный диапазон меньше 30 дней, то по истечению бронирования объявление станет\n' +
+                       '                  стандартным'} preview={preview} setPreview={setPreview}
+                     preview_image={preview_vip}/>
+          <SizeBlock name={'Премиум'} preview={preview} preview_image={preview_premium} setPreview={setPreview}
+                     description={'Размер изображения 1400 на 417 пикселей. Всего 2 таких\n' +
+                       '                  объявления – верхний и нижний. Расположены на самом верху. Требует бронирования указываются дата\n' +
+                       '                  начала и конца показов. Далее рассчитывается по формуле:\n' +
+                       '                  Итоговая стоимость = рубли в сутки * количество дней.\n' +
+                       '                  В случае, если выбранный диапазон меньше 30 дней, то по истечению бронирования объявление станет\n' +
+                       '                  стандартным.'} price={'30 р в сутки'} />
+        </div>
+      </div>
     </div>
   );
 };

@@ -51,3 +51,10 @@
     font-size: 12px;
 }
 
+@media (min-width: 768px) {
+    .favorite_image {
+        width: 166px;
+        height: 223px;
+    }
+    
+}

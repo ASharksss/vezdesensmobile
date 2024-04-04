@@ -12,13 +12,18 @@ import {NavLink, useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
 import StarComponent from "../components/ReviewComponents/StarComponents";
 import axios from "axios";
-import {pluralRusVariant, relativeDate} from "../utils";
+import {pluralRusVariant, relativeDate, getStaticAd, STATIC_HOST, useTabletDetection} from "../utils";
 import CarouselComponent from "../components/Carousel/CarouselComponent";
 import PreloaderComponent from "../components/Preloader/PreloaderComponent";
 import SimilarBtn from "../ui/SimilarBtn";
 import FavoriteBtn from "../ui/favoriteBtn";
 import {useSelector} from "react-redux";
 import Fancybox from "../components/fancybox";
+import Long from '../components/Card/Long'
+import {shareOnMobile} from "react-mobile-share";
+import {v4 as uuidV4} from 'uuid';
+import ModalTemplate from "../components/Modal/ModalTemplate";
+
 
 const CardPage = () => {
   const {isAuth} = useSelector(state => state.user)
@@ -29,6 +34,16 @@ const CardPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState({})
   const [average, setAverage] = useState(0)
+  const [staticAd, setStaticAd] = useState([])
+  const [activeModal, setActiveModal] = useState(false)
+	const {items} = useSelector(state => state.user.user)
+
+
+  const isTablet = useTabletDetection(); //првоерка размера
+  // Для банера 
+  useEffect(() => {
+    getStaticAd(1, setStaticAd)
+  }, [])
 
   const getData = async () => {
     await axios.get(`api/ad/getOneAd/${id}`)
@@ -59,13 +74,35 @@ const CardPage = () => {
     search: `?object=${data?.object.id}`,
   })
 
+  const isGroup = function () {
+    return data.adCharacteristicSelects.length === 0 && data.adCharacteristicInputs.length === 0 ?
+      false : true
+  }
 
+  const groupedCharacteristics = {};
+  if (data && data.adCharacteristicSelects) {
+    data.adCharacteristicSelects.forEach((item) => {
+      const {name} = item.characteristic;
+      if (!groupedCharacteristics.hasOwnProperty(name)) {
+        groupedCharacteristics[name] = [];
+      }
+      groupedCharacteristics[name].push(item.characteristicValue.name);
+
+    });
+  }
+  // console.log(data);
   if (isLoading) {
     return <PreloaderComponent/>
   } else {
     return (
       <div className='card_page'>
         <div className='wrapper'>
+
+          {
+            isTablet && staticAd[0]?.imageName !== undefined ?
+              <Long image={`${STATIC_HOST}/promotion/${staticAd[0]?.imageName}`} href={staticAd[1]?.href}/>
+              : null
+          }
           <div className="card_header">
             <div className="flex space-between">
               <img src={back_icon} alt="" onClick={() => navigate(-1 || '/')}/>
@@ -73,8 +110,19 @@ const CardPage = () => {
                 <div className='card_icon'>
                   <FavoriteBtn id={data.id} isFavorite={data.favorites} userData={data?.user}/>
                 </div>
-                <img className='card_icon' src={share_icon} alt=""/>
 
+                <button className='card_icon' onClick={() =>
+                  shareOnMobile(
+                    {
+                      //text: "Hey checkout our package react-mobile-share",
+                      url: window.location.href,
+                      title: document.title,
+                      //images: [imgBase64]
+                    }
+                  )
+                }
+                ><img src={share_icon} alt=""/>
+                </button>
               </div>
             </div>
           </div>
@@ -92,8 +140,8 @@ const CardPage = () => {
 
             <SimilarBtn handleClick={handleShowSimilar}/>
           </div>
-          <h2 className='card_price'>{data.price}</h2>
           <h1 className='card_title'>{data.title}</h1>
+          <h2 className='card_price'>{data.price} <span style={{fontFamily: 'Arial'}}>₽</span></h2>
 
           <div className="card_seller_info">
             <NavLink to={`/profilePage/${data.user.id}`} className='noLink'>
@@ -113,13 +161,17 @@ const CardPage = () => {
           <span className='card_seller-address'>
 						  {data.address}
 					</span>
-
           <div className="card_btns">
-            <button className='black_btn'><img src={phone_icon} alt=""/></button>
-            <NavLink to='/dialog'>
-              <button className='white_btn'><img src={message_icon} alt=""/></button>
+            {/* !ЗВОНКИ 1 И 0  */}
+              <button onClick={() => setActiveModal(true)} className={data.showPhone === 2 ? 'black_btn visibal-collapse' : 'black_btn' } >
+                <img src={phone_icon} alt=""/>
+              </button>
+              <ModalTemplate activeModal={activeModal} setActiveModal={setActiveModal}
+                             children={<span className='off_card-bold'>{data.user.phone}</span>}/>
+            <NavLink state={{from: data.user, tovar: data}}
+										 to={`/dialog/?adId=${data.id}&senderId=${items.id}&receiverId=${data.userId}#chat-${uuidV4()}`}>
+              <button className={data.showPhone === 1 ? 'white_btn visibal-collapse' : 'white_btn' }><img src={message_icon} alt=""/></button>
             </NavLink>
-
           </div>
 
           <div className="card_description">
@@ -128,6 +180,38 @@ const CardPage = () => {
 							{data.description}
 						</pre>
           </div>
+          {isGroup() ? (
+            <div className="card_сharacteristics">
+              <h1 className="card_сharacteristics-title">Характеристики</h1>
+              <div className='card_сharacteristics-child'>
+                {
+                  data.adCharacteristicInputs.map((item, index) => (
+                    <ul className='сharacteristics_child-flex'>
+                      <li className='_child-flex-title'>
+                        <b key={index}>{item.characteristic.name}:&nbsp;</b>
+                        <span key={index}>{item.value}</span>
+                      </li>
+                    </ul>
+                  ))
+                }
+              </div>
+              <div className='card_сharacteristics-child'>
+                {Object.entries(groupedCharacteristics).map(([characteristic, values]) => (
+                  <ul className='сharacteristics_child-flex' key={characteristic}>
+                    <li className='_child-flex-title'>
+                      <b>{characteristic}:&nbsp;</b>
+                      {values.map((value, index) => (
+                        <span key={index}>{value}{values.length > 1 ? "; " : ""}</span>
+                      ))}
+                    </li>
+                  </ul>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <>
+            </>
+          )}
           <div className="card_backbtn">
             <Backbtn/>
           </div>

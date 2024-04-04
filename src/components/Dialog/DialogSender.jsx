@@ -1,14 +1,15 @@
 import React from 'react';
+import { formatDateToRelative, relativeDate } from '../../utils';
 
-const DialogSender = () => {
+const DialogSender = ({date, text}) => {
   return (
 
       <div className=' mess dialog_sender'>
         <div>
-          <span className='mess_time'>5 января, 20:11</span>
+          <span className='mess_time' style={{textAlign: "left"}}>{relativeDate(new Date(date))}</span>
           {/*<div className="tringle"></div>*/}
           <div className="message_block">
-            dsfsdfsdfsdfsdfsdfsdf
+            {text}
           </div>
         </div>
 
