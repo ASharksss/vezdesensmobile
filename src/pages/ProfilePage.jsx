@@ -142,6 +142,7 @@ const ProfilePage = () => {
               </div>
               <div className="profile_info-text">
                 <h1 className='profile_info-name'>{data.name}</h1>
+                <h1 className='profile_info-company_name'>{data.companyName}</h1>
                 <p className='profile_info-phone'>{data.phone}</p>
               </div>
             </div>

@@ -226,8 +226,15 @@
 }
 
 .profile_info-name {
-    width: 136px;
+    width: 150px;
     font-size: 18px;
+}
+
+.profile_info-company_name {
+    width: 136px;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .profile_info-phone {
@@ -537,7 +544,7 @@
     text-align: center;
     font-family: OpenSansBold;
     font-size: 32px;
-    margin-top: 30%;
+    margin-top: 25%;
     margin-bottom: 20px;
 }
 
@@ -555,7 +562,7 @@
 
 
 .auth_btns {
-    margin-top: 122px;
+    margin-top: 90px;
 }
 
 .auth_btn {
@@ -804,6 +811,10 @@
     border: none;
     border-radius: 10px;
     padding: 10px;
+}
+
+.size_block + .size_block {
+    margin-top: 15px;
 }
 
 .size_standart-checkbox {

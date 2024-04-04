@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import preview_standart from '../asserts/createCard/preview_standart.svg'
+import preview_standartPlus from '../asserts/createCard/preview_standartPlus.svg'
+import preview_vip from '../asserts/createCard/preview_vip.svg'
+import preview_premium from '../asserts/createCard/preview_premium.svg'
+import SizeBlock from "../components/CreateCardPage/SizeBlock";
 
 
 const CreateCardPage = () => {
@@ -215,28 +219,34 @@ const CreateCardPage = () => {
       <h2 className='createCard_characteristics-title'>Размер объявления</h2>
       <div className="createPage_size">
         <div className="createPage_size-standart">
-          <div className="flex items-center">
-            <input type="checkbox" className='size_standart-checkbox'/>
-            <div>
-              <div className="flex items-center">
-                <span className='size_standart-name'>Стандарт</span>
-                <span className='size_standart-price'>Бесплатно</span>
-              </div>
-              <p className='size_standart-description'>Размер изображения 248 на 233 пикселей. Показывается в течение 30
-                дней, после чего его
-                можно заново запустить. Таких объявлений большинство. Бронирования не требует.</p>
-              <p className='size_standart-btn' onClick={() => {
-                setPreview({isOpen: !preview.isOpen, name: 'standart'})
-              }}>
-                Предпросмотр</p>
-            </div>
-          </div>
-          {
-            preview.isOpen && preview.name === 'standart' ?
-              <img src={preview_standart} alt="" className='size_standart-preview'/>
-              : null
-          }
 
+          <SizeBlock name={'Стандарт'} price={'Бесплатно'} preview={preview} setPreview={setPreview}
+                     preview_image={preview_standart}
+                     description={'Размер изображения 248 на 233 пикселей. Показывается в течение 30 дней, после чего его\n' +
+                       '                  можно заново запустить. Таких объявлений большинство. Бронирования не требует.'}/>
+
+
+
+          <SizeBlock name={'Стандарт +'} price={'4 р в сутки'} setPreview={setPreview} preview={preview}
+                     description={'Размер изображения 315 на 417 пикселей. Требует бронирования,\n' +
+                       '                  указываются дата начала и конца показов. Далее рассчитывается по формуле:\n' +
+                       '                 Итоговая стоимость = рубли в сутки * количество дней.\n' +
+                       '                  В случае, если выбранный диапазон меньше 30 дней, то по истечению бронирования объявление станет\n' +
+                       '                  стандартным.'} preview_image={preview_standartPlus}/>
+          <SizeBlock name={'ВИП'} price={'8 р в сутки'}
+                     description={'Размер изображения 690 на 417 пикселей. Требует бронирования,\n' +
+                       '                  указываются дата начала и конца показов. Далее рассчитывается по формуле:\n' +
+                       '                  Итоговая стоимость = рубли в сутки * количество дней.\n' +
+                       '                  В случае, если выбранный диапазон меньше 30 дней, то по истечению бронирования объявление станет\n' +
+                       '                  стандартным'} preview={preview} setPreview={setPreview}
+                     preview_image={preview_vip}/>
+          <SizeBlock name={'Премиум'} preview={preview} preview_image={preview_premium} setPreview={setPreview}
+                     description={'Размер изображения 1400 на 417 пикселей. Всего 2 таких\n' +
+                       '                  объявления – верхний и нижний. Расположены на самом верху. Требует бронирования указываются дата\n' +
+                       '                  начала и конца показов. Далее рассчитывается по формуле:\n' +
+                       '                  Итоговая стоимость = рубли в сутки * количество дней.\n' +
+                       '                  В случае, если выбранный диапазон меньше 30 дней, то по истечению бронирования объявление станет\n' +
+                       '                  стандартным.'} price={'30 р в сутки'} />
         </div>
       </div>
     </div>

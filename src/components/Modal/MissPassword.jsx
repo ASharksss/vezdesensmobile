@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import CloseBtn from "../../ui/closeBtn";
 import BlackBtn from "../../ui/BlackBtn";
-import axios from "axios";
 
 const MissPassword = ({setActiveModal, setEmail, handleSendEmail, error}) => {
 

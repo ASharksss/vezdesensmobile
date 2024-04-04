@@ -27,6 +27,7 @@ import FavoritePage from "./pages/FavoritePage";
 import FilterPage from "./pages/FilterPage";
 import CreateCardPage from "./pages/CreateCardPage";
 import DialogAppeal from './components/Support/dialogAppeal';
+import RegistrationBuisness from "./pages/RegistrationBuisness";
 
 
 axios.defaults.baseURL = "https://backend.vezdesens.ru/"
@@ -99,6 +100,7 @@ function App() {
             <>
               <Route path='/auth' element={<Auth/>}/>
               <Route path='/registration' element={<Registration/>}/>
+              <Route path='/registrationBuisness' element={<RegistrationBuisness/>}/>
             </>
           }
           <Route path='/newPassword' element={<NewPassword/>}/>

@@ -83,6 +83,11 @@ const Auth = () => {
         <div className="auth_btn">
           <BlackBtn btnType={'submit'} children={'Войти'} type={'white_text'} size={'w-325px'}/>
         </div>
+        <div className="auth_btn">
+          <NavLink to='/registrationBuisness'>
+            <WhiteBtn children={'Зарегистрировать бизнес-аккаунт'} size={'w-325px'}/>
+          </NavLink>
+        </div>
       </div>
       <ModalTemplate activeModal={activeModal} setActiveModal={setActiveModal} children={
         <>
