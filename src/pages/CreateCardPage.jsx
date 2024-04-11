@@ -6,7 +6,6 @@ import preview_vip from '../asserts/createCard/preview_vip.svg'
 import preview_premium from '../asserts/createCard/preview_premium.svg'
 import SizeBlock from "../components/CreateCardPage/SizeBlock";
 
-
 const CreateCardPage = () => {
   const [categoriesArray, setCategoriesArray] = useState({
     category: [], subCategory: [], object: []
@@ -18,7 +17,7 @@ const CreateCardPage = () => {
   const [preview, setPreview] = useState({
     isOpen: false, name: null
   })
-
+  const [selectedSize, setSelectedSize] = useState('')
   const handleChange = async (e) => {
     setSelectedCategoriesArray((prev) => ({
       ...prev,
@@ -81,9 +80,6 @@ const CreateCardPage = () => {
     getCategories()
   }, [])
 
-
-  console.log(characterArray)
-
   return (
     <div className='createCard'>
       <h1 className='createCard-title'>Подать объявление</h1>
@@ -120,7 +116,6 @@ const CreateCardPage = () => {
           </select>
         </div>
       </div>
-
       {
         characterArray.length > 0 ?
           <div className="createCard_characteristics">
@@ -219,21 +214,18 @@ const CreateCardPage = () => {
       <h2 className='createCard_characteristics-title'>Размер объявления</h2>
       <div className="createPage_size">
         <div className="createPage_size-standart">
-
           <SizeBlock name={'Стандарт'} price={'Бесплатно'} preview={preview} setPreview={setPreview}
-                     preview_image={preview_standart}
+                     preview_image={preview_standart} setSelectedSize={setSelectedSize}
                      description={'Размер изображения 248 на 233 пикселей. Показывается в течение 30 дней, после чего его\n' +
                        '                  можно заново запустить. Таких объявлений большинство. Бронирования не требует.'}/>
-
-
-
           <SizeBlock name={'Стандарт +'} price={'4 р в сутки'} setPreview={setPreview} preview={preview}
                      description={'Размер изображения 315 на 417 пикселей. Требует бронирования,\n' +
                        '                  указываются дата начала и конца показов. Далее рассчитывается по формуле:\n' +
                        '                 Итоговая стоимость = рубли в сутки * количество дней.\n' +
                        '                  В случае, если выбранный диапазон меньше 30 дней, то по истечению бронирования объявление станет\n' +
-                       '                  стандартным.'} preview_image={preview_standartPlus}/>
-          <SizeBlock name={'ВИП'} price={'8 р в сутки'}
+                       '                  стандартным.'} preview_image={preview_standartPlus}
+                     setSelectedSize={setSelectedSize}/>
+          <SizeBlock name={'ВИП'} price={'8 р в сутки'} setSelectedSize={setSelectedSize}
                      description={'Размер изображения 690 на 417 пикселей. Требует бронирования,\n' +
                        '                  указываются дата начала и конца показов. Далее рассчитывается по формуле:\n' +
                        '                  Итоговая стоимость = рубли в сутки * количество дней.\n' +
@@ -246,7 +238,7 @@ const CreateCardPage = () => {
                        '                  начала и конца показов. Далее рассчитывается по формуле:\n' +
                        '                  Итоговая стоимость = рубли в сутки * количество дней.\n' +
                        '                  В случае, если выбранный диапазон меньше 30 дней, то по истечению бронирования объявление станет\n' +
-                       '                  стандартным.'} price={'30 р в сутки'} />
+                       '                  стандартным.'} price={'30 р в сутки'} setSelectedSize={setSelectedSize}/>
         </div>
       </div>
     </div>

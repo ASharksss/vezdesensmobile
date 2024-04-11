@@ -3,7 +3,7 @@ import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import search from "../asserts/icons/search.svg";
 import filters from "../asserts/messages/setting.svg";
 import ServiceItem from "../components/ServiceItem/ServiceItem";
-import {useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import useCatalogCard from "../redux/hooks/useCatalogCard";
 
 const ServicePage = () => {
@@ -27,11 +27,10 @@ const ServicePage = () => {
     })
     if (node) observerDiv.current.observe(node)
   }, [loading, hasMore, offset])
-
   return (
     <div className='servicePage'>
       <h1>Работа</h1>
-      <Breadcrumbs/>
+      <Breadcrumbs data={data[0]?.object}/>
       <div className="categoryPage-header flex space-between">
         <div className='categoryPage_search flex items-center'>
           <input type="text" placeholder='Поиск' className='categoryPage_search-input'/>
