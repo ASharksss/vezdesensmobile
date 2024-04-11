@@ -28,7 +28,7 @@ const DialogPage = () => {
   const {user} = useSelector(state => state.user)
 
   const location = useLocation()
-  const {tovar} = location.state
+  const {tovar, from} = location.state
   // console.log(tovar)
   const chatContainerRef = useRef(null);
   const textareaRef = useRef(null);
@@ -148,7 +148,7 @@ useEffect(() => {
         <img src={backbtn} alt="" onClick={() => navigate(-1)}/>
         <div className="chat_info">
           <h1 className='chat_info-title'>{tovar[0]?.title ? tovar[0].title : tovar.title}</h1>
-          <span className='chat_info-subtitle'>{user.items.name   } • {tovar[0]?.price ? tovar[0].price : tovar.price } ₽</span>
+          <span className='chat_info-subtitle'>{from.name   } • {tovar[0]?.price ? tovar[0].price : tovar.price } ₽</span>
         </div>
       </div>
       <div className="chat_list"  >

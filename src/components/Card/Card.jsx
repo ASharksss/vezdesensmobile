@@ -85,7 +85,6 @@ const Card = ({classname, data}) => {
                       <WhiteBtn size={'w-54px'} children={<img src={message_icon} alt="" className='icon'/>}/>
                     </NavLink>
 
-
                     <BlackBtn size={'w-54px'} onClick={() => setActiveModal(true)}
                               children={<img src={phone_icon} alt="" className='icon'/>}/>
                   </div>
