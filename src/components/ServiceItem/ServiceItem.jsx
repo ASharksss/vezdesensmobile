@@ -41,8 +41,6 @@ const ServiceItem = ({item}) => {
           <span>{relativeDate(new Date(item.createdAt))}</span>
         </div>
       </NavLink>
-
-
       <div className="serviceItem_btns flex space-between">
         <BlackBtn size={'w-156px'} children={<img src={phone_icon} alt="" className='icon'/>}
                   onClick={() => setActiveModal(true)}/>

@@ -27,9 +27,6 @@ const ServicePage = () => {
     })
     if (node) observerDiv.current.observe(node)
   }, [loading, hasMore, offset])
-
-  console.log(data)
-
   return (
     <div className='servicePage'>
       <h1>Работа</h1>
@@ -46,8 +43,6 @@ const ServicePage = () => {
         {data.length > 0 ? data.map(item => (
           <React.Fragment ref={lastElementRef}>
             <ServiceItem item={item}/>
-
-
           </React.Fragment>
         )) : <p>Нет данных</p>}
       </div>

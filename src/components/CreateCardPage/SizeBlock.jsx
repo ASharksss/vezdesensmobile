@@ -1,6 +1,7 @@
 import React from 'react';
 import preview_standart from "../../asserts/createCard/preview_standart.svg";
 
+
 const SizeBlock = ({preview, setPreview, preview_image, name, price, description, setSelectedSize}) => {
   return (
     <div className='size_block'>
@@ -18,7 +19,6 @@ const SizeBlock = ({preview, setPreview, preview_image, name, price, description
             }}>Предпросмотр</p>
           </div>
         </label>
-
       </div>
       {
         preview.isOpen && preview.name === name ?

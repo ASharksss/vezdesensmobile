@@ -28,8 +28,8 @@ const DialogPage = () => {
   const {user} = useSelector(state => state.user)
 
   const location = useLocation()
+
   const {tovar, from} = location.state
-  // console.log(tovar)
   const chatContainerRef = useRef(null);
   const textareaRef = useRef(null);
   const Wall = useRef(null); //Создаём реф
