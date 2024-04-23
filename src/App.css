@@ -233,6 +233,17 @@ a{
     width: 100%;
     background: white;
 }
+.notice {
+    z-index: 4;
+    position: absolute;
+    right: 0;
+    top: -10px;
+    content: " ";
+    border-radius: 50%;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+}
 /* для сообщений  */
 
 

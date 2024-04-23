@@ -1,52 +1,53 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {NavLink, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import filters from '../asserts/messages/setting.svg'
 import search from '../asserts/icons/search.svg'
 import Card from "../components/Card/Card";
 import Long from "../components/Card/Long";
 import './pages.css'
-import {NavLink, useParams} from "react-router-dom";
-import axios from "axios";
 import PreloaderComponent from "../components/Preloader/PreloaderComponent";
 import Back from "../ui/Back";
+import useCatalogCard from "../redux/hooks/useCatalogCard";
+import {fetchCategoryList} from "../redux/slices/CategoryFilterSlice";
+import FullScreenModal from "../components/Modal/FullScreen/FullScreenModal";
+import FilterPage from "./FilterPage";
 
 const CategoryPage = () => {
 
-  const {id} = useParams()
+  const {id, sId, obId} = useParams()
+
+  const dispatch = useDispatch()
+  const {query, status} = useSelector(state => state.categoryFilter)
+  const breadcrumbLoading = status === 'loading'
+
+  useEffect(() => {
+    dispatch(fetchCategoryList({id, obId}))
+  }, [])
 
   const [offset, setOffset] = useState(0)
-  const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [showFilter, setShowFilter] = useState(false)
 
+  const {data, loading, hasMore} = useCatalogCard(offset, obId, sId, id, query)
 
-  const observer = useRef()
+  const observerDiv = useRef()
   const lastElementRef = useCallback(node => {
-    if (isLoading) return
-    if (observer.current) observer.current.disconnect()
-    observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
+    if (loading) return
+    if (observerDiv.current) observerDiv.current.disconnect()
+    observerDiv.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMore) {
         if (offset !== data.length) {
           setOffset(offset + data.length)
         }
       }
     })
-    if (node) observer.current.observe(node)
-  }, [offset])
+    if (node) observerDiv.current.observe(node)
+  }, [loading, hasMore, offset])
+  
+  const handleShowFilter = (event) => setShowFilter(true)
 
-  const getData = async () => {
-    await axios.get(`api/board/getAll?objectId=${id}&offset=${offset}`)
-      .then(res => {
-        setData(res.data.ads)
-        setIsLoading(false)
-      })
-  }
-
-  useEffect(() => {
-    setIsLoading(true)
-    getData()
-  }, [])
-
-  if (isLoading) {
+  if (loading) {
     return <PreloaderComponent/>
   }
 
@@ -56,22 +57,25 @@ const CategoryPage = () => {
         <Back/>
         <h1 className='categoryPage-title'>{data[0]?.object?.name}</h1>
       </div>
-      <Breadcrumbs data={data[0]?.object}/>
+      {!breadcrumbLoading ? <Breadcrumbs objectId={parseInt(obId)} subCategoryId={parseInt(sId)} categoryId={parseInt(id)} /> : null}
       <div className="categoryPage-header flex space-between items-center">
         <div className='categoryPage_search flex items-center'>
           <input type="text" placeholder='Поиск' className='categoryPage_search-input'/>
           <img src={search} alt=""/>
         </div>
-        <NavLink to='/filterPage'>
+        <button onClick={handleShowFilter} className='relative' type='button'>
+          {query && <span className='notice'></span>}
           <img src={filters} alt=""/>
-        </NavLink>
+        </button>
       </div>
 
       <div className="categoryPage_list">
         <div className="grid">
           {
-            data?.map((item) => (
-              <Card classname={'xs'} data={item}/>
+            data?.map((item, index) => (
+                <React.Fragment key={`card-${index}`} ref={lastElementRef}>
+                  <Card classname={'xs'} data={item}/>
+                </React.Fragment>
             ))
           }
         </div>
@@ -83,7 +87,7 @@ const CategoryPage = () => {
         </div>
         <Card classname={'l'}/>*/}
       </div>
-
+      {showFilter ? <FullScreenModal><FilterPage setShowFilter={setShowFilter} /></FullScreenModal> : null}
     </div>
   );
 };

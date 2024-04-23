@@ -50,7 +50,7 @@ const SubCategoryPage = () => {
       })
     } else {
       data[0]?.objects !== undefined && data[0].objects.map((item, index) => {
-        combined.push(<CategoryItem key={`categoryPage-${index}`} address={`categoryPage`} item={item}/>)
+        combined.push(<CategoryItem key={`categoryPage-${index}`} address={`categoryPage/${id}/${obId}`} item={item}/>)
       })
     }
     return combined

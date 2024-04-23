@@ -410,7 +410,10 @@
 /* SubCategoryPage */
 
 .categoryPage {
+    position: relative;
     padding: 45px 15px 105px 15px;
+    min-height: 100vh;
+    overflow-x: auto;
 }
 
 .categoryPage-title {
@@ -684,6 +687,7 @@
 /* Filter Page */
 
 .filterPage {
+    z-index: 6;
     padding-top: 47px;
     padding-right: 25px;
     padding-left: 25px;
@@ -700,6 +704,18 @@
 .filterPage-category {
     margin-bottom: 25px;
     margin-top: 30px;
+}
+
+.filterPage-show-container {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filterPage-show-btn {
+    height: 30px;
 }
 
 /* Create Card */
