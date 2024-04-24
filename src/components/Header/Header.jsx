@@ -6,21 +6,28 @@ import burger_icon from '../../asserts/icons/menu_burger.svg'
 import search_icon from '../../asserts/icons/search.svg'
 import CategoryItem from "../CategoryItem/CategoryItem";
 import axios from "axios";
-import { useTabletDetection } from '../../utils'
 import { NavLink } from 'react-router-dom';
+import {useTabletDetection} from "../../redux/hooks/useTabletDetection";
+import FullScreenModal from "../Modal/FullScreen/FullScreenModal";
+import Geoposition from "../Geoposition/Geoposition";
 
 const Header = () => {
   const wrapperRef = useRef(null)
 
   const [openCategory, setOpenCategory] = useState(false)
+  const [showGeolocation, setShowGeolocation] = useState(false)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const isTablet = useTabletDetection(); //првоерка размера
 
   const handleClickOutside = (event) => {
-    if (wrapperRef.current && !wrapperRef.current.contains(event.target))
+    if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
       setOpenCategory(false)
+      setShowGeolocation(false)
+    }
   }
+
+  const handleShowPosition = () => setShowGeolocation(prevState => !prevState)
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside)
@@ -44,7 +51,6 @@ const Header = () => {
 
   return (
     <div className={'header header_shadow'} ref={wrapperRef}>
-      
       {
           isTablet ? (
             <div className="wrapper-tablet">
@@ -57,8 +63,8 @@ const Header = () => {
         </div>
         <div className='item'>
         <div className="header_location">
-          <div className=" header_location-wrapper flex">
-            <img className='header_location-icon' src={location_icon}/><span>Казань</span>
+          <div className=" header_location-wrapper flex" onClick={handleShowPosition}>
+            <img className='header_location-icon' src={location_icon} alt='Город'/><span>Казань</span>
           </div>
         </div>
         <div className="flex header_search">
@@ -89,8 +95,8 @@ const Header = () => {
           <div className="wrapper">
             
             <div className="header_location">
-              <div className=" header_location-wrapper flex">
-                <img className='header_location-icon' src={location_icon}/><span>Казань</span>
+              <div className=" header_location-wrapper flex" onClick={handleShowPosition}>
+                <img className='header_location-icon' src={location_icon} alt='Город'/><span>Казань</span>
               </div>
             </div>
             <div className="flex header_search">
@@ -130,6 +136,9 @@ const Header = () => {
               ))
             }
           </div> : null
+      }
+      {
+        showGeolocation ? <FullScreenModal><Geoposition setShow={setShowGeolocation}/></FullScreenModal> : null
       }
     </div>
   );

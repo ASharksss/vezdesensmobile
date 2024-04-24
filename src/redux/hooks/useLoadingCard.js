@@ -1,12 +1,15 @@
 import {useEffect, useState} from "react";
 import _ from 'lodash';
 import axios from "axios";
+import {useTabletDetection} from "./useTabletDetection";
 
 export default function useLoadingCard(offset, objectId=null) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [data, setData] = useState([])
   const [hasMore, setHasMore] = useState(false)
+
+  const isTablet = useTabletDetection();
 
   useEffect(() => {
     setData([])
@@ -20,7 +23,7 @@ export default function useLoadingCard(offset, objectId=null) {
     axios({
       method: 'GET',
       url: '/api/board/getAllMobile',
-      params: {offset, objectId},
+      params: {offset, objectId, isTablet},
       cancelToken: new axios.CancelToken(c => cancel = c)
     }).then(res => {
       setData(prevState => {

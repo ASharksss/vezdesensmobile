@@ -10,7 +10,7 @@ import useLoadingCard from "../redux/hooks/useLoadingCard";
 import BorderComponent from "../components/Board/BoardComponent";
 import {getStaticAd, STATIC_HOST} from "../utils"; //improt утилиты
 import axios from "axios";
-import {useTabletDetection} from "../utils.js"
+import {useTabletDetection} from "../redux/hooks/useTabletDetection";
 
 const BoardPage = () => {
   const location = useLocation();

@@ -7,11 +7,12 @@ import MyCard from "../components/MyCard/MyCard";
 import StarComponent from "../components/ReviewComponents/StarComponents";
 import {Navigate, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
-import {AVATAR_HOST, getCookie, useTabletDetection} from "../utils";
+import {AVATAR_HOST} from "../utils";
 import MoreSubMenu from "../ui/moreSubMenu";
 import {useSelector} from 'react-redux';
 import PreloaderComponent from '../components/Preloader/PreloaderComponent';
 import EditProfilePage from './EditProfilePage';
+import {useTabletDetection} from "../redux/hooks/useTabletDetection";
 
 
 const ProfilePage = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from "../Card/Card";
-import {useTabletDetection} from "../../utils.js"
+import {useTabletDetection} from "../../redux/hooks/useTabletDetection";
 
 const SmallBlocksComponent = ({items}) => {
 

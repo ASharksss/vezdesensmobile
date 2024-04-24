@@ -20,7 +20,7 @@ import Registration from "./pages/Registration";
 import ReviewPage from "./pages/ReviewPage";
 import AddReviewPage from "./pages/AddReviewPage";
 import {useEffect, useState} from "react";
-import {getCookie, isOnline, useTabletDetection} from "./utils";
+import {getCookie, isOnline} from "./utils";
 import {fetchAuth} from "./redux/slices/AuthSlice";
 import SimilarPage from "./pages/SimilarPage";
 import FavoritePage from "./pages/FavoritePage";
@@ -28,6 +28,7 @@ import FilterPage from "./pages/FilterPage";
 import CreateCardPage from "./pages/CreateCardPage";
 import DialogAppeal from './components/Support/dialogAppeal';
 import RegistrationBuisness from "./pages/RegistrationBuisness";
+import {useTabletDetection} from "./redux/hooks/useTabletDetection";
 
 
 axios.defaults.baseURL = "https://backend.vezdesens.ru/"

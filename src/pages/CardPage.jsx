@@ -12,7 +12,7 @@ import {NavLink, useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
 import StarComponent from "../components/ReviewComponents/StarComponents";
 import axios from "axios";
-import {pluralRusVariant, relativeDate, getStaticAd, STATIC_HOST, useTabletDetection} from "../utils";
+import {pluralRusVariant, relativeDate, getStaticAd, STATIC_HOST} from "../utils";
 import CarouselComponent from "../components/Carousel/CarouselComponent";
 import PreloaderComponent from "../components/Preloader/PreloaderComponent";
 import SimilarBtn from "../ui/SimilarBtn";
@@ -23,6 +23,7 @@ import Long from '../components/Card/Long'
 import {shareOnMobile} from "react-mobile-share";
 import {v4 as uuidV4} from 'uuid';
 import ModalTemplate from "../components/Modal/ModalTemplate";
+import {useTabletDetection} from "../redux/hooks/useTabletDetection";
 
 
 const CardPage = () => {

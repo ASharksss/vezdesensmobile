@@ -1,0 +1,49 @@
+.container {
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.header {
+    margin: 10px;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 40px;
+}
+.title {
+    font-weight: 600;
+    text-decoration: underline;
+}
+.closeBtn {
+    padding: 5px 12px;
+    border-radius: 50%;
+    border: 1px solid;
+}
+
+.searchContainer {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    max-height: 40px;
+}
+.search {
+    padding: 5px 10px;
+    outline: none;
+    border-bottom: 1px solid;
+    border-bottom-right-radius: 15px;
+}
+.searchBtn {
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-bottom-left-radius: 15px;
+}
+.list {
+    margin: 0 10px;
+    min-height: 100vh;
+    overflow-x: auto;
+}
