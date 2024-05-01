@@ -12,6 +12,7 @@
     "flowbite-react": "^0.7.2",
     "react": "^18.2.0",
     "react-avatar-editor": "^13.0.2",
+    "react-cropper": "^2.3.3",
     "react-dom": "^18.2.0",
     "react-input-mask": "^2.0.4",
     "react-mobile-share": "^1.0.31",
@@ -21,7 +22,9 @@
     "react-scripts": "5.0.1",
     "react-window": "^1.8.10",
     "socket.io-client": "^4.7.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-dropzone": "^14.2.3",
+    "react-calendar": "^4.8.0"
   },
   "scripts": {
     "start": "react-scripts start",

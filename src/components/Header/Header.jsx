@@ -10,9 +10,11 @@ import { NavLink } from 'react-router-dom';
 import {useTabletDetection} from "../../redux/hooks/useTabletDetection";
 import FullScreenModal from "../Modal/FullScreen/FullScreenModal";
 import Geoposition from "../Geoposition/Geoposition";
+import {useSelector} from "react-redux";
 
 const Header = () => {
   const wrapperRef = useRef(null)
+  const {mainCity} = useSelector(state => state.geo)
 
   const [openCategory, setOpenCategory] = useState(false)
   const [showGeolocation, setShowGeolocation] = useState(false)
@@ -64,7 +66,7 @@ const Header = () => {
         <div className='item'>
         <div className="header_location">
           <div className=" header_location-wrapper flex" onClick={handleShowPosition}>
-            <img className='header_location-icon' src={location_icon} alt='Город'/><span>Казань</span>
+            <img className='header_location-icon' src={location_icon} alt='Город'/><span>{mainCity}</span>
           </div>
         </div>
         <div className="flex header_search">
@@ -96,7 +98,7 @@ const Header = () => {
             
             <div className="header_location">
               <div className=" header_location-wrapper flex" onClick={handleShowPosition}>
-                <img className='header_location-icon' src={location_icon} alt='Город'/><span>Казань</span>
+                <img className='header_location-icon' src={location_icon} alt='Город'/><span>{mainCity}</span>
               </div>
             </div>
             <div className="flex header_search">

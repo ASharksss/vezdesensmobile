@@ -1,0 +1,73 @@
+
+.booking {
+    margin-top: 110px;
+}
+
+.booking-title {
+    font-size: 32px;
+    font-family: OpenSansBold;
+    margin-bottom: 43px;
+}
+
+.booking_startDate {
+    margin-right: 45px;
+}
+
+.booking_input {
+    width: 237px;
+    height: 47px;
+    padding: 15px;
+    background-color: #ECECEC;
+    color: #B5B7BD;
+    border-radius: 10px;
+}
+
+.booking_label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: OpenSansBold;
+}
+
+.booking_info {
+    margin-top: 45px;
+}
+
+.booking_info-title {
+    font-family: OpenSansBold;
+}
+
+.booking_info-title + .booking_info-title {
+    margin-top: 40px;
+}
+
+.booking_info-name {
+    font-size: 18px;
+    text-align: left;
+}
+
+.booking_info-text {
+    font-weight: bold;
+    background-color: #ECECEC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 139px;
+    height: 47px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 24px;
+    margin-bottom: 11px;
+}
+
+.upload_photo-title {
+    display: block;
+    font-size: 18px;
+    font-family: OpenSansBold;
+    margin-bottom: 17px;
+}
+
+.label_calc {
+    display: block;
+    font-family: OpenSansBold;
+    margin-bottom: 10px;
+}

@@ -42,8 +42,35 @@
     border-left: 1px solid;
     border-bottom-left-radius: 15px;
 }
+
 .list {
     margin: 0 10px;
     min-height: 100vh;
     overflow-x: auto;
+}
+.row {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+.activeRow {
+    display: flex;
+    align-items: center;
+    background-color: rgba(40, 180, 0, 0.5);
+    border-radius: 15px;
+    padding-left: 10px;
+}
+
+.buttonWrapper {
+    position: fixed;
+    background-color: #fff;
+    height: 40px;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.saveButton {
+
 }

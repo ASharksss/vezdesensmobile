@@ -29,6 +29,7 @@ import CreateCardPage from "./pages/CreateCardPage";
 import DialogAppeal from './components/Support/dialogAppeal';
 import RegistrationBuisness from "./pages/RegistrationBuisness";
 import {useTabletDetection} from "./redux/hooks/useTabletDetection";
+import {firstLoading, takeFromCookie} from "./redux/slices/GeoSlice";
 
 
 axios.defaults.baseURL = "https://backend.vezdesens.ru/"
@@ -54,6 +55,18 @@ function App() {
     }
 
     return checkAuth()
+  }, [])
+
+  useEffect(() => {
+    function checkPosition() {
+      const checkGeo = getCookie('position')
+      if (checkGeo !== undefined) {
+        dispatch(takeFromCookie(checkGeo))
+      }else {
+        dispatch(firstLoading())
+      }
+    }
+    return checkPosition()
   }, [])
 
   useEffect(() => {
