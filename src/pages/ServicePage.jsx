@@ -16,12 +16,17 @@ const ServicePage = () => {
     const {id, sId, obId} = useParams()
 
     const dispatch = useDispatch()
-    const {query, status} = useSelector(state => state.categoryFilter)
+    const {query, status, breadcrumb} = useSelector(state => state.categoryFilter)
     const breadcrumbLoading = status === 'loading'
 
     useEffect(() => {
         dispatch(fetchCategoryList({id, obId}))
     }, [])
+
+    useEffect(() => {
+        if (breadcrumbLoading) return;
+        document.title = `Поиск ${breadcrumb?.name}`
+    }, [breadcrumbLoading])
 
     const [offset, setOffset] = useState(0)
     const [showFilter, setShowFilter] = useState(false)

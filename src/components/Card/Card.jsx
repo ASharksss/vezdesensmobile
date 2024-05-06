@@ -36,7 +36,7 @@ const Card = ({classname, data, ad_image = null}) => {
 							</div>
 							<div className="card_info">
 								<h1 className='card_info-title'>{data?.title}</h1>
-								<h2 className='card_info-address'>{data?.address}</h2>
+								<h2 className='card_info-address'>{data?.address.indexOf('@')>1 ? data?.address.split('@')[0] : data?.address}</h2>
 								<h2 className='card_info-time'>{relativeDate(new Date(data?.createdAt))}</h2>
 								<h1 className='card_info-price'>{numberWithSpaces(parseInt(data?.price))} <span
 									style={{fontFamily: 'Arial'}}> ₽</span></h1>

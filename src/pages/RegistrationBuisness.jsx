@@ -8,6 +8,7 @@ import {useDispatch} from "react-redux";
 import {fetchRegistration, fetchRegistrationCompany} from "../redux/slices/AuthSlice";
 import {useNavigate} from "react-router";
 import axios from "axios";
+import {useEffect} from "@types/react";
 
 const Registration = () => {
   const dispatch = useDispatch()
@@ -22,6 +23,10 @@ const Registration = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+
+    useEffect(() => {
+        document.title = 'Регистрация бизнес аккаунта'
+    }, [])
 
   const handleCheckINN = async (event) => {
     setINN(event.target.value)

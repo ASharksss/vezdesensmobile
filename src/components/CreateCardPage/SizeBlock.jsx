@@ -20,6 +20,7 @@ const SizeBlock = ({preview, setPreview, preview_image, name, price, description
 						<p className='size_standart-description'>{description}</p>
 						<p className='size_standart-btn' onClick={() => {
 							setPreview({isOpen: !preview.isOpen, name: name})
+							setSelectedSize(name)
 						}}>Предпросмотр</p>
 					</div>
 				</label>

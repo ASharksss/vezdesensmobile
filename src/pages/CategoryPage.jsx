@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
-import filters from '../asserts/messages/setting.svg'
+import filtersSVG from '../asserts/messages/setting.svg'
 import search from '../asserts/icons/search.svg'
 import Card from "../components/Card/Card";
 import Long from "../components/Card/Long";
@@ -19,12 +19,17 @@ const CategoryPage = () => {
   const {id, sId, obId} = useParams()
 
   const dispatch = useDispatch()
-  const {query, status} = useSelector(state => state.categoryFilter)
+  const {query, status, breadcrumb} = useSelector(state => state.categoryFilter)
   const breadcrumbLoading = status === 'loading'
 
   useEffect(() => {
     dispatch(fetchCategoryList({id, obId}))
   }, [])
+
+  useEffect(() => {
+    if (breadcrumbLoading) return;
+    document.title = `Поиск ${breadcrumb?.name}`
+  }, [breadcrumbLoading])
 
   const [offset, setOffset] = useState(0)
   const [showFilter, setShowFilter] = useState(false)
@@ -65,7 +70,7 @@ const CategoryPage = () => {
         </div>
         <button onClick={handleShowFilter} className='relative' type='button'>
           {query && <span className='notice'></span>}
-          <img src={filters} alt=""/>
+          <img src={filtersSVG} alt=""/>
         </button>
       </div>
 

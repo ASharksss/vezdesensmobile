@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Input from "../ui/input";
 import WhiteBtn from "../ui/WhiteBtn";
 import BlackBtn from "../ui/BlackBtn";
@@ -18,6 +18,9 @@ const Registration = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
+  useEffect(() => {
+    document.title = 'Регистрация'
+  }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault()

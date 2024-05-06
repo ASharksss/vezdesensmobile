@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Input from "../ui/input";
 import BlackBtn from "../ui/BlackBtn";
 import {NavLink} from "react-router-dom";
@@ -12,6 +12,10 @@ const NewPassword = () => {
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
   const [error, setError] = useState('')
+
+    useEffect(() => {
+        document.title = 'Восстановить пароль'
+    }, [])
 
   const handleChangePassword = async (event) => {
     event.preventDefault()

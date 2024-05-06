@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchLogin} from "../redux/slices/AuthSlice";
 import {useNavigate} from "react-router";
 import axios from "axios";
+import {useEffect} from "@types/react";
 
 const Auth = () => {
 
@@ -28,6 +29,10 @@ const Auth = () => {
   const [error, setError] = useState('')
 
   const isLoading = user.status === 'loading'
+
+  useEffect(() => {
+    document.title = 'Войти'
+  }, [])
 
   const handleSubmit = async (event) => {
     event.preventDefault()

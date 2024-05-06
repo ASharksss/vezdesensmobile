@@ -30,6 +30,7 @@ const FavoritePage = () => {
   }
 
   useEffect(() => {
+    document.title = 'Избранные'
     if (!isAuth) return;
     getData()
   }, [isAuth])
