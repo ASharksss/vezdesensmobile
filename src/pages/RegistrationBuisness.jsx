@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Input from "../ui/input";
 import WhiteBtn from "../ui/WhiteBtn";
 import BlackBtn from "../ui/BlackBtn";
@@ -8,7 +8,6 @@ import {useDispatch} from "react-redux";
 import {fetchRegistration, fetchRegistrationCompany} from "../redux/slices/AuthSlice";
 import {useNavigate} from "react-router";
 import axios from "axios";
-import {useEffect} from "@types/react";
 
 const Registration = () => {
   const dispatch = useDispatch()

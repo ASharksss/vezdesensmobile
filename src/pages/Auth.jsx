@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Input from "../ui/input";
 import Checkbox from "../ui/Checkbox";
 import WhiteBtn from "../ui/WhiteBtn";
@@ -12,7 +12,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchLogin} from "../redux/slices/AuthSlice";
 import {useNavigate} from "react-router";
 import axios from "axios";
-import {useEffect} from "@types/react";
 
 const Auth = () => {
 
