@@ -228,7 +228,7 @@ const CreateCardPage = () => {
                     window.location.href = res.data.ad?.payment?.href;
                     return null;
                 } else {
-                    return navigate(`/card/${res.data.ad.id}`)
+                    return navigate(`/cardPage/${res.data.ad.id}`)
                 }
             }
         })
@@ -240,7 +240,7 @@ const CreateCardPage = () => {
     }
 
     return (
-        <div className='createCard'>
+        <form className='createCard' onSubmit={handleSubmit}>
             {addressOpen ?
                 <FullScreenModal activeModal={addressOpen} setActiveModal={setAddressOpen}><Geoposition
                     setShow={setAddressOpen}
@@ -494,7 +494,7 @@ const CreateCardPage = () => {
                 type='submit' disabled={!agreeRules || (selectedSize !== 'Стандарт' && !agreeOffers) || loading}>
                 {loading ? <><img src={LoadGIF} width={32} alt={"Отправка"}/> Отправка...</> : 'Разместить'}
             </button>
-        </div>
+        </form>
     );
 };
 
