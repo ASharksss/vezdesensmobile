@@ -1,9 +1,13 @@
 import {useEffect, useState} from "react";
 import _ from 'lodash';
 import axios from "axios";
+import {useSelector} from "react-redux";
 import {useTabletDetection} from "./useTabletDetection";
 
 export default function useLoadingCard(offset, objectId=null) {
+  const {geoStatus} = useSelector(state => state.geo)
+  const isGeoDone = geoStatus === 'done'
+
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [data, setData] = useState([])
@@ -12,8 +16,9 @@ export default function useLoadingCard(offset, objectId=null) {
   const isTablet = useTabletDetection();
 
   useEffect(() => {
+    if (!isGeoDone) return;
     setData([])
-  }, [offset])
+  }, [offset, isGeoDone])
 
   useEffect(() => {
     setLoading(true)
@@ -38,6 +43,6 @@ export default function useLoadingCard(offset, objectId=null) {
       setError(true)
     })
     return () => cancel()
-  }, [offset])
+  }, [offset, isGeoDone])
   return {loading, error, data, hasMore}
 }

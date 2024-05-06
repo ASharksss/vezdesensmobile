@@ -62,6 +62,7 @@ const Geoposition = ({setShow, handleAddress=undefined}) => {
         const city = items.cities.find(item => item.id === idCity)
         const region = items.regions.find(item => item.id === city.positionRegionId)
         const district = items.districts.find(item => item.id === region.positionDistrictId)
+        setSlugCity(city.citySlug)
         setNameDistrict(district.name)
         setIdDistrict(district.id)
         setNameRegion(region.name)

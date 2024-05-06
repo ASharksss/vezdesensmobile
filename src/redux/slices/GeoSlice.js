@@ -14,7 +14,6 @@ const initialState = {
     mainPath: {id: 570, positionRegionId: 19, positionDistrictId: 2},
     mainCity: 'Казань',
     mainSlugCity: 'kazan',
-    showCitiesModal: false,
     geoStatus: 'isInstalled'
 }
 
@@ -22,12 +21,6 @@ const GeoSlice = createSlice({
     name: 'geo',
     initialState,
     reducers: {
-        showCities: (state) => {
-            state.showCitiesModal = true
-        },
-        hideCities: (state) => {
-            state.showCitiesModal = false
-        },
         setMainCity: (state, action) => {
             state.mainCity = action.payload.name
             state.mainPath = action.payload.path
@@ -75,7 +68,6 @@ const GeoSlice = createSlice({
 
 
 export const {
-    showCities, hideCities,
     setMainCity, takeFromCookie, firstLoading
 } = GeoSlice.actions
 export const GeoReducer = GeoSlice.reducer
