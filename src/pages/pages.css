@@ -721,29 +721,39 @@
 }
 
 /* Create Card */
-
+.createCard_categories{
+    margin-bottom: 2vh;
+}
 .createCard {
     padding: 15px 15px;
 }
 
 .createCard-title {
+
+    font-family: OpenSansBold;
+
     font-size: 20px;
     margin-bottom: 30px;
     margin-top: 25px;
 }
 
 .createCard_categories-subtitle {
+
+    font-family: OpenSansBold;
+
     font-size: 20px;
     margin-bottom: 25px;
 }
 
 .createCard_categories-select {
+
     width: 325px;
     height: 47px;
     background-color: rgba(236, 236, 236, 1);
     border-radius: 10px;
     border: none;
     padding: 12px 20px;
+
 }
 
 .createCard_categories-select + .createCard_categories-select {
@@ -783,11 +793,16 @@
 }
 
 .characteristic_item-label {
+
+    font-family: OpenSansSemiBold;
+
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 7px;
 }
-
+/*.column{*/
+/*    margin-bottom: 3vh;*/
+/*}*/
 .characteristic_item-values {
     display: flex;
     align-items: center;
@@ -805,6 +820,8 @@
 }
 
 .createCard_characteristics-title {
+    font-family: OpenSansBold;
+    font-size: 20px;
     margin-top: 50px;
     margin-bottom: 25px;
 }
@@ -823,7 +840,8 @@
 
 .createCard_characteristics-input {
     width: 325px;
-    height: 47px;
+    min-height: 47px;
+    height: fit-content;
     background-color: rgba(236, 236, 236, 1);
     border: none;
     border-radius: 10px;
@@ -841,6 +859,7 @@
 }
 
 .size_standart-name {
+    font-family: OpenSansBold;
     font-size: 18px;
     font-weight: bold;
     margin-right: 25px;

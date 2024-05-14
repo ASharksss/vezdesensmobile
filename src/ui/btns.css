@@ -15,6 +15,7 @@
 }
 
 .phone_btn {
+    color: white;
     background-color: #161616;
     border-radius: 10px;
     cursor: pointer;
@@ -49,7 +50,11 @@
     width: 325px;
     height: 54px;
 }
-
+.w-100P{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+}
 
 
 .white_text {

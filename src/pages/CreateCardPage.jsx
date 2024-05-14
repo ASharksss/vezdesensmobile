@@ -21,6 +21,7 @@ import {fetchBookingInfo} from "../redux/slices/bookingSlice";
 import FullScreenModal from "../components/Modal/FullScreen/FullScreenModal";
 import Geoposition from "../components/Geoposition/Geoposition";
 import LoadGIF from '../asserts/load.gif'
+import BlackBtn from '../ui/BlackBtn'
 
 const CreateCardPage = () => {
 
@@ -61,6 +62,10 @@ const CreateCardPage = () => {
 
     const [agreeOffers, setAgreeOffers] = useState(false)
     const [agreeRules, setAgreeRules] = useState(false)
+
+    const [open, setOpen] = useState(false);
+    const [hopen, setHopen] = useState(false);
+    const [huopen, setHuopen] = useState(false);
 
     const handleChange = async (e) => {
         setSelectedCategoriesArray((prev) => ({
@@ -249,49 +254,118 @@ const CreateCardPage = () => {
             <div className="createCard_categories">
                 <h2 className='createCard_categories-subtitle'>Категория</h2>
                 <div className="column">
-                    <select className='createCard_categories-select' name='category'
-                            value={selectedCategoriesArray.category}
-                            onChange={handleChange}>
-                        <option value={0} disabled={true}>Выберите подкатегорию...</option>
-                        {
-                            categoriesArray.category ? categoriesArray.category.map((item, index) => (
-                                <option key={`category-${index}`}
-                                        value={item.id}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</option>
-                            )) : null
-                        }
-                    </select>
-                    <select className='createCard_categories-select' name='subCategory'
-                            value={selectedCategoriesArray.subCategory}
-                            onChange={handleChange}>
-                        <option value={0} disabled={true}>Выберите подкатегорию...</option>
-                        {
-                            categoriesArray.subCategory ? categoriesArray.subCategory.map((item, index) => (
-                                <option key={`subcategory-${index}`}
-                                        value={item.id}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</option>
-                            )) : null
-                        }
-                    </select>
-                    <select className='createCard_categories-select' name='object'
-                            value={selectedCategoriesArray.object}
-                            onChange={handleChange}>
-                        <option value={0} disabled={true}>Выберите подкатегорию...</option>
-                        {
-                            categoriesArray.object ? categoriesArray.object.map((item, index) => (
-                                <option key={`object-${index}`}
-                                        value={item.id}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</option>
-                            )) : null
-                        }
-                    </select>
+
+                    {/*<select className='createCard_categories-select' name='category'*/}
+                    {/*        value={selectedCategoriesArray.category}*/}
+                    {/*        onChange={handleChange}>*/}
+                    {/*    <option value={0} disabled={true}>Выберите подкатегорию...</option>*/}
+                    {/*    {*/}
+                    {/*        categoriesArray.category ? categoriesArray.category.map((item, index) => (*/}
+                    {/*            <option key={`category-${index}`}*/}
+                    {/*                    value={item.id}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</option>*/}
+                    {/*        )) : null*/}
+                    {/*    }*/}
+                    {/*</select>*/}
+
+                        <div className="Edited_appeal-select">
+                            <div className="flex items-center space-between Edited_filter-header" onClick={() => setOpen(!open)}>
+                                {/* Вывожу значние topic  */}
+                                {selectedCategoriesArray.category === 0 ? 'Выберите вариант...' : categoriesArray.category.find(item => item.id === parseInt(selectedCategoriesArray.category))?.name}
+                                {/*<img src={arrow_icon} alt=""/>*/}
+                            </div>
+                            <div className={open ? 'block Edited_filter_select-body' : 'filter_select-body-none'}>
+                                {
+                                    categoriesArray.category ? categoriesArray.category.map((item, index) => (
+                                      // Предаю значиение item.name после topic присваиваю значиение при клике
+                                      <div className='Edited_filter_select-item' onClick={() => {
+                                          setSelectedCategoriesArray({category: item.id, subCategory: 0 , object: 0 })
+                                          setOpen(!open)
+                                      }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
+                                    )) : null
+                                }
+                            </div>
+                        </div>
+
+
+                    {/*<select className='createCard_categories-select' name='subCategory'*/}
+                    {/*        value={selectedCategoriesArray.subCategory}*/}
+                    {/*        onChange={handleChange}>*/}
+                    {/*    <option value={0} disabled={true}>Выберите подкатегорию...</option>*/}
+                    {/*    {*/}
+                    {/*        categoriesArray.subCategory ? categoriesArray.subCategory.map((item, index) => (*/}
+                    {/*            <option key={`subcategory-${index}`}*/}
+                    {/*                    value={item.id}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</option>*/}
+                    {/*        )) : null*/}
+                    {/*    }*/}
+                    {/*</select>*/}
+
+                    {selectedCategoriesArray.category === 0 ? null :
+                        <div className="Edited_appeal-select">
+                            <div className="flex items-center space-between Edited_filter-header" onClick={() => setHopen(!hopen)}>
+                                {/* Вывожу значние topic  */}
+                                {selectedCategoriesArray.subCategory === 0 ? 'Выберите вариант...' : categoriesArray.subCategory.find(item => item.id === parseInt(selectedCategoriesArray.subCategory))?.name}
+                                {/*<img src={arrow_icon} alt=""/>*/}
+                            </div>
+                            <div className={hopen ? 'block Edited_filter_select-body' : 'filter_select-body-none'}>
+                                {
+                                    categoriesArray.subCategory ? categoriesArray.subCategory.map((item, index) => (
+                                      // Предаю значиение item.name после topic присваиваю значиение при клике
+                                      <div className='Edited_filter_select-item' onClick={() => {
+                                          setSelectedCategoriesArray((prev) => ({...prev, subCategory: item.id , object: 0 }))
+                                          setHopen(!hopen)
+                                      }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
+                                    )) : null
+                                }
+                            </div>
+                        </div>
+                    }
+
+
+                    {/*<select className='createCard_categories-select' name='object'*/}
+                    {/*        value={selectedCategoriesArray.object}*/}
+                    {/*        onChange={handleChange}>*/}
+                    {/*    <option value={0} disabled={true}>Выберите подкатегорию...</option>*/}
+                    {/*    {*/}
+                    {/*        categoriesArray.object ? categoriesArray.object.map((item, index) => (*/}
+                    {/*            <option key={`object-${index}`}*/}
+                    {/*                    value={item.id}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</option>*/}
+                    {/*        )) : null*/}
+                    {/*    }*/}
+                    {/*</select>*/}
+
+                    {selectedCategoriesArray.subCategory === 0 ? null :
+
+                        <div className="Edited_appeal-select">
+                            <div className="flex items-center space-between Edited_filter-header" onClick={() => setHuopen(!huopen)}>
+                                {/* Вывожу значние topic  */}
+                                {selectedCategoriesArray.object === 0 ? 'Выберите вариант...' : categoriesArray.object.find(item => item.id === parseInt(selectedCategoriesArray.object))?.name}
+                                {/*<img src={arrow_icon} alt=""/>*/}
+                            </div>
+                            <div className={huopen ? 'block Edited_filter_select-body' : 'filter_select-body-none'}>
+                                {
+                                    categoriesArray.object ? categoriesArray.object.map((item, index) => (
+                                      // Предаю значиение item.name после topic присваиваю значиение при клике
+                                      <div className='Edited_filter_select-item' onClick={() => {
+                                          setSelectedCategoriesArray((prev) => ({...prev , object: item.id }))
+                                          setHuopen(!huopen)
+                                      }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
+                                    )) : null
+                                }
+                            </div>
+                        </div>
+
+                    }
+
                 </div>
             </div>
 
             <div className='characteristic_item'>
-                <label className='characteristic_item-label'>Заголоовок</label>
+                <label className='createCard_categories-subtitle'>Заголоовок</label>
                 <input onChange={e => setTitle(e.target.value)}
                        type="text" className='createCard_characteristics-input' required/>
             </div>
             <div className='characteristic_item'>
-                <label className='characteristic_item-label'>Цена</label>
+                <label className='createCard_categories-subtitle'>Цена</label>
                 <input value={price} onChange={event => handlePrice(event.target.value)}
                        type="text" className='createCard_characteristics-input' required
                        id='numericInput'
@@ -390,7 +464,7 @@ const CreateCardPage = () => {
 
                     {preview.name !== '' &&
                         <div className="upload_photo">
-                            <h1 className='upload_photo-h1'>Загрузка фото</h1>
+                            <h1 className='createCard_characteristics-title'>Загрузка фото</h1>
                             {preview.name === 'Премиум' ?
                                 <UploadPhotoPremium editedImage={previewImage} setEditedImage={setPreviewImage}/> :
                                 preview.name === 'ВИП' ?
@@ -411,7 +485,7 @@ const CreateCardPage = () => {
             </div>
 
             <div className='characteristic_item'>
-                <label className='characteristic_item-label'>Метоположение</label>
+                <label className='createCard_characteristics-title'>Метоположение</label>
                 <div onClick={() => setAddressOpen(true)} className='createCard_characteristics-input'>
                     {address}</div>
             </div>
@@ -425,12 +499,12 @@ const CreateCardPage = () => {
                 </div>
                 : null}
             <div className="create_ad-descr">
-                <h1 className='characteristic_item-label'>Контакты</h1>
+                <h1 className='createCard_characteristics-title'>Контакты</h1>
                 <div className="flex column">
-                    <label htmlFor="" className='create_ad_label'>Телефон</label>
+                    <label htmlFor="" className='characteristic_item-label'>Телефон</label>
                     <div>
                         <InputMask mask="+7(999)999-99-99" type="text" value={user.items.phone} disabled
-                                   placeholder='Введите номер' className='createCard_characteristics-input'/>
+                                   placeholder='Введите номер' className='createCard_characteristics-input' style={{marginBottom: "30px"}}/>
                         <form className="flex column created_ad-contact">
                             <div className='flex created_ad-radio'>
                                 <input type="radio" id='only_messages' name='only_messages' value={2}
@@ -461,7 +535,7 @@ const CreateCardPage = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div style={{margin: "30px 0"}}>
                 <div className="flex created_ad-radio">
                     <input type="checkbox" id='agreeRules' name='agreeRules'
                            onChange={() => setAgreeRules(prevState => !prevState)}
@@ -489,11 +563,14 @@ const CreateCardPage = () => {
                         </label>
                     </div> : null}
             </div>
-            <button
-                className={`create_ad_btn${!agreeRules || (selectedSize !== 'Стандарт' && !agreeOffers) ? ' disabled' : ''}`}
-                type='submit' disabled={!agreeRules || (selectedSize !== 'Стандарт' && !agreeOffers) || loading}>
-                {loading ? <><img src={LoadGIF} width={32} alt={"Отправка"}/> Отправка...</> : 'Разместить'}
-            </button>
+            <BlackBtn btnType={'submit'}
+                      size={'w-100P'}> {loading ? <div className="flex"><img src={LoadGIF} width={32} alt={"Отправка"}/> Отправка...</div> : 'Разместить'} </BlackBtn>
+                      {/*children={loading ? <><img src={LoadGIF} width={32} alt={"Отправка"}/> Отправка...</> : 'Разместить'}*/}
+            {/*<button*/}
+            {/*    className={`create_ad_btn${!agreeRules || (selectedSize !== 'Стандарт' && !agreeOffers) ? ' disabled' : ''}`}*/}
+            {/*    type='submit' disabled={!agreeRules || (selectedSize !== 'Стандарт' && !agreeOffers) || loading}>*/}
+            {/*    {loading ? <><img src={LoadGIF} width={32} alt={"Отправка"}/> Отправка...</> : 'Разместить'}*/}
+            {/*</button>*/}
         </form>
     );
 };

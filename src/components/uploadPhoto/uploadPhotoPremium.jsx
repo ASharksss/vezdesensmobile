@@ -60,15 +60,15 @@ const UploadPhotoPremium = ({editedImage, setEditedImage}) => {
 	return (
 		<div className='upload_premium upload_block'>
 			<span className='upload_block-title mb-20'>Фото для баннера "Premium"</span>
-			<div className='flex mt-20 mb-20'>
-				<label htmlFor="premium_input" className='upload_file_input upload_premium-label'>
-					<img src={photoPremium} alt=""/>
-				</label>
-				<input {...getInputProps()} id='premium_input' className='upload-input' accept="image/png, image/jpeg"/>
 				<div className="upload_info-premium ml-20">
 					<p className='upload_info-premium-text'>Загрузите 1 фото</p>
 					<p className='upload_info-premium-format'>Формат JPG, JPEG, PNG</p>
 				</div>
+			<div className='flex mb-20'>
+				<label htmlFor="premium_input" className='upload_file_input upload_premium-label'>
+					<img src={photoPremium} alt=""/>
+				</label>
+				<input {...getInputProps()} id='premium_input' className='upload-input' accept="image/png, image/jpeg"/>
 			</div>
 			{(editedImage?.value || image !== null) ?
 				<div style={{position: 'relative', width: '77%'}}>

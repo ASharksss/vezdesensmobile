@@ -2,6 +2,36 @@
     margin-top: 40px;
 }
 
+/*.deleteImg_stBtn{*/
+/*    display: none;*/
+/*}*/
+.deleteImg_stBtn{
+    background-color: white;
+    border-radius: 100px;
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+.checkedImg_label{
+    font-family: OpenSansSemiBold;
+    color: #262626;
+    background-color: #A4F68E;
+    border-radius: 15px;
+    padding: 3px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+.handel_image{
+    /*width: 140px;*/
+    position: relative;
+    top: 15px;
+    z-index: 3;
+    height: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .upload_block-title {
     font-size: 18px;
     font-family: OpenSansBold;
@@ -18,7 +48,7 @@
     background-color: #ECECEC;
     border-radius: 20px;
     transition: .5s;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
 }
 
 .upload_file_input:hover {
@@ -42,8 +72,10 @@
 }
 
 .upload_standart-label {
-    width: 132px;
-    height: 178px;
+    width: 156px;
+    height: 210px;
+    /*width: 132px;*/
+    /*height: 178px;*/
 }
 
 .upload_info-premium {
@@ -66,8 +98,10 @@
 
 .images-flex {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: 188px;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    gap: 10px;
+    /*grid-template-rows: 188px;*/
 }
 
 .images-flex_row {
@@ -75,7 +109,10 @@
 }
 
 .images-flex_column {
-
+    border-radius: 15px;
+    overflow: hidden;
+    height: 210px;
+    width: 156px;
 }
 
 .uploadPhoto-btn {
@@ -98,3 +135,12 @@
     margin-left: 10px;
 }
 
+.mb-20{
+    margin-bottom: 20px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.ml-20{
+    margin-left: 20px;
+}

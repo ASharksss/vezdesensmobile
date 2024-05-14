@@ -88,7 +88,7 @@ const UploadPhotoStandartPlus = ({editedImage, setEditedImage}) => {
             <Cropper
               ref={cropperRef}
               src={image}
-              style={{height: 400, width: '100vh'}}
+              style={{height: 400}}
               guides={false}
               aspectRatio={315 / 417}
               cropBoxResizable={true}

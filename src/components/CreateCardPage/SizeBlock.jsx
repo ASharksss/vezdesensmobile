@@ -18,16 +18,19 @@ const SizeBlock = ({preview, setPreview, preview_image, name, price, description
 							<span className='size_standart-price'>{price}</span>
 						</div>
 						<p className='size_standart-description'>{description}</p>
-						<p className='size_standart-btn' onClick={() => {
-							setPreview({isOpen: !preview.isOpen, name: name})
-							setSelectedSize(name)
-						}}>Предпросмотр</p>
+						{/*<p className='size_standart-btn' onClick={() => {*/}
+						{/*	setPreview({isOpen: !preview.isOpen, name: name})*/}
+						{/*	setSelectedSize(name)*/}
+						{/*}}>Предпросмотр</p>*/}
 					</div>
 				</label>
 			</div>
 			{
 				preview.isOpen && preview.name === name ?
+					<>
+					<p className='size_standart-btn'>Предпросмотр</p>
 					<img src={preview_image} alt="" className='size_standart-preview'/>
+					</>
 					: null
 			}
 

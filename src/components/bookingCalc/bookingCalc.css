@@ -8,6 +8,15 @@
     font-family: OpenSansBold;
     margin-bottom: 43px;
 }
+/*.flex{*/
+/*    display: flex;*/
+/*}*/
+.another_title{
+    font-size: 20px;
+    font-family: OpenSansBold;
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
 
 .booking_startDate {
     margin-right: 45px;
@@ -61,9 +70,21 @@
 
 .upload_photo-title {
     display: block;
-    font-size: 18px;
-    font-family: OpenSansBold;
+    font-size: 16px;
+    font-family: OpenSansSemiBold;
     margin-bottom: 17px;
+}
+
+.p-text_style{
+    font-family: "Open Sans",sans-serif;
+    font-size: 14px;
+    margin-bottom: 3vh;
+}
+.p-informaiton_block{
+    width: 210px;
+    font-family: "Open Sans",sans-serif;
+    font-size: 10px;
+    color: #838690;
 }
 
 .label_calc {

@@ -131,13 +131,12 @@ const UploadImages = ({cropData, setCropData, mainSrcData = [], mainImage, setMa
   return (
     <div>
       <div>
-        <p className='mb-20'>Количество загруженных фото: {srcData.length} / 15</p>
+        <p className='p-informaiton_block'>Выберите 1 фотографию, как основную, для отображения на главной странице </p>
+        <p className='mb-20 p-text_style'>Количество загруженных фото: {srcData.length} / 15</p>
         <div className="images-flex">
           {cropData.length > 0 ? cropData.map((item) => (
             <div key={`img-${item.key}`} className='img_block'>
-              <button onClick={() => handleRemoveImage(item.key)} className='deleteImg_stBtn'>
-                <img src={deleteImg} alt=""/>
-              </button>
+              <div className="flex handel_image">
               {mainImage !== null ?
                 <div>
                   <input type="radio" id={`selected-${item.key}`} checked={item.key === mainImage}
@@ -145,8 +144,11 @@ const UploadImages = ({cropData, setCropData, mainSrcData = [], mainImage, setMa
                   <label className={`checkedImg_label${item.key === mainImage ? ' active' : ''}`}
                          htmlFor={`selected-${item.key}`}>{item.key === mainImage ? 'Выбрано' : 'Выбрать'}</label>
                 </div> : null}
+                <button onClick={() => handleRemoveImage(item.key)} className='deleteImg_stBtn'>
+                  <img src={deleteImg} alt=""/>
+                </button>
+              </div>
               <div className='images-flex_column' onClick={() => handleSetImage(item.key)}>
-
                 <img src={item.value} alt="" className='upload_photo-img'/>
               </div>
             </div>
@@ -175,7 +177,7 @@ const UploadImages = ({cropData, setCropData, mainSrcData = [], mainImage, setMa
             <Cropper
               ref={cropperRef}
               src={changeImage}
-              style={{height: 400, width: '100vh'}}
+              style={{height: 400}}
               guides={false}
               aspectRatio={248 / 333}
               cropBoxResizable={true}

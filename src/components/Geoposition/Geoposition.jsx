@@ -3,12 +3,16 @@ import styles from './geoposition.module.css';
 import {FixedSizeList as List} from 'react-window';
 import {useDispatch, useSelector} from "react-redux";
 
+import back_arrow from '../../asserts/cardPage/back_arrow.svg'
+
 import {fetchGetGeoList, setMainCity} from "../../redux/slices/GeoSlice";
+import BlackBtn from '../../ui/BlackBtn'
+import search_icon from '../../asserts/icons/search.svg'
 
 const Row = ({index, isScrolling, style, data}) => (
     <div onClick={() => data.setIdCity(data.searchData[index].id)}
          className={data.idCity === data.searchData[index].id ? styles.activeRow : styles.row}
-         style={style}>{isScrolling ? 'Scrolling' : `${data.searchData[index].name}`}</div>
+         style={style}>{isScrolling ? '...' : `${data.searchData[index].name}`}</div>
 );
 
 const Geoposition = ({setShow, handleAddress=undefined}) => {
@@ -73,14 +77,18 @@ const Geoposition = ({setShow, handleAddress=undefined}) => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
+                <img onClick={() => setShow(false)} src={back_arrow} className={styles.back}></img>
                 <span className={styles.title}>Выберите город</span>
-                <span onClick={() => setShow(false)} className={styles.closeBtn}>x</span>
             </div>
-            <div className={styles.searchContainer}>
-                <input type="text" className={styles.search} placeholder='Найти город'
-                    onChange={event => setSearch(event.target.value)}/>
-                <button className={styles.searchBtn}>Поиск</button>
-            </div>
+            {/*<div className={styles.searchContainer}>*/}
+                <div  className={styles.searchContainer}>
+                    <img className='header_search-icon' src={search_icon} alt=""/>
+                    <input className='header_search_input' placeholder='Найти город' type="text"  onChange={event => setSearch(event.target.value)}/>
+                </div>
+                {/*<input type="text" className={styles.search} placeholder='Найти город'*/}
+                {/*    onChange={event => setSearch(event.target.value)}/>*/}
+                {/*<button className={styles.searchBtn}>Поиск</button>*/}
+            {/*</div>*/}
             <div className={styles.list}>
                 {!isLoading ?
                     <List
@@ -88,16 +96,17 @@ const Geoposition = ({setShow, handleAddress=undefined}) => {
                         ref={listRef}
                         height={screenHeight}
                         itemCount={searchData.length}
-                        itemSize={35}
+                        itemSize={60}
                         itemData={{searchData, setIdCity, idCity}}
-                        width={300}
+                        width={330}
                     >
                         {Row}
                     </List>
                     : null}
             </div>
             <div className={styles.buttonWrapper}>
-                <button type='button' className={styles.saveButton} onClick={handleAddress === undefined ? handleSave : () => handleAddress(nameCity, nameRegion, nameDistrict)}>Сохранить</button>
+                <BlackBtn size={'w-100P'} children={'Сохранить'} type={'white_text'} onClick={handleAddress === undefined ? handleSave : () => handleAddress(nameCity, nameRegion, nameDistrict)}/>
+                {/*<button type='button' className={styles.saveButton} onClick={handleAddress === undefined ? handleSave : () => handleAddress(nameCity, nameRegion, nameDistrict)}>Сохранить</button>*/}
             </div>
         </div>
     );

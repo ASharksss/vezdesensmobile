@@ -3,33 +3,44 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     width: 100%;
+    padding: 45px 25px;
 }
 
 .header {
     margin: 10px;
     position: sticky;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     max-height: 40px;
 }
 .title {
-    font-weight: 600;
-    text-decoration: underline;
+    font-family: OpenSansBold;
+    font-weight: bold;
+    font-size: 20px;
+    /*text-decoration: underline;*/
 }
-.closeBtn {
-    padding: 5px 12px;
-    border-radius: 50%;
-    border: 1px solid;
+.back {
+    margin-right: 3vh;
+    /*padding: 5px 12px;*/
+    /*border-radius: 50%;*/
+    /*border: 1px solid;*/
 }
 
 .searchContainer {
-    margin: 10px 0;
+    /*margin: 10px 0;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*max-height: 40px;*/
+
     display: flex;
-    justify-content: center;
-    max-height: 40px;
+    padding: 18px;
+    width: 100%;
+    /* height: 54px; */
+    background-color: rgba(236, 236, 236, 1);
+    border-radius: 10px;
 }
 .search {
     padding: 5px 10px;
@@ -49,27 +60,35 @@
     overflow-x: auto;
 }
 .row {
+    /*margin-top: 45px;*/
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    /*padding-left: 10px;*/
 }
 .activeRow {
     display: flex;
     align-items: center;
-    background-color: rgba(40, 180, 0, 0.5);
+    background-color: black;
+    color: white;
     border-radius: 15px;
-    padding-left: 10px;
+    text-indent: 2em; /* Отступ в начале абзаца, как в книгах */
+    /*padding-left: 10px;*/
 }
+
+
 
 .buttonWrapper {
     position: fixed;
-    background-color: #fff;
-    height: 40px;
+    background-color: #ffffff;
+    height: 60px;
     bottom: 0;
+    left: 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0 50px ;
+    /*border: 1px white solid*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
 }
 .saveButton {
 
