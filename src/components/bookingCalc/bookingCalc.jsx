@@ -74,7 +74,7 @@ const BookingCalc = ({
 
     return (
         <div className='booking'>
-            <h1 className='booking-title'>Бронирование {selectedSize} объявления</h1>
+            <h1 className='another_title'>Бронирование {selectedSize} объявления</h1>
             <div className="flex">
                 <div className="booking_startDate flex column">
                     <label htmlFor="startDate" className='booking_label'>Выберите дату</label>
