@@ -74,15 +74,15 @@ const BookingCalc = ({
 
     return (
         <div className='booking'>
-            <h1 className='another_title'>Бронирование {selectedSize}</h1>
-            <div className="flex column">
+            <h1 className='another_title'>Бронирование {selectedSize} объявления</h1>
+            <div className="flex">
                 <div className="booking_startDate flex column">
-                    <label htmlFor="startDate" className='booking_label'> {selectedSize === 'Премиум' ? 'Выберите дату' : null}</label>
+                    <label htmlFor="startDate" className='booking_label'>Выберите дату</label>
                     {selectedSize === 'Премиум' ?
-                      <select className='mb-20' onChange={event => setPosition(event.target.value)}>
-                          <option value="top">Верхний банер</option>
-                          <option value="bottom">Нижний банер</option>
-                      </select> : null}
+                        <select className='mb-20' onChange={event => setPosition(event.target.value)}>
+                            <option value="top">Верхний банер</option>
+                            <option value="bottom">Нижний банер</option>
+                        </select> : null}
                     <label htmlFor="startDate" className='booking_label'>Выберите дату</label>
                     {!loading ?
                         <Calendar
