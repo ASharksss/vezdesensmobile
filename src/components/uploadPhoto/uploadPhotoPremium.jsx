@@ -60,31 +60,51 @@ const UploadPhotoPremium = ({editedImage, setEditedImage}) => {
 	return (
 		<div className='upload_premium upload_block'>
 			<span className='upload_block-title mb-20'>Фото для баннера "Premium"</span>
-				<div className="upload_info-premium ml-20">
-					<p className='upload_info-premium-text'>Загрузите 1 фото</p>
-					<p className='upload_info-premium-format'>Формат JPG, JPEG, PNG</p>
-				</div>
-			<div className='flex mb-20'>
-				<label htmlFor="premium_input" className='upload_file_input upload_premium-label'>
-					<img src={photoPremium} alt=""/>
-				</label>
-				<input {...getInputProps()} id='premium_input' className='upload-input' accept="image/png, image/jpeg"/>
-			</div>
+			{/*	<div className="upload_info-premium ml-20">*/}
+			{/*		<p className='upload_info-premium-text'>Загрузите 1 фото</p>*/}
+			{/*		<p className='upload_info-premium-format'>Формат JPG, JPEG, PNG</p>*/}
+			{/*	</div>*/}
+			{/*<div className='flex mb-20'>*/}
+			{/*	<label htmlFor="premium_input" className='upload_file_input upload_premium-label'>*/}
+			{/*		<img src={photoPremium} alt=""/>*/}
+			{/*	</label>*/}
+			{/*	<input {...getInputProps()} id='premium_input' className='upload-input' accept="image/png, image/jpeg"/>*/}
+			{/*</div>*/}
 			{(editedImage?.value || image !== null) ?
-				<div style={{position: 'relative', width: '77%'}}>
-					<button onClick={() => removeImage()} className='deleteImg_premiumBtn'><img src={deleteImg} alt=""/></button>
-					<div className='images-flex_column' onClick={() => setActiveModal(true)}>
-						<Card ad_image={editedImage.value} address={''} title={''}
-								price={''} date={''} type='newAd' classname={'xl'}/>
+				// style={{position: 'relative', width: '77%'}}
+				<div  className='relative mt-20 mb-20'>
+					<div className="flex handel_image">
+						<div>
+
+						</div>
+						<button onClick={() => removeImage()} className='deleteImg_premiumBtn'><img src={deleteImg} alt=""/></button>
 					</div>
-				</div> : null}
+					<div className='images-premium-flex_column' onClick={() => setActiveModal(true)}>
+						{/*<Card ad_image={editedImage.value} address={''} title={''}*/}
+						{/*		price={''} date={''} type='newAd' classname={'xl'}/>*/}
+						<img src={editedImage.value} alt="" className='imgVip'/>
+					</div>
+				</div> :
+				<>
+					<div className="upload_info-premium ml-20">
+						<p className='upload_info-premium-text'>Загрузите 1 фото</p>
+						<p className='upload_info-premium-format'>Формат JPG, JPEG, PNG</p>
+					</div>
+					<div className='flex mb-20'>
+						<label htmlFor="premium_input" className='upload_file_input upload_premium-label'>
+							<img src={photoPremium} alt=""/>
+						</label>
+						<input {...getInputProps()} id='premium_input' className='upload-input' accept="image/png, image/jpeg"/>
+					</div>
+				</>
+				}
 			{(image || activeModal) && (
 				<ModalTemplate activeModal={activeModal} setActiveModal={setActiveModal} touched={false} children={
 				<>
 					<Cropper
 						ref={cropperRef}
 						src={image}
-						style={{ height: 400, width: '100vh' }}
+						style={{ height: 400 }} //354 143
 						guides={false}
 						aspectRatio={824 / 333}
 						cropBoxResizable={true}

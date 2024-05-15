@@ -67,6 +67,10 @@ const CreateCardPage = () => {
     const [hopen, setHopen] = useState(false);
     const [huopen, setHuopen] = useState(false);
 
+    // const [Aopen, setAopen] = useState({
+    //     open: false, hopen: false, houpen: false
+    // })
+
     const handleChange = async (e) => {
         setSelectedCategoriesArray((prev) => ({
             ...prev,
@@ -268,7 +272,7 @@ const CreateCardPage = () => {
                     {/*</select>*/}
 
                         <div className="Edited_appeal-select">
-                            <div className="flex items-center space-between Edited_filter-header" onClick={() => setOpen(!open)}>
+                            <div className="flex items-center space-between Edited_filter-header" onClick={() => setOpen(!open)} >
                                 {/* Вывожу значние topic  */}
                                 {selectedCategoriesArray.category === 0 ? 'Выберите вариант...' : categoriesArray.category.find(item => item.id === parseInt(selectedCategoriesArray.category))?.name}
                                 {/*<img src={arrow_icon} alt=""/>*/}
@@ -280,6 +284,8 @@ const CreateCardPage = () => {
                                       <div className='Edited_filter_select-item' onClick={() => {
                                           setSelectedCategoriesArray({category: item.id, subCategory: 0 , object: 0 })
                                           setOpen(!open)
+                                          // setAopen({open: false, hopen: false, houpen: false })
+
                                       }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
                                     )) : null
                                 }
@@ -301,7 +307,7 @@ const CreateCardPage = () => {
 
                     {selectedCategoriesArray.category === 0 ? null :
                         <div className="Edited_appeal-select">
-                            <div className="flex items-center space-between Edited_filter-header" onClick={() => setHopen(!hopen)}>
+                            <div className="flex items-center space-between Edited_filter-header" onClick={() => setHopen(!hopen) }>
                                 {/* Вывожу значние topic  */}
                                 {selectedCategoriesArray.subCategory === 0 ? 'Выберите вариант...' : categoriesArray.subCategory.find(item => item.id === parseInt(selectedCategoriesArray.subCategory))?.name}
                                 {/*<img src={arrow_icon} alt=""/>*/}
@@ -313,6 +319,8 @@ const CreateCardPage = () => {
                                       <div className='Edited_filter_select-item' onClick={() => {
                                           setSelectedCategoriesArray((prev) => ({...prev, subCategory: item.id , object: 0 }))
                                           setHopen(!hopen)
+                                          // setAopen({open: false, hopen: false, houpen: false })
+
                                       }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
                                     )) : null
                                 }

@@ -6,7 +6,7 @@ const SizeBlock = ({preview, setPreview, preview_image, name, price, description
 	return (
 		<div className='size_block'>
 			<div className="flex items-center">
-				<input type="radio" className='size_standart-checkbox' name='size_block' id={name}
+				<input type="radio" className='mob-input' name='size_block' id={name}
 				       checked={name === preview.name} onChange={() => {
 					setSelectedSize(name)
 					setPreview({isOpen: true, name: name})

@@ -13,6 +13,17 @@
     margin-right: 5px;
     margin-top: 10px;
 }
+
+.deleteImg_premiumBtn{
+    top: 5px;
+    z-index: 3;
+    right: 5px;
+    background-color: white;
+    border-radius: 100px;
+    height: 25px;
+    width: 25px;
+}
+
 .checkedImg_label{
     font-family: OpenSansSemiBold;
     color: #262626;
@@ -114,6 +125,19 @@
     height: 210px;
     width: 156px;
 }
+.images-vip-flex_column {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 210px;
+    width: 345px;
+}
+.images-premium-flex_column {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 143px;
+    width: 354px;
+}
+
 
 .uploadPhoto-btn {
     width: 230px !important;

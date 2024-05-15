@@ -60,8 +60,13 @@ const UploadPhotoVip = ({editedImage, setEditedImage}) => {
 
       {(editedImage?.value || image !== null) ?
         <div className='relative mt-20 mb-20'>
-          <button onClick={() => removeImage()} className='deleteImg_Vipbtn'><img src={deleteImg} alt=""/></button>
-          <div className='images-flex_column' onClick={() => setActiveModal(true)}>
+          <div className="flex handel_image">
+            <div>
+
+            </div>
+          <button onClick={() => removeImage()} className='deleteImg_premiumBtn'><img src={deleteImg} alt=""/></button>
+          </div>
+          <div className='images-vip-flex_column' onClick={() => setActiveModal(true)}>
             <img src={editedImage.value} alt="" className='imgVip'/>
           </div>
         </div> :
