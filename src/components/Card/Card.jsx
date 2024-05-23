@@ -50,7 +50,7 @@ const Card = ({classname, data, ad_image = null}) => {
                                                            userData={data?.user}/></span>
 							<NavLink to={`/cardPage/${data?.id}`} className='noLink'>
 								<div className="plus_card_img">
-									<img src={ad_image === null ? `${STATIC_HOST}/${data?.previewImageAds[0]?.name}` : ad_image} alt={data?.title}
+									<img src={ad_image === null ? `${STATIC_HOST}/${data?.commercialImageAds[0]?.name}` : ad_image} alt={data?.title}
 									     className='plus_card_img-image'/>
 								</div>
 								<div className="plus_card_info">
@@ -66,7 +66,7 @@ const Card = ({classname, data, ad_image = null}) => {
                 <span className='card_favorite'><FavoriteBtn id={data?.id} isFavorite={data?.favorites}
                                                              userData={data?.user}/></span>
 								<NavLink to={`/cardPage/${data?.id}`} className='noLink'>
-									<img src={ad_image === null ? `${STATIC_HOST}/${data?.previewImageAds[0]?.name}` : ad_image} alt={data?.title}
+									<img src={ad_image === null ? `${STATIC_HOST}/${data?.commercialImageAds[0]?.name}` : ad_image} alt={data?.title}
 									     className='vip_card-img'/>
 								</NavLink>
 								<div className='flex space-between items-center'>
