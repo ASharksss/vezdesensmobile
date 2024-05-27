@@ -26,12 +26,18 @@
 
 .checkedImg_label{
     font-family: OpenSansSemiBold;
-    color: #262626;
-    background-color: #A4F68E;
+    color: #fff;
+    background-color: #8a8a8a;
     border-radius: 15px;
     padding: 3px;
     margin-left: 5px;
     margin-top: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+.checkedImg_label.active {
+    background-color: #A4F68E;
+    color: #262626;
 }
 .handel_image{
     /*width: 140px;*/

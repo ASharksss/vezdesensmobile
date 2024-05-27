@@ -20,6 +20,8 @@ const UploadImages = ({cropData, setCropData, mainSrcData = [], mainImage, setMa
   const [lastKey, setLastKey] = useState(null)
   const [imageIndex, setImageIndex] = useState(0)
 
+  const uploadWidth = Math.floor(window.innerWidth - (window.innerWidth * 0.15))
+
   useEffect(() => {
     if (mainSrcData.length > 0) {
       setSrcData(mainSrcData)
@@ -141,7 +143,7 @@ const UploadImages = ({cropData, setCropData, mainSrcData = [], mainImage, setMa
                 <div>
                   <input type="radio" id={`selected-${item.key}`} checked={item.key === mainImage}
                          className={`checkedImg_btn`} onChange={() => setMainImage(item.key)} hidden/>
-                  <label className={`checkedImg_label${item.key === mainImage ? ' active' : ''}`}
+                  <label className={`checkedImg_label${item.key === mainImage ? ` active` : ''}`}
                          htmlFor={`selected-${item.key}`}>{item.key === mainImage ? 'Выбрано' : 'Выбрать'}</label>
                 </div> : null}
                 <button onClick={() => handleRemoveImage(item.key)} className='deleteImg_stBtn'>
@@ -177,7 +179,7 @@ const UploadImages = ({cropData, setCropData, mainSrcData = [], mainImage, setMa
             <Cropper
               ref={cropperRef}
               src={changeImage}
-              style={{height: 400}}
+              style={{height: 400, width: uploadWidth}}
               guides={false}
               aspectRatio={248 / 333}
               cropBoxResizable={true}

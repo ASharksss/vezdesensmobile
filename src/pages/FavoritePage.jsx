@@ -15,11 +15,11 @@ const FavoritePage = () => {
 
   const items = [
     {
-      title: 'Сначала новые',
+      title: 'Сначала старые',
       onClick: () => setFilterChoice('new')
     },
     {
-      title: 'Сначала старые',
+      title: 'Сначала новые',
       onClick: () => setFilterChoice('old')
     },
   ]

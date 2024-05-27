@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Back from "../ui/Back";
 import EnterFilter from "../ui/filterComponents/enterFilter";
 import CheckboxFilter from "../ui/filterComponents/CheckboxFilter";
+import SelectFilter from "../ui/filterComponents/selectFilter";
 import {setQuery} from "../redux/slices/CategoryFilterSlice";
 
 const FilterPage = ({setShowFilter}) => {
@@ -48,11 +49,13 @@ const FilterPage = ({setShowFilter}) => {
             <EnterFilter setEnterFilter={setEnterFilter}/>
             {filters.map(item => (
                 item.characteristic.typeCharacteristic.name === 'enter' ?
-                    <EnterFilter name={item.characteristic.name} id={item.characteristic.id} setEnterFilter={setEnterFilter}/> :
+                    <EnterFilter name={item.characteristic.name} id={item.characteristic.id}
+                                 setEnterFilter={setEnterFilter}/> :
                     // item.characteristic.typeCharacteristic.name === 'select' ?
                     //     <SelectFilter name={item.characteristic.name}/> :
                         <CheckboxFilter item={item.characteristic.characteristicValues}
-                        name={item.characteristic.name} id={item.characteristic.id} setChoiceFilter={setChoiceFilter}/>
+                                        name={item.characteristic.name} id={item.characteristic.id}
+                                        setChoiceFilter={setChoiceFilter}/>
             ))}
             <div className='filterPage-show-container'>
                 <button type='submit' className='filterPage-show-btn'>Показать</button>
