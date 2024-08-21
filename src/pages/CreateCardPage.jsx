@@ -258,56 +258,31 @@ const CreateCardPage = () => {
             <div className="createCard_categories">
                 <h2 className='createCard_categories-subtitle'>Категория</h2>
                 <div className="column">
-
-                    {/*<select className='createCard_categories-select' name='category'*/}
-                    {/*        value={selectedCategoriesArray.category}*/}
-                    {/*        onChange={handleChange}>*/}
-                    {/*    <option value={0} disabled={true}>Выберите подкатегорию...</option>*/}
-                    {/*    {*/}
-                    {/*        categoriesArray.category ? categoriesArray.category.map((item, index) => (*/}
-                    {/*            <option key={`category-${index}`}*/}
-                    {/*                    value={item.id}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</option>*/}
-                    {/*        )) : null*/}
-                    {/*    }*/}
-                    {/*</select>*/}
-
-                        <div className="Edited_appeal-select">
-                            <div className="flex items-center space-between Edited_filter-header" onClick={() => setOpen(!open)} >
-                                {/* Вывожу значние topic  */}
-                                {selectedCategoriesArray.category === 0 ? 'Выберите вариант...' : categoriesArray.category.find(item => item.id === parseInt(selectedCategoriesArray.category))?.name}
-                                {/*<img src={arrow_icon} alt=""/>*/}
-                            </div>
-                            <div className={open ? 'block Edited_filter_select-body' : 'filter_select-body-none'}>
-                                {
-                                    categoriesArray.category ? categoriesArray.category.map((item, index) => (
-                                      // Предаю значиение item.name после topic присваиваю значиение при клике
-                                      <div className='Edited_filter_select-item' onClick={() => {
-                                          setSelectedCategoriesArray({category: item.id, subCategory: 0 , object: 0 })
-                                          setOpen(!open)
-                                          // setAopen({open: false, hopen: false, houpen: false })
-
-                                      }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
-                                    )) : null
-                                }
-                            </div>
+                    <div className="Edited_appeal-select">
+                        <div className="flex items-center space-between Edited_filter-header"
+                             onClick={() => setOpen(!open)}>
+                            {/* Вывожу значние topic  */}
+                            {selectedCategoriesArray.category === 0 ? 'Выберите вариант...' : categoriesArray.category.find(item => item.id === parseInt(selectedCategoriesArray.category))?.name}
+                            {/*<img src={arrow_icon} alt=""/>*/}
                         </div>
+                        <div className={open ? 'block Edited_filter_select-body' : 'filter_select-body-none'}>
+                            {
+                                categoriesArray.category ? categoriesArray.category.map((item, index) => (
+                                    // Предаю значиение item.name после topic присваиваю значиение при клике
+                                    <div className='Edited_filter_select-item' onClick={() => {
+                                        setSelectedCategoriesArray({category: item.id, subCategory: 0, object: 0})
+                                        setOpen(!open)
+                                        // setAopen({open: false, hopen: false, houpen: false })
 
-
-                    {/*<select className='createCard_categories-select' name='subCategory'*/}
-                    {/*        value={selectedCategoriesArray.subCategory}*/}
-                    {/*        onChange={handleChange}>*/}
-                    {/*    <option value={0} disabled={true}>Выберите подкатегорию...</option>*/}
-                    {/*    {*/}
-                    {/*        categoriesArray.subCategory ? categoriesArray.subCategory.map((item, index) => (*/}
-                    {/*            <option key={`subcategory-${index}`}*/}
-                    {/*                    value={item.id}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</option>*/}
-                    {/*        )) : null*/}
-                    {/*    }*/}
-                    {/*</select>*/}
-
+                                    }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
+                                )) : null
+                            }
+                        </div>
+                    </div>
                     {selectedCategoriesArray.category === 0 ? null :
                         <div className="Edited_appeal-select">
-                            <div className="flex items-center space-between Edited_filter-header" onClick={() => setHopen(!hopen) }>
+                            <div className="flex items-center space-between Edited_filter-header"
+                                 onClick={() => setHopen(!hopen)}>
                                 {/* Вывожу значние topic  */}
                                 {selectedCategoriesArray.subCategory === 0 ? 'Выберите вариант...' : categoriesArray.subCategory.find(item => item.id === parseInt(selectedCategoriesArray.subCategory))?.name}
                                 {/*<img src={arrow_icon} alt=""/>*/}
@@ -315,13 +290,17 @@ const CreateCardPage = () => {
                             <div className={hopen ? 'block Edited_filter_select-body' : 'filter_select-body-none'}>
                                 {
                                     categoriesArray.subCategory ? categoriesArray.subCategory.map((item, index) => (
-                                      // Предаю значиение item.name после topic присваиваю значиение при клике
-                                      <div className='Edited_filter_select-item' onClick={() => {
-                                          setSelectedCategoriesArray((prev) => ({...prev, subCategory: item.id , object: 0 }))
-                                          setHopen(!hopen)
-                                          // setAopen({open: false, hopen: false, houpen: false })
+                                        // Предаю значиение item.name после topic присваиваю значиение при клике
+                                        <div className='Edited_filter_select-item' onClick={() => {
+                                            setSelectedCategoriesArray((prev) => ({
+                                                ...prev,
+                                                subCategory: item.id,
+                                                object: 0
+                                            }))
+                                            setHopen(!hopen)
+                                            // setAopen({open: false, hopen: false, houpen: false })
 
-                                      }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
+                                        }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
                                     )) : null
                                 }
                             </div>
@@ -344,7 +323,8 @@ const CreateCardPage = () => {
                     {selectedCategoriesArray.subCategory === 0 ? null :
 
                         <div className="Edited_appeal-select">
-                            <div className="flex items-center space-between Edited_filter-header" onClick={() => setHuopen(!huopen)}>
+                            <div className="flex items-center space-between Edited_filter-header"
+                                 onClick={() => setHuopen(!huopen)}>
                                 {/* Вывожу значние topic  */}
                                 {selectedCategoriesArray.object === 0 ? 'Выберите вариант...' : categoriesArray.object.find(item => item.id === parseInt(selectedCategoriesArray.object))?.name}
                                 {/*<img src={arrow_icon} alt=""/>*/}
@@ -352,11 +332,11 @@ const CreateCardPage = () => {
                             <div className={huopen ? 'block Edited_filter_select-body' : 'filter_select-body-none'}>
                                 {
                                     categoriesArray.object ? categoriesArray.object.map((item, index) => (
-                                      // Предаю значиение item.name после topic присваиваю значиение при клике
-                                      <div className='Edited_filter_select-item' onClick={() => {
-                                          setSelectedCategoriesArray((prev) => ({...prev , object: item.id }))
-                                          setHuopen(!huopen)
-                                      }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
+                                        // Предаю значиение item.name после topic присваиваю значиение при клике
+                                        <div className='Edited_filter_select-item' onClick={() => {
+                                            setSelectedCategoriesArray((prev) => ({...prev, object: item.id}))
+                                            setHuopen(!huopen)
+                                        }}>{item.name.indexOf('/') > 0 ? item.name.split('/')[1] : item.name}</div>
                                     )) : null
                                 }
                             </div>
@@ -512,7 +492,8 @@ const CreateCardPage = () => {
                     <label htmlFor="" className='characteristic_item-label'>Телефон</label>
                     <div>
                         <InputMask mask="+7(999)999-99-99" type="text" value={user.items.phone} disabled
-                                   placeholder='Введите номер' className='createCard_characteristics-input' style={{marginBottom: "30px"}}/>
+                                   placeholder='Введите номер' className='createCard_characteristics-input'
+                                   style={{marginBottom: "30px"}}/>
                         <form className="flex column created_ad-contact">
                             <div className='flex created_ad-radio'>
                                 <input type="radio" id='only_messages' name='only_messages' value={2}
@@ -566,14 +547,16 @@ const CreateCardPage = () => {
                         <label htmlFor="agreeOffers" className='create_ad-contact'>
 						<span>
 							Я ознакомился с <u><Link to={`${STATIC_HOST}/docs/Offer_for_site_vezdesens.pdf`}
-                                                  target={'_blank'}>офертой сайта</Link></u>
+                                                     target={'_blank'}>офертой сайта</Link></u>
 						</span>
                         </label>
                     </div> : null}
             </div>
             <BlackBtn btnType={'submit'}
-                      size={'w-100P'}> {loading ? <div className="flex"><img src={LoadGIF} width={32} alt={"Отправка"}/> Отправка...</div> : 'Разместить'} </BlackBtn>
-                      {/*children={loading ? <><img src={LoadGIF} width={32} alt={"Отправка"}/> Отправка...</> : 'Разместить'}*/}
+                      size={'w-100P'}> {loading ?
+                <div className="flex"><img src={LoadGIF} width={32} alt={"Отправка"}/> Отправка...
+                </div> : 'Разместить'} </BlackBtn>
+            {/*children={loading ? <><img src={LoadGIF} width={32} alt={"Отправка"}/> Отправка...</> : 'Разместить'}*/}
             {/*<button*/}
             {/*    className={`create_ad_btn${!agreeRules || (selectedSize !== 'Стандарт' && !agreeOffers) ? ' disabled' : ''}`}*/}
             {/*    type='submit' disabled={!agreeRules || (selectedSize !== 'Стандарт' && !agreeOffers) || loading}>*/}

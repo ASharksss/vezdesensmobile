@@ -30,6 +30,7 @@ import DialogAppeal from './components/Support/dialogAppeal';
 import RegistrationBuisness from "./pages/RegistrationBuisness";
 import {useTabletDetection} from "./redux/hooks/useTabletDetection";
 import {firstLoading, takeFromCookie} from "./redux/slices/GeoSlice";
+import EditCardPage from "./pages/EditCardPage";
 
 
 axios.defaults.baseURL = "https://backend.vezdesens.ru/"
@@ -130,6 +131,7 @@ function App() {
           <Route path='/appeal' element={<DialogAppeal/>}/>
 
           <Route path='/editProfile/:id' element={<EditProfilePage/>}/>
+          <Route path='/editCard/:id' element={<EditCardPage/>}/>
         </Routes>
 
       </BrowserRouter>

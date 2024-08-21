@@ -30,7 +30,7 @@ const SelectInput = ({data, setSelectValue, id, isRequired = false, mainValue = 
 		<div className='characteristic_item'>
 			<label className='characteristic_item-label'>{data.name}</label>
 			<select className='createCard_select' required={isRequired}
-			        onChange={e => setValue(e.target.value)}>
+			        onChange={e => setValue(e.target.value)} value={mainValue}>
 				<option value='' hidden={!isRequired}>Выберите значение</option>
 				{
 					data.characteristicValues.map(value => (

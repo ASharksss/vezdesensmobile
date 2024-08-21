@@ -4,7 +4,7 @@ import dots from '../../asserts/profile/dots.svg'
 import like from '../../asserts/profile/favorite.svg'
 import eye from '../../asserts/profile/eye.svg'
 import MoreSubMenu from "../../ui/moreSubMenu";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import ModalTemplate from "../Modal/ModalTemplate";
 import OffCard from "../Modal/OffCard";
 import {pluralRusVariant, STATIC_HOST} from "../../utils";
@@ -13,6 +13,7 @@ import axios from "axios";
 const MyCard = ({item, choice, isCanEdit}) => {
   const [open, setOpen] = useState(false)
   const [activeModal, setActiveModal] = useState(false)
+  const navigate = useNavigate()
   let items = []
 
   const publishCard = async (id) => {
@@ -24,7 +25,7 @@ const MyCard = ({item, choice, isCanEdit}) => {
     items = [
       {
         title: 'Редактировать',
-        onClick: null
+        onClick: () => navigate(`/editCard/${item.id}`)
       },
       {
         title: 'Снять с публикации',

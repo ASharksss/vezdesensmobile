@@ -38,8 +38,8 @@ const DialogPage = () => {
   const navigate = useNavigate()
 
   function connect()  {
-    setSocket(io(`http://192.168.1.119:5001/?senderId=${paramsSenderId}&receiverId=${paramsReceiverId}&adId=${paramsAdId}`));
-    // setSocket(io(`https://chat.vezdesens.ru/?senderId=${paramsSenderId}&receiverId=${paramsReceiverId}&adId=${paramsAdId}`));
+    // setSocket(io(`https://192.168.1.119:5001/?senderId=${paramsSenderId}&receiverId=${paramsReceiverId}&adId=${paramsAdId}`));
+    setSocket(io(`https://chat.vezdesens.ru/?senderId=${paramsSenderId}&receiverId=${paramsReceiverId}&adId=${paramsAdId}`));
   }
    // подлключение
   useEffect(() => {

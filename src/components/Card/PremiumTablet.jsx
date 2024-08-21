@@ -20,7 +20,7 @@ const PremiumTablet = ({data}) => {
           <div className="premium_card-info">
             <h1 className='premium_card-title'>{data?.title}</h1>
             <div className='flex'>
-            <h1 className='premium_card-address'>{data?.address}</h1>
+            <h1 className='premium_card-address'>{data?.address.indexOf('@') > 1 ? data?.address.split('@')[0] : data?.address}</h1>
             <h1 className='premium_card-time pd-l-30'>{relativeDate(new Date(data?.createdAt))}</h1>
             </div>
           </div>

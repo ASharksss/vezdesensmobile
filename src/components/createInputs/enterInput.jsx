@@ -26,7 +26,7 @@ const EnterInput = ({data, setEnterValue, id, isRequired, mainValue=''}) => {
 	return (
 		<div className='characteristic_item'>
 			<label className='characteristic_item-label'>{data.name}</label>
-			<input onChange={e => setValue(e.target.value)}
+			<input onChange={e => setValue(e.target.value)} value={value}
 			       type="text" className='createCard_characteristics-input'/>
 		</div>
 	);
